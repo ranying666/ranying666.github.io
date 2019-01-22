@@ -142,6 +142,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-what-is-knowage" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/what-is-knowage/">Knowage可信任的开源数据可视化BI工具</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/22/what-is-knowage/" class="archive-article-date">
+  	<time datetime="2019-01-22T09:40:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="开源的BI工具"><a href="#开源的BI工具" class="headerlink" title="开源的BI工具"></a>开源的BI工具</h1><img src="/2019/01/22/what-is-knowage/5c4177675e800415dd00001e.png">  
+<p><img src="./2019-01-22-what-is-knowage/5c4177675e800415dd00001e.png" alt="">  </p>
+<p>Knowage是从SpagoBI发展而来，使用Java语言写的开放源码的商业智能分析工具,是一套适合现代商业分析的开源工具套装。在版本6以前是完全开源的SpagoBI,2018年发布的6.0版本开始，改名为Knowage并走向开源的社区版及收费的企业版两个版本，相比SpagoBI，Knowage在功能上进行了很大优化，重心移到在线开发模式，加强了在线Document的功能，更推荐使用CockpitEngine进行报表设计。  </p>
+<p>与其它开源BI工具如Superset，甚至是一些商业BI工具相对，Knowage都具有明显的优点：它集成了众多分析设计Engine，除自身的knowagecockpitengine之外，还集成了大名鼎鼎的qbeengine，birtreportengine，talendengine等；除提供Knowage-Server支持设计和发布report外，还提供SDK可以集成到Knowage以外的地方，最大可能的与你原来的产品进行集成。</p>
+<h1 id="Knowage主要特点"><a href="#Knowage主要特点" class="headerlink" title="Knowage主要特点"></a>Knowage主要特点</h1><h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><img src="/2019/01/22/what-is-knowage/1547796145767_32.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547796145767_32.png" alt="">  </p>
+<p>Knowage继承了著名的开源BI套件SpagoBI的悠久历史。Community Edition延续了这一传统，为开发人员和用户的社区提供了价值。</p>
+<h2 id="自主"><a href="#自主" class="headerlink" title="自主"></a>自主</h2><img src="/2019/01/22/what-is-knowage/1547796163038_33.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547796163038_33.png" alt="">  </p>
+<p>Knowage提供了高级的自助服务功能，为最终用户提供了自主权，可以构建自己的分析、探索和组织自己的数据空间。</p>
+<h2 id="信任"><a href="#信任" class="headerlink" title="信任"></a>信任</h2><img src="/2019/01/22/what-is-knowage/1547796182780_34.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547796182780_34.png" alt=""><br>Knowage是由专业人员开发的，如何Community Edition不能满足个性化需求时还可以选择Enterprise Edition提供的一整套服务，以确保即使在关键任务应用程序中也能采用它。</p>
+<h2 id="灵活"><a href="#灵活" class="headerlink" title="灵活"></a>灵活</h2><img src="/2019/01/22/what-is-knowage/1547796208612_35.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547796208612_35.png" alt=""><br>Knowage采用开放的标准，可以在各种环境中使用，不需要太多的要求。此外，它的模块可以相互组合以获得定制的解决方案。</p>
+<h1 id="模块化架构，一套解决方案"><a href="#模块化架构，一套解决方案" class="headerlink" title="模块化架构，一套解决方案"></a>模块化架构，一套解决方案</h1><p>该套件由多个模块组成，每个模块都是为特定的分析领域设计的。它们可以单独使用，也可以相互组合使用，以确保完全覆盖用户的需求，从而构建定制的产品。Knowage从一开始就是一个聪明的解决方案。<br>这些模块其实就是通过集成不同的Engine来实现的，你在创建你的BI模型时可以选择使用哪种Engine。后面我们将对这些Engine的使用作一系列的介绍，先让我们来看看都有哪些模块。</p>
+<h2 id="BIG-DATA"><a href="#BIG-DATA" class="headerlink" title="BIG DATA"></a>BIG DATA</h2><img src="/2019/01/22/what-is-knowage/1547801110122_36.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547801110122_36.png" alt="">  </p>
+<p><strong>Knowage BD</strong><br>提供了与大数据源和传统数据源合作的机会，联合数据集来构建不同的分析，例如:静态报告、地图、网络视图、交互式驾驶舱和数据/文本挖掘模型。此外，用户可以使用拖放查询构建器自由地探索自己的数据，也可以借助高级可视化工具立即洞察数据。Knowage BD是通过Cloudera和MapR数据平台认证的。由于与Apache Spark的集成，Knowage也是一个Databricks认证的应用程序。支持常用大数据源，如MongoBD、Spark、hive等。</p>
+<p><strong>数据联合</strong><br>数据联合可以在同一时间使用不同的数据源，将异构数据集组合在一个公共模型中。在这里，可以声明数据之间的逻辑对应关系，也可以让Knowage提出自动检测的对应关系。联合模型可以像其他数据集一样在每个分析文档中使用。</p>
+<h2 id="SMART-INTELLIGENCE"><a href="#SMART-INTELLIGENCE" class="headerlink" title="SMART INTELLIGENCE"></a>SMART INTELLIGENCE</h2><img src="/2019/01/22/what-is-knowage/1547801633459_37.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547801633459_37.png" alt=""><br><strong>Smart Intelligence</strong><br>使用预先构建的分析确保轻松访问企业结构化数据，从而通过先进的自组织和自服务功能确保对数据的完全控制。</p>
+<p>Knowage Smart Intelligence提供了与传统数据源合作的机会，甚至可以结合更多的数据源来构建分析，如交互式驾驶舱、报告和多维分析(OLAP)。该产品支持IT人员使用多租户和复杂的元数据管理企业环境。同时，使最终用户能够自由地查询自己的数据空间，生成自制的分析和可视化。</p>
+<p><strong>交互式驾驶舱(COCKPIT)</strong><br>交互式驾驶舱支持数据探索和自助报告。结合数据和小部件(widget)，即使是业务用户也可以在几分钟内构建自己的仪表板。  </p>
+<img src="/2019/01/22/what-is-knowage/cockpit.gif">  
+<p><img src="./2019-01-22-what-is-knowage/cockpit.gif" alt="">  </p>
+<p><strong>元模型(METAMODEL)</strong><br>是组织数据的技术存储系统上的逻辑业务视图。由熟悉数据存储模型并有权限的技术用户(Developer)或管理员(Admin)定义了元模型，那么最终用户(User)就可以免费使用该元模型来查询数据结构,以便进行理解数据。</p>
+<h2 id="ENTERPRISE-REPORTING"><a href="#ENTERPRISE-REPORTING" class="headerlink" title="ENTERPRISE REPORTING"></a>ENTERPRISE REPORTING</h2><img src="/2019/01/22/what-is-knowage/1547802270921_38.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547802270921_38.png" alt=""><br><strong>企业级报告（Enterprise Reporting）</strong><br>可以做出更丰富的图形和报告样式，支持小图标与数据的组合布局，支持多种分辨率的屏幕显示和打印。总之一话，报告支持得更好。</p>
+<h2 id="LOCATION-INTELLIGENCE"><a href="#LOCATION-INTELLIGENCE" class="headerlink" title="LOCATION INTELLIGENCE"></a>LOCATION INTELLIGENCE</h2><img src="/2019/01/22/what-is-knowage/1547802401566_41.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547802401566_41.png" alt=""><br><strong>位置智能</strong><br>意味着在地图、空间、模式和矢量图上绘制业务数据。这使您能够立即洞察数据，这也得益于混搭技术，而不需要在GIS系统和数据仓库环境之间移动数据。Knowage Location Intelligence提供了处理传统数据源和具有实时关系的空间数据的机会，以便通过WMS/WFS标准生成动态地图或SVG格式的静态地图和图片。</p>
+<img src="/2019/01/22/what-is-knowage/mappa.gif">  
+<p><img src="./2019-01-22-what-is-knowage/mappa.gif" alt="">  </p>
+<h2 id="PERFORMANCE-MANAGEMENT"><a href="#PERFORMANCE-MANAGEMENT" class="headerlink" title="PERFORMANCE MANAGEMENT"></a>PERFORMANCE MANAGEMENT</h2><img src="/2019/01/22/what-is-knowage/1547802380616_40.png">  
+<p><img src="./2019-01-22-what-is-knowage/1547802380616_40.png" alt=""><br><strong>绩效管理</strong><br>可以设置KPI进行绩效度量和预警，可以按目标值构建速度表，当达到设定的阈值时会进行预警提醒。  </p>
+<img src="/2019/01/22/what-is-knowage/1548148619029_2.png">
+<p><img src="./2019-01-22-what-is-knowage/1548148619029_2.png" alt="">  </p>
+<h2 id="PREDICTIVE-ANALYSIS"><a href="#PREDICTIVE-ANALYSIS" class="headerlink" title="PREDICTIVE ANALYSIS"></a>PREDICTIVE ANALYSIS</h2><img src="/2019/01/22/what-is-knowage/1547802358315_39.png">
+<p><img src="./2019-01-22-what-is-knowage/1547802358315_39.png" alt=""></p>
+<p><strong>预测分析</strong><br>是使用数据挖掘技术进行预测分析的高级处理方式，可以使用R/Spark和其他脚本语言编写的高级程序来处理它们。使用OLAP及What-if引擎实现假设分析，该解决方案允许跨度量和维度的交互式模拟过程。不过实际使用时会发现Knowage的OLAP很难开发，而且交付式页面也让人难以忍受。真要进行数据挖掘，推荐使用其它外部工具进行预计算可能会更好。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/22/what-is-knowage/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-npm-module-not-found" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -271,7 +383,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knowage</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
         		</li>
       		
 		</ul>
@@ -350,7 +462,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knowage</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
         		</li>
       		
 		</ul>
@@ -548,7 +660,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knowage</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
         		</li>
       		
 		</ul>
@@ -901,169 +1013,6 @@
 
 
   
-    <article id="post-postgres-datatype" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/postgres-datatype/">PostgreSQL9.6数据类型梳理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/06/postgres-datatype/" class="archive-article-date">
-  	<time datetime="2017-07-06T06:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><p>数据类型指定要在表字段中存储哪种类型的数据。 在创建表时，对于每列必须使用数据类型。<br>PotgreSQL中主要有三种类型的数据类型。 此外，用户还可以使用<code>CREATE TYPE</code> SQL命令创建自己的自定义数据类型。</p><p></p>
-<p></p><p>以下是PostgreSQL中主要有三种类型的数据类型：</p><p></p>
-<ul><br><li>数值数据类型</li><li>字符串数据类型</li><li>日期/时间数据类型</li></ul>
-
-<h2 id="数值数据类型"><a href="#数值数据类型" class="headerlink" title="数值数据类型"></a>数值数据类型</h2><p>数字数据类型用于指定表中的数字数据。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名称</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">存储大小</th>
-<th style="text-align:left">范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">smallint</td>
-<td style="text-align:left">存储整数，小范围</td>
-<td style="text-align:left">2字节</td>
-<td style="text-align:left">-32768 至 +32767</td>
-</tr>
-<tr>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">存储整数。使用这个类型可存储典型的整数</td>
-<td style="text-align:left">4字节</td>
-<td style="text-align:left">-2147483648 至 +2147483647</td>
-</tr>
-<tr>
-<td style="text-align:left">bigint</td>
-<td style="text-align:left">存储整数，大范围。</td>
-<td style="text-align:left">8字节</td>
-<td style="text-align:left">-9223372036854775808 至 9223372036854775807</td>
-</tr>
-<tr>
-<td style="text-align:left">decimal</td>
-<td style="text-align:left">用户指定的精度，精确</td>
-<td style="text-align:left">变量</td>
-<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
-</tr>
-<tr>
-<td style="text-align:left">numeric</td>
-<td style="text-align:left">用户指定的精度，精确</td>
-<td style="text-align:left">变量</td>
-<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
-</tr>
-<tr>
-<td style="text-align:left">real</td>
-<td style="text-align:left">可变精度，不精确</td>
-<td style="text-align:left">4字节</td>
-<td style="text-align:left">6位数字精度</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td style="text-align:left">可变精度，不精确</td>
-<td style="text-align:left">8字节</td>
-<td style="text-align:left">15位数字精度</td>
-</tr>
-<tr>
-<td style="text-align:left">smallserial</td>
-<td style="text-align:left">自动递增整数</td>
-<td style="text-align:left">2字节</td>
-<td style="text-align:left">1 至 32767</td>
-</tr>
-<tr>
-<td style="text-align:left">serial</td>
-<td style="text-align:left">自动递增整数</td>
-<td style="text-align:left">4字节</td>
-<td style="text-align:left">1 至 2147483647</td>
-</tr>
-<tr>
-<td style="text-align:left">bigserial</td>
-<td style="text-align:left">大的自动递增整数</td>
-<td style="text-align:left">8字节</td>
-<td style="text-align:left">1 至 9223372036854775807</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2017/07/06/postgres-datatype/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PostgreSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PostgreSQL//" class="article-tag-list-link color1">PostgreSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/postgres-datatype/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1165,15 +1114,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,11 +1126,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knowage</a>
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
