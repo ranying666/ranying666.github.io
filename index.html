@@ -142,6 +142,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-knowage-zh-cn" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/25/knowage-zh-cn/">Knowage汉化-全界面中文支持</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/01/25/knowage-zh-cn/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2019/01/25/knowage-zh-cn/" class="archive-article-date">
+  	<time datetime="2019-01-25T06:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/2019/01/25/knowage-zh-cn/134722.png">
+<p><img src="./2019-01-25-knowage-zh-cn/134722.png" alt="">  </p>
+<p>Knowage是支持国际化的，并从6.2版本开始提供了中文相关资源文件<code>message.zh_CN</code>。特别感谢 <strong>@y-zh</strong> 贡献的Merge Request。</p>
+<h1 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h1><p>有了这两个基础，我们只需要下载knowaget6.2以上版本安装。<br>但安装后发现并没有中文语言可选  </p>
+<img src="/2019/01/25/knowage-zh-cn/140045.png">
+<p><img src="./2019-01-25-knowage-zh-cn/140045.png" alt="">  </p>
+<h1 id="汉化配置"><a href="#汉化配置" class="headerlink" title="汉化配置"></a>汉化配置</h1><p>启动后默认是英文的，admin打开：<br><code>settings Server Settings &gt;  Configuration management</code><br>查找<code>language</code>进行修改：</p>
+<ol>
+<li>修改<code>SPAGOBI.LANGUAGE_SUPPORTED.LANGUAGES</code><br>的valueCheck为<code>[it,IT],[en,US],[fr,FR],[es,ES],[zh,CN]</code></li>
+<li>修改<code>SPAGOBI.LANGUAGE_SUPPORTED.LANGUAGE.default</code>的valueCheck为<code>zh,CN</code>.</li>
+<li>刷新重新登录就出现可爱的中文界面了</li>
+</ol>
+<p>管理页面：  </p>
+<img src="/2019/01/25/knowage-zh-cn/33830.png">
+<p><img src="./2019-01-25-knowage-zh-cn/33830.png" alt="">  </p>
+<p>Cockpit文档界面：  </p>
+<img src="/2019/01/25/knowage-zh-cn/5133134.png">
+<p><img src="./2019-01-25-knowage-zh-cn/5133134.png" alt="">  </p>
+<h1 id="中文输入"><a href="#中文输入" class="headerlink" title="中文输入"></a>中文输入</h1><p>在输入的地方检查输入中文是否正常，如果出现乱码，请确保：</p>
+<ol>
+<li>数据库是UTF-8编码，如mysql或MariaDB配置：<code>character-set-server=utf8</code></li>
+<li>JVM encoding设置为UTF-8  </li>
+</ol>
+<blockquote>
+<p>详细配置方式见另外一篇文章：<br><a href="https://ranying666.github.io/2018/05/22/knowage-zh/">https://ranying666.github.io/2018/05/22/knowage-zh/</a></p>
+</blockquote>
+<h1 id="中文标题"><a href="#中文标题" class="headerlink" title="中文标题"></a>中文标题</h1><p>原版本中设计的报表是不能输入除英文以外字符作为的标题，报表多一个目录下几十个英文标题的报表估计除了设计者自己没人能看懂是啥了，这有点痛苦，修改支持中文标题和描述，并扩展标题长度，修改后像这样：  </p>
+<img src="/2019/01/25/knowage-zh-cn/133232.png">
+<p><img src="./2019-01-25-knowage-zh-cn/133232.png" alt="">  </p>
+<p>这个需要修改源码后重新编译，我后面把编译好的放个地址出来，需要的可以留言。</p>
+<blockquote>
+<p>修改方式参见：<br><a href="https://ranying666.github.io/2018/08/20/knowage-zh-doc/">https://ranying666.github.io/2018/08/20/knowage-zh-doc/</a></p>
+</blockquote>
+<hr>
+<p>使用过程中遇到任何问题欢迎留言或加入Knowage开源BI中国社区：QQ <code>158245788</code>  </p>
+
+<p><img src="./2019-01-22-what-is-knowage/BIQQ.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/25/knowage-zh-cn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-what-is-knowage" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -980,83 +1098,6 @@
 
 
   
-    <article id="post-postman" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/postman/">基于Postman进行高效API开发及自动化测试</a>
-    </h1>
-  
-
-
-<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/08/10/postman/" class="pageViews">0</span>
-  </a>
-
-
-        
-        <a href="/2017/08/10/postman/" class="archive-article-date">
-  	<time datetime="2017-08-10T13:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <img src="/2017/08/10/postman/postman-logo.png">
-<blockquote>
-<p><strong>POSTMAN</strong> A powerful GUI platform to make your API development faster &amp; easier, from building API requests through testing, documentation and sharing.   From  <a href="https://www.getpostman.com/" target="_blank" rel="noopener">https://www.getpostman.com/</a></p>
-</blockquote>
-<p> 亮点：<br> 1.API接口验证方便<br> 2.环境变量支持多个环境快速切换<br> 3.支持请求拦截<br> 4.支持断言测试<br> 5.支持打包自动化测试<br> 6.支持生成API文档（收费）</p>
-        
-          <a class="article-more-a" href="/2017/08/10/postman/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/10/postman/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1218,15 +1259,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1234,11 +1271,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,6 +1280,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
