@@ -142,6 +142,104 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-konwage-install-k8s" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/24/konwage-install-k8s/">Kubernetes环境部署Knowage</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/02/24/konwage-install-k8s/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2019/02/24/konwage-install-k8s/" class="archive-article-date">
+  	<time datetime="2019-02-24T04:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://d33wubrfki0l68.cloudfront.net/1567471e7c58dc9b7d9c65dcd54e60cbf5870daa/da576/_common-resources/images/flower.png" alt=""></p>
+<blockquote>
+<p>本文说明在Kubernetes环境部署mysql-5.6.38及Knowage,前提打镜像及docker直接部署过程见另一文章：    </p>
+<p><a href="https://kavenran666.github.io/2019/02/24/knowage-install-docker/" target="_blank" rel="noopener">Docker环境安装Knowage</a></p>
+</blockquote>
+<h2 id="knowage-mysql-yaml"><a href="#knowage-mysql-yaml" class="headerlink" title="knowage-mysql.yaml"></a>knowage-mysql.yaml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">    provider:</span> <span class="string">kavenran</span></span><br><span class="line"><span class="attr">    version:</span> <span class="string">"5.6.38"</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      app:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">"kr.io/db/mysql:5.6.38"</span></span><br><span class="line"><span class="attr">        imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">        env:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">MYSQL_DATABASE</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"knowagedb"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"xxxxxx"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">MYSQL_USER</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"knowageuser"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">MYSQL_PASSWORD</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"xxxxxx"</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="attr">        - containerPort:</span> <span class="number">3306</span></span><br><span class="line"><span class="attr">          protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">        volumeMounts:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">knowage-mysql-data</span></span><br><span class="line"><span class="attr">          mountPath:</span> <span class="string">/var/lib/mysql</span></span><br><span class="line"><span class="attr">      volumes:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">knowage-mysql-data</span></span><br><span class="line"><span class="attr">        persistentVolumeClaim:</span></span><br><span class="line"><span class="attr">          claimName:</span> <span class="string">knowage-mysql-data-pv</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-mysql-data-pv</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">  annotations:</span></span><br><span class="line">    <span class="string">volume.beta.kubernetes.io/storage-class:</span> <span class="string">standard</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ReadWriteMany</span></span><br><span class="line"><span class="attr">  resources:</span></span><br><span class="line"><span class="attr">    requests:</span></span><br><span class="line"><span class="attr">      storage:</span> <span class="number">2</span><span class="string">Gi</span></span><br><span class="line">      </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">  labels:</span> </span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">    provider:</span> <span class="string">kavenran</span></span><br><span class="line"><span class="attr">    version:</span> <span class="string">'5.6.38'</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">ClusterIP</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">  - port:</span> <span class="number">3306</span></span><br><span class="line"><span class="attr">    protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">    targetPort:</span> <span class="number">3306</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">  sessionAffinity:</span> <span class="string">ClientIP</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-mysql</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">kwnowage-mysql</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  rules:</span></span><br><span class="line"><span class="attr">  - host:</span> <span class="string">kwdata.kr.io</span></span><br><span class="line"><span class="attr">    http:</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="attr">      - path:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">        backend:</span></span><br><span class="line"><span class="attr">          serviceName:</span> <span class="string">knowage-mysql</span></span><br><span class="line"><span class="attr">          servicePort:</span> <span class="number">3306</span></span><br></pre></td></tr></table></figure>
+<p>创建后，为了可远程访问需要登录mysql执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all on *.* to root@&apos;%&apos; identified by &apos;xxxxxx&apos; with grant option; </span><br><span class="line">grant all on *.* to knowageuser@&apos;%&apos; identified by &apos;xxxxxx&apos; with grant option; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h2 id="knowage-server-yaml"><a href="#knowage-server-yaml" class="headerlink" title="knowage-server.yaml"></a>knowage-server.yaml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">    provider:</span> <span class="string">kavenran</span></span><br><span class="line"><span class="attr">    version:</span> <span class="string">"6.1.8"</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      app:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">"kr.io/bi/knowage:6.1.8"</span></span><br><span class="line"><span class="attr">        imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">        env:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">DB_ENV_MYSQL_DATABASE</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"knowagedb"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">DB_ENV_MYSQL_USER</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"knowageuser"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">DB_ENV_MYSQL_PASSWORD</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"xxxxxx"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">DB_PORT_3306_TCP_ADDR</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"knowage-mysql"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">DB_PORT_3306_TCP_PORT</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"3306"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">PUBLIC_ADDRESS</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"kw.kr.io"</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">PUBLIC_PROT</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"80"</span>  <span class="string">//此处我修改过，官方镜像只支持8080</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">WAIT_MYSQL</span></span><br><span class="line"><span class="attr">          value:</span> <span class="string">"true"</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="attr">        - containerPort:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">          protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">        volumeMounts:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">knowage-server-data</span></span><br><span class="line"><span class="attr">          mountPath:</span> <span class="string">/home/knowage/apache-tomcat-7.0.57/attachments</span></span><br><span class="line"><span class="attr">      volumes:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">knowage-server-data</span></span><br><span class="line"><span class="attr">        persistentVolumeClaim:</span></span><br><span class="line"><span class="attr">          claimName:</span> <span class="string">knowage-server-data-pv</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-server-data-pv</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">  annotations:</span></span><br><span class="line">    <span class="string">volume.beta.kubernetes.io/storage-class:</span> <span class="string">standard</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ReadWriteMany</span></span><br><span class="line"><span class="attr">  resources:</span></span><br><span class="line"><span class="attr">    requests:</span></span><br><span class="line"><span class="attr">      storage:</span> <span class="number">2</span><span class="string">Gi</span></span><br><span class="line">      </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">  labels:</span> </span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">    provider:</span> <span class="string">kavenran</span></span><br><span class="line"><span class="attr">    version:</span> <span class="string">'6.1.8'</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">ClusterIP</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">  - port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">    protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">    targetPort:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">http</span></span><br><span class="line"><span class="attr">  sessionAffinity:</span> <span class="string">ClientIP</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">knowage-server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">kwnowage-ingress</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">apps</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  rules:</span></span><br><span class="line"><span class="attr">  - host:</span> <span class="string">bi.kr.io</span></span><br><span class="line"><span class="attr">    http:</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="attr">      - path:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">        backend:</span></span><br><span class="line"><span class="attr">          serviceName:</span> <span class="string">knowage-server</span></span><br><span class="line"><span class="attr">          servicePort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+<p>创建后，可使用 bi.kr.io来访问knowage。</p>
+<hr>
+<p>使用过程中遇到任何问题欢迎留言或加入Knowage开源BI中国社区：QQ <code>158245788</code>  </p>
+<p><img src="https://ranying666.github.io/2019/01/25/knowage-zh-cn/BIQQ.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/24/konwage-install-k8s/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-knowage-install-docker" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -198,7 +296,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knowage</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
         		</li>
       		
 		</ul>
@@ -1035,96 +1133,9 @@
 
 
   
-    <article id="post-rabbitmq-stomp" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/12/rabbitmq-stomp/">基于RabbitMQ实现异步消息通知处理</a>
-    </h1>
-  
-
-
-<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/12/12/rabbitmq-stomp/" class="pageViews">0</span>
-  </a>
-
-
-        
-        <a href="/2017/12/12/rabbitmq-stomp/" class="archive-article-date">
-  	<time datetime="2017-12-12T05:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h1><p>一个简单的业务场景如：某web页面存在多个相互关联的异步获取数据展示的区域，如何优雅的实现一个区域的数据更新时异步通知其它区域进行数据刷新？<br><img src="/2017/12/12/rabbitmq-stomp/1597a9669d46c083796399bfc9fbe7f0.png"></p>
-<p>图1 业务场景  </p>
-<p>当列表数据操作状态变更时，让上面统计区域自动更新。<br>常见实现方式是，在“操作”方法中调用“刷新统计数据”的方法，但这种方式不可取，原因是当业务逻辑复杂时这将变得难以维护（十有八九会出Bug)。</p>
-<h1 id="解决的思路"><a href="#解决的思路" class="headerlink" title="解决的思路"></a>解决的思路</h1><p>当“操作”状态变更后发送一个通知（生产者），由关心这个操作的业务（消息者）订阅消息并处理。实现业务解藕，适合分布式部署。</p>
-        
-          <a class="article-more-a" href="/2017/12/12/rabbitmq-stomp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/12/rabbitmq-stomp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1319,15 +1330,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
              
               <li class="article-tag-list-item">
