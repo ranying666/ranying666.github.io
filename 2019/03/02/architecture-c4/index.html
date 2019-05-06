@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://ranying666.github.io">
   <title>如何画好架构图 | KavenRan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
+  <meta name="description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。">
 <meta name="keywords" content="软件架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何画好架构图">
 <meta property="og:url" content="https://ranying666.github.io/2019/03/02/architecture-c4/index.html">
 <meta property="og:site_name" content="KavenRan&#39;s Blog">
-<meta property="og:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
+<meta property="og:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/1.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/2019-03-02-architecture-c4/1.png">
@@ -44,10 +44,10 @@
 <meta property="og:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/2019-03-02-architecture-c4/13.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/14.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/2019-03-02-architecture-c4/14.png">
-<meta property="og:updated_time" content="2019-05-06T01:52:56.479Z">
+<meta property="og:updated_time" content="2019-05-06T02:03:05.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何画好架构图">
-<meta name="twitter:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
+<meta name="twitter:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。">
 <meta name="twitter:image" content="https://ranying666.github.io/2019/03/02/architecture-c4/1.png">
   
     <link rel="alternative" href="/atom.xml" title="KavenRan&#39;s Blog" type="application/atom+xml">
@@ -212,6 +212,7 @@
 <li>布局怎么画都不满意……</li>
 </ul>
 <p>如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。</p>
+<a id="more"></a>
 <p><strong>先理清一些基础概念</strong></p>
 <hr>
 <p>1、什么是架构</p>
@@ -673,11 +674,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,10 +691,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
