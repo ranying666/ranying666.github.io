@@ -6,24 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ranying666.github.io">
-  <title>微服务架构下的安全认证与鉴权 | KavenRan&#39;s Blog</title>
+  <title>architecture-c4 | KavenRan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内容简介 微服务下常见认证解决方案； OAuth认证与授权； JWT认证介绍； Spring Cloud的OAuth2实现；   单体应用转变为分布式应用单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：  分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下： 常见的授权认证解决方案 单">
-<meta name="keywords" content="microservice">
+  <meta name="description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
+<meta name="keywords" content="软件架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微服务架构下的安全认证与鉴权">
-<meta property="og:url" content="https://ranying666.github.io/2018/04/20/micoservice-auth/index.html">
+<meta property="og:title" content="architecture-c4">
+<meta property="og:url" content="https://ranying666.github.io/2019/03/02/architecture-c4/index.html">
 <meta property="og:site_name" content="KavenRan&#39;s Blog">
-<meta property="og:description" content="内容简介 微服务下常见认证解决方案； OAuth认证与授权； JWT认证介绍； Spring Cloud的OAuth2实现；   单体应用转变为分布式应用单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：  分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下： 常见的授权认证解决方案 单">
+<meta property="og:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520834704305_2.png">
-<meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520834803874_3.png">
-<meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520838823566_4.png">
-<meta property="og:updated_time" content="2018-06-22T06:19:30.867Z">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaeIIPHGaXvxkE2LVLuWmh1yQB4oATJxFUkG1zNWZlb3Zq4qn3lpbPOg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3lIVFpInibvbnGVibfHOzKaSnGGiajAEzZsRgYwDD45NEibGpnWLMZ1DxvYw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWvcclOwGU9iajINwGlLEgic3l39s1qEJboDCeqHqDcCibs7l4HWGpLicaOXn8XPE4UDibUrIiczJ8ibSiadJw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3luJ832iaC0K4LMCYicnslPZDguYtiajlJe1SLY9RXVP2YYiceUh2ZZerx2A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiajkZUCt04DmX8TCauiblAsXQjWuJPR6KSAJ6SGctIxe3drvMyeibxkjmA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiagfCichEfGibw1ZneEjZ8meS4ibWsUWrM4BOqJH2CyYLwduTgU9icjt9KfQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiam8BMWINLygHTH5r1hIW6HMww7fdCqo2mAX8ngEPC9QW5wp7ialSOllA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiam8BMWINLygHTH5r1hIW6HMww7fdCqo2mAX8ngEPC9QW5wp7ialSOllA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaXhUFCINc4NgSrRctWUr1nuvcETdW5HPdlDibPMdedicoy4YX5jDeP31A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiafhld70zIoyCLX9ibkEFxXI44HHiaQqf05ws8frqyeE6PByP1BRvxT4DA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3lWVbHsIZx9HXxBicnJLGMJth0FiaoCNsItHRj9WVcMSTibp0tdYgJK3HXg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaU8rRbTxaAlTD3TjIQKt2WzMYs8NePmvcVECwHrwpM32nBlRapK0S3A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsia0nPE0Iiavs9ecEeO3vSCjWXvUEJhGncW4fIOZ8sicFkZPaTKYOViafebA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3l7egzz3TJRf7n7CSy1TiceFC9H21Ziar9l1iasabhIM8ibc9yH4GQjPgxfw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2019-05-06T01:35:25.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微服务架构下的安全认证与鉴权">
-<meta name="twitter:description" content="内容简介 微服务下常见认证解决方案； OAuth认证与授权； JWT认证介绍； Spring Cloud的OAuth2实现；   单体应用转变为分布式应用单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：  分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下： 常见的授权认证解决方案 单">
-<meta name="twitter:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520834704305_2.png">
+<meta name="twitter:title" content="architecture-c4">
+<meta name="twitter:description" content="当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：  对着画布无从下手、删了又来？ 用一张图描述我的系统，并且让产品、运营、开发都能看明白？ 画了一半的图还不清楚受众是谁？ 画出来的图到底是产品图功能图还是技术图又或是大杂烩？ 图上的框框有点少是不是要找点儿框框加进来？ 布局怎么画都不满意……  如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。 先理清一些基础概念">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaeIIPHGaXvxkE2LVLuWmh1yQB4oATJxFUkG1zNWZlb3Zq4qn3lpbPOg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="KavenRan&#39;s Blog" type="application/atom+xml">
   
@@ -149,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-micoservice-auth" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-architecture-c4" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      微服务架构下的安全认证与鉴权
+      architecture-c4
     </h1>
   
 
@@ -164,135 +175,149 @@
 <!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
 
   <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2018/04/20/micoservice-auth/" class="pageViews">0</span>
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/03/02/architecture-c4/" class="pageViews">0</span>
   </a>
 
 
         
-        <a href="/2018/04/20/micoservice-auth/" class="archive-article-date">
-  	<time datetime="2018-04-20T05:01:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
+        <a href="/2019/03/02/architecture-c4/" class="archive-article-date">
+  	<time datetime="2019-03-02T01:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><br></p>
-<h1 id="内容简介"><a href="#内容简介" class="headerlink" title="内容简介"></a>内容简介</h1><ol>
-<li>微服务下常见认证解决方案；</li>
-<li>OAuth认证与授权；</li>
-<li>JWT认证介绍；</li>
-<li>Spring Cloud的OAuth2实现；<br><br><br><br><br><br></li>
-</ol>
-<hr>
-<h1 id="单体应用转变为分布式应用"><a href="#单体应用转变为分布式应用" class="headerlink" title="单体应用转变为分布式应用"></a>单体应用转变为分布式应用</h1><p>单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：</p>
-<img src="/2018/04/20/micoservice-auth/1520834704305_2.png">
-<p><br><br><br><br>分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下：<br><img src="/2018/04/20/micoservice-auth/1520834803874_3.png"><br><br><br><br></p>
-<h1 id="常见的授权认证解决方案"><a href="#常见的授权认证解决方案" class="headerlink" title="常见的授权认证解决方案"></a>常见的授权认证解决方案</h1><ol>
-<li><p>单点登录SSO<br>统一的认证服务器(CAS)<br>缺点：每一个用户请求都要经过认证服务器，容易形成瓶颈  </p>
-</li>
-<li><p>Session共享<br>Session共享存储，共享用户信息(Spring Session)<br>缺点：不同平台、不同架构中实现难度较高</p>
-</li>
-<li><p>Token认证<br>认证服务器颁发包含用户身份信息的Token，资源服务器验证合法性(OAuth)<br>缺点：资源服务器想注销用户Token较困难</p>
-</li>
-<li><p>Token+Gateway<br>所有的请求通过网关，可在网关中完成认证或注销Token<br>缺点：Gateway必须保证高可用</p>
-</li>
-</ol>
-<a id="more"></a>
-<hr>
-<p><br></p>
-<h1 id="OAuth认证介绍"><a href="#OAuth认证介绍" class="headerlink" title="OAuth认证介绍"></a>OAuth认证介绍</h1><p>OAuth是一个开放的协议，提供了标准授权方式去访问受保护的资源。<br>常见的使用者如：Twitter、微信、QQ、GitHub</p>
-<h2 id="OAuth角色定义"><a href="#OAuth角色定义" class="headerlink" title="OAuth角色定义"></a>OAuth角色定义</h2><ul>
-<li>客户端：发起请求的应用</li>
-<li>资源拥有者： 用户</li>
-<li>资源服务器： 资源所在的服务器</li>
-<li>授权服务器：提供Token相关操作的服务器<br><br><br><br><br><br></li>
-</ul>
-<h2 id="OAuth认证流程"><a href="#OAuth认证流程" class="headerlink" title="OAuth认证流程"></a>OAuth认证流程</h2><img src="/2018/04/20/micoservice-auth/1520838823566_4.png">  
-<p><br><br><br></p>
-<h2 id="客户端的授权模式"><a href="#客户端的授权模式" class="headerlink" title="客户端的授权模式"></a>客户端的授权模式</h2><ul>
-<li>授权码模式（authorization code）</li>
-<li>简化模式（implicit）</li>
-<li>密码模式（resource owner password credentials）</li>
-<li>客户端模式（client credentials）<br><br><br><br></li>
-</ul>
-<h3 id="授权码模式"><a href="#授权码模式" class="headerlink" title="授权码模式"></a>授权码模式</h3><blockquote>
-<p>（A）用户访问客户端，后者将前者导向认证服务器。<br>（B）用户选择是否给予客户端授权。<br>（C）假设用户给予授权，认证服务器将用户导向客户端事先指定的”重定向URI”（redirection URI），同时附上一个授权码。<br>（D）客户端收到授权码，附上早先的”重定向URI”，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见。<br>（E）认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）。</p>
-</blockquote>
-<p>授权码模式是功能最完整、流程最严密的授权模式。<br><br><br><br></p>
-<h3 id="简化模式"><a href="#简化模式" class="headerlink" title="简化模式"></a>简化模式</h3><p>简化模式跳过了”授权码”这个步骤，使用较少</p>
-<h3 id="密码模式"><a href="#密码模式" class="headerlink" title="密码模式"></a>密码模式</h3><blockquote>
-<p>（A）用户向客户端提供用户名和密码。<br>（B）客户端将用户名和密码发给认证服务器，向后者请求令牌。<br>（C）认证服务器确认无误后，向客户端提供访问令牌。  </p>
-</blockquote>
-<p>密码模式通常使用在所有的服务都是由同一家公司提供的情况下。<br>请求示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:9061/oauth/token?username=user_1&amp;password=123456&amp;grant_type=password&amp;scope=all&amp;client_id=client_2&amp;client_secret=123456</span><br></pre></td></tr></table></figure></p>
-<p>响应示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;access_token&quot;: &quot;8c95f119-2e2a-45c9-a70a-660e55205d6f&quot;,</span><br><span class="line">   &quot;token_type&quot;: &quot;bearer&quot;,</span><br><span class="line">   &quot;refresh_token&quot;: &quot;8033f033-488b-42d2-8bed-4623ab5f66a4&quot;,</span><br><span class="line">   &quot;expires_in&quot;: 43199,</span><br><span class="line">   &quot;scope&quot;: &quot;all&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h3 id="客户端模式"><a href="#客户端模式" class="headerlink" title="客户端模式"></a>客户端模式</h3><blockquote>
-<p>（A）客户端向认证服务器进行身份认证，并要求一个访问令牌。<br>（B）认证服务器确认无误后，向客户端提供访问令牌。  </p>
-</blockquote>
-<p>为了保证安全，该模式一般会配合数字证书，需要使用客户端证书进行认证。<br>请求示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:9061/oauth/token?grant_type=client_credentials&amp;scope=all&amp;client_id=client_1&amp;client_secret=123456</span><br></pre></td></tr></table></figure></p>
-<p>响应示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;access_token&quot;: &quot;47bdce37-d570-439b-9d63-48ca736dbd8c&quot;,</span><br><span class="line">   &quot;token_type&quot;: &quot;bearer&quot;,</span><br><span class="line">   &quot;expires_in&quot;: 43199,</span><br><span class="line">   &quot;scope&quot;: &quot;all&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><br></h2><h1 id="JWT协议介绍"><a href="#JWT协议介绍" class="headerlink" title="JWT协议介绍"></a>JWT协议介绍</h1><p>JSON Web Token（JWT）是一种用于传递认证信息的基于JSON的开放标准。</p>
-<p>JWT可单独用于请求认证，也可以与其它认证协议配合使用，如OAuth2.0。</p>
-<h2 id="JWT认证流程"><a href="#JWT认证流程" class="headerlink" title="JWT认证流程"></a>JWT认证流程</h2><p>A）客户端传入用户密码请求JWT<br>B）认证中心验证通过后创建JWT并返回<br>C）客户端使用JWT访问资源服务器<br>D）资源服务器验证JWT，通过后返回资源内容</p>
-<h2 id="JWT结构"><a href="#JWT结构" class="headerlink" title="JWT结构"></a>JWT结构</h2><p>JWT 由三段信息构成，每一段内容都是一个 JSON 对象，将每一段 JSON 对象采用 BASE64 编码后，中间用<code>.</code>连接：</p>
+        <p>当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：</p>
 <ul>
-<li>第一段为头部（Header）： 基本信息，例如其类型以及签名所用的算法等</li>
-<li>第二段为载荷（Payload) ：存放各种声明信息</li>
-<li>第三段为签名（Signature）： header 和 payload加密结果，可使用对称加密或非对称加密<br><br></li>
+<li>对着画布无从下手、删了又来？</li>
+<li>用一张图描述我的系统，并且让产品、运营、开发都能看明白？</li>
+<li>画了一半的图还不清楚受众是谁？</li>
+<li>画出来的图到底是产品图功能图还是技术图又或是大杂烩？</li>
+<li>图上的框框有点少是不是要找点儿框框加进来？</li>
+<li>布局怎么画都不满意……</li>
 </ul>
-<p>客户端模式请求示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:9062/oauth/token?grant_type=client_credentials&amp;scope=all&amp;client_id=client_1&amp;client_secret=123456</span><br></pre></td></tr></table></figure></p>
-<p>生成的JWT：  </p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"access_token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZXRlcm1jbG91ZHMiXSwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTUyMDg4ODYzOSwianRpIjoiZGJiMzk4MTAtYjVlOC00MjAwLTlkNzItZDBlMmYxYmMxMTM1IiwiY2xpZW50X2lkIjoiY2xpZW50XzEifQ.BdUvz5gI5GLsh-HmERYuCPcb0Z_94OkJBW8meYHIRQ4"</span>,</span><br><span class="line">   <span class="attr">"token_type"</span>: <span class="string">"bearer"</span>,</span><br><span class="line">   <span class="attr">"expires_in"</span>: <span class="number">43199</span>,</span><br><span class="line">   <span class="attr">"scope"</span>: <span class="string">"all"</span>,</span><br><span class="line">   <span class="attr">"jti"</span>: <span class="string">"dbb39810-b5e8-4200-9d72-d0e2f1bc1135"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<p>密码模式请求示例：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:9062/oauth/token?username=user_1&amp;password=123456&amp;grant_type=password&amp;scope=all&amp;client_id=client_2&amp;client_secret=123456</span><br></pre></td></tr></table></figure>
-<p>生成JWT：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"access_token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZXRlcm1jbG91ZHMiXSwidXNlcl9uYW1lIjoidXNlcl8xIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTUyMDg4ODUxNCwiYXV0aG9yaXRpZXMiOlsiVFdUOlBFS1k3NzcwMjMsRVhUUklQOjEzNTg5OTkwMCJdLCJqdGkiOiJjY2E0YWFlYy1hNmVlLTQ4ZDktODBkYS1jYzgxN2E2ODM4NDQiLCJjbGllbnRfaWQiOiJjbGllbnRfMiJ9.lvVfQ5H23gIU_i2cMItdpVfdVkGUL7zI1Tbs59wZa74"</span>,</span><br><span class="line">   <span class="attr">"token_type"</span>: <span class="string">"bearer"</span>,</span><br><span class="line">   <span class="attr">"refresh_token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZXRlcm1jbG91ZHMiXSwidXNlcl9uYW1lIjoidXNlcl8xIiwic2NvcGUiOlsiYWxsIl0sImF0aSI6ImNjYTRhYWVjLWE2ZWUtNDhkOS04MGRhLWNjODE3YTY4Mzg0NCIsImV4cCI6MTUyMTQ1MDExNCwiYXV0aG9yaXRpZXMiOlsiVFdUOlBFS1k3NzcwMjMsRVhUUklQOjEzNTg5OTkwMCJdLCJqdGkiOiJlMzcxMjdhZC0yMzRiLTRkMDctODBiNC1lYzgzMmY2MzQ5YzciLCJjbGllbnRfaWQiOiJjbGllbnRfMiJ9.BswJy_3hyv_XqtM10sex1XRteJcDoqAwvogL3agt1KY"</span>,</span><br><span class="line">   <span class="attr">"expires_in"</span>: <span class="number">43199</span>,</span><br><span class="line">   <span class="attr">"scope"</span>: <span class="string">"all"</span>,</span><br><span class="line">   <span class="attr">"jti"</span>: <span class="string">"cca4aaec-a6ee-48d9-80da-cc817a683844"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="JWT优点"><a href="#JWT优点" class="headerlink" title="JWT优点"></a>JWT优点</h2><p>定义了标准格式，传递与解析简单</p>
-<h2 id="JWT缺点"><a href="#JWT缺点" class="headerlink" title="JWT缺点"></a>JWT缺点</h2><p>JWT更多的是一种开放TOKEN传递协议，对于多种业务场景（授权模式）的实现支持只停留在理伦层面。  </p>
+<p>如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。</p>
+<p><strong>先理清一些基础概念</strong></p>
 <hr>
-<p><br></p>
-<h1 id="OAuth与JWT结合"><a href="#OAuth与JWT结合" class="headerlink" title="OAuth与JWT结合"></a>OAuth与JWT结合</h1><p>OAuth方案中，获得了认证服务器颁发的Token后，资源服务器如何验证与鉴权呢？有几种方案：</p>
-<ol>
-<li><p>资源服务器请求认证服务器验证Token<br>缺点：对认证服务器依赖过高，容易出现认证服务器性能问题</p>
-</li>
-<li><p>共享Token存储信息，如Redis共享<br>缺点：无法解决外部应用验证问题，如使用github认证服务器  </p>
-</li>
-<li><p>资源服务器自验证，如JWT协议<br>缺点：Token注销是个难点，可以与Gateway结合控制。</p>
-</li>
-</ol>
+<p>1、什么是架构</p>
+<p>架构就是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。</p>
+<p>架构是结构和愿景。</p>
+<p>系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。</p>
+<p>做好架构是个复杂的任务，也是个很大的话题，本篇就不做深入了。有了架构之后，就需要让干系人理解、遵循相关决策。</p>
+<p>2、什么是架构图</p>
+<p>系统架构图是为了抽象的表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。</p>
+<p>3、架构图的作用</p>
+<p>一图胜千言。要让干系人理解、遵循架构决策，就需要把架构信息传递出去。架构图就是一个很好的载体。那么，画架构图是为了：</p>
+<ul>
+<li>解决沟通障碍</li>
+<li>达成共识</li>
+<li>减少歧义</li>
+</ul>
+<p>4、架构图分类</p>
+<p>搜集了很多资料，分类有很多，有一种比较流行的是4+1视图，分别为场景视图、逻辑视图、物理视图、处理流程视图和开发视图。</p>
+<ul>
+<li>场景视图</li>
+</ul>
+<p>场景视图用于描述系统的参与者与功能用例间的关系，反映系统的最终需求和交互设计，通常由用例图表示。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaeIIPHGaXvxkE2LVLuWmh1yQB4oATJxFUkG1zNWZlb3Zq4qn3lpbPOg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<ul>
+<li>逻辑视图</li>
+</ul>
+<p>逻辑视图用于描述系统软件功能拆解后的组件关系，组件约束和边界，反映系统整体组成与系 统如何构建的过程,通常由UML的组件图和类图来表示。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3lIVFpInibvbnGVibfHOzKaSnGGiajAEzZsRgYwDD45NEibGpnWLMZ1DxvYw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<ul>
+<li>物理视图</li>
+</ul>
+<p>物理视图用于描述系统软件到物理硬件的映射关系，反映出系统的组件是如何部署到一组可    计算机器节点上，用于指导软件系统的部署实施过程。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWvcclOwGU9iajINwGlLEgic3l39s1qEJboDCeqHqDcCibs7l4HWGpLicaOXn8XPE4UDibUrIiczJ8ibSiadJw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<ul>
+<li>处理流程视图</li>
+</ul>
+<p>处理流程视图用于描述系统软件组件之间的通信时序，数据的输入输出，反映系统的功能流程 与数据流程,通常由时序图和流程图表示。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3luJ832iaC0K4LMCYicnslPZDguYtiajlJe1SLY9RXVP2YYiceUh2ZZerx2A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<ul>
+<li>开发视图</li>
+</ul>
+<p>开发视图用于描述系统的模块划分和组成，以及细化到内部包的组成设计，服务于开发人员，反映系统开发实施过程。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiajkZUCt04DmX8TCauiblAsXQjWuJPR6KSAJ6SGctIxe3drvMyeibxkjmA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>以上 5 种架构视图从不同角度表示一个软件系统的不同特征，组合到一起作为架构蓝图描述系统架构。</p>
+<p><strong>怎样的架构图是好的架构图</strong></p>
 <hr>
-<p><br><br><br></p>
-<h1 id="Spring-Cloud集成OAuth2-0"><a href="#Spring-Cloud集成OAuth2-0" class="headerlink" title="Spring Cloud集成OAuth2.0"></a>Spring Cloud集成OAuth2.0</h1><blockquote>
-<p>实际由spring-security-oauth2提供实现。实现较为复杂。<br>Shiro实现OAuth2.0相对简单，但与spring cloud集成不是很好。</p>
-</blockquote>
-<p>认证服务器主要需要配置：</p>
+<p>上面的分类是前人的经验总结，图也是从网上摘来的，那么这些图画的好不好呢？是不是我们要依葫芦画瓢去画这样一些图？</p>
+<p>先不去管这些图好不好，我们通过对这些图的分类以及作用，思考了一下，总结下来，我们认为，在画出一个好的架构图之前， 首先应该要明确其受众，再想清楚要给他们传递什么信息 ，所以，不要为了画一个物理视图去画物理视图，为了画一个逻辑视图去画逻辑视图，而应该根据受众的不同，传递的信息的不同，用图准确地表达出来，最后的图可能就是在这样一些分类里。那么，画出的图好不好的一个直接标准就是：受众有没有准确接收到想传递的信息。</p>
+<p>明确这两点之后，从受众角度来说，一个好的架构图是不需要解释的，它应该是自描述的，并且要具备一致性和足够的准确性，能够与代码相呼应。</p>
+<p><strong>画架构图遇到的常见问题</strong></p>
+<hr>
+<p>1、方框代表什么？</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiagfCichEfGibw1ZneEjZ8meS4ibWsUWrM4BOqJH2CyYLwduTgU9icjt9KfQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>为什么适用方框而不是圆形，它有什么特殊的含义吗？随意使用方框或者其它形状可能会引起混淆。</p>
+<p>2、虚线、实线什么意思？箭头什么意思？颜色什么意思？</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiam8BMWINLygHTH5r1hIW6HMww7fdCqo2mAX8ngEPC9QW5wp7ialSOllA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>随意使用线条或者箭头可能会引起误会。</p>
+<p>3、运行时与编译时冲突？层级冲突？</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiam8BMWINLygHTH5r1hIW6HMww7fdCqo2mAX8ngEPC9QW5wp7ialSOllA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>架构是一项复杂的工作，只使用单个图表来表示架构很容易造成莫名其妙的语义混乱。</p>
+<p><strong>本文推荐的画图方法-C4模型</strong></p>
+<hr>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaXhUFCINc4NgSrRctWUr1nuvcETdW5HPdlDibPMdedicoy4YX5jDeP31A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>C4 模型使用容器（应用程序、数据存储、微服务等）、组件和代码来描述一个软件系统的静态结构。这几种图比较容易画，也给出了画图要点，但最关键的是，我们认为，它明确指出了每种图可能的受众以及意义。</p>
+<p>下面的案例来自C4官网，然后加上了一些我们的理解，来看看如何更好的表达软件架构</p>
+<p>1、语境图(System Context Diagram)</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiafhld70zIoyCLX9ibkEFxXI44HHiaQqf05ws8frqyeE6PByP1BRvxT4DA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>这是一个想象的待建设的互联网银行系统，它使用外部的大型机银行系统存取客户账户、交易信息，通过外部电邮系统给客户发邮件。可以看到，非常简单、清晰，相信不需要解释，都看的明白，里面包含了需要建设的系统本身，系统的客户，和这个系统有交互的周边系统。</p>
+<p><em>用途</em></p>
+<p>这样一个简单的图，可以告诉我们，要构建的系统是什么；它的用户是谁，谁会用它，它要如何融入已有的IT环境。这个图的受众可以是开发团队的内部人员、外部的技术或非技术人员。即：</p>
 <ul>
-<li>AuthorizationServer配置</li>
+<li>构建的系统是什么</li>
+<li>谁会用它</li>
+<li>如何融入已有的IT环境</li>
 </ul>
-<p>资源服务器主要需要配置：  </p>
+<p><em>怎么画</em></p>
+<p>中间是自己的系统，周围是用户和其它与之相互作用的系统。这个图的关键就是梳理清楚待建设系统的用户和高层次的依赖，梳理清楚了画下来只需要几分钟时间。</p>
+<p>2、容器图(Container Diagram)</p>
+<p>容器图是把语境图里待建设的系统做了一个展开。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3lWVbHsIZx9HXxBicnJLGMJth0FiaoCNsItHRj9WVcMSTibp0tdYgJK3HXg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>上图中，除了用户和外围系统，要建设的系统包括一个基于java\spring mvc的web应用提供系统的功能入口，基于xamarin架构的手机app提供手机端的功能入口，一个基于java的api应用提供服务，一个mysql数据库用于存储，</p>
+<p>各个应用之间的交互都在箭头线上写明了。</p>
+<p>看这张图的时候，不会去关注到图中是直角方框还是圆角方框，不会关注是实线箭头还是虚线箭头，甚至箭头的指向也没有引起太多注意。</p>
+<p>我们有许多的画图方式，都对框、线的含义做了定义，这就需要画图的人和看图的人都清晰的理解这些定义，才能读全图里的信息，而现实是，这往往是非常高的一个要求，所以，很多图只能看个大概的含义。</p>
+<p><em>用途</em></p>
+<p>这个图的受众可以是团队内部或外部的开发人员，也可以是运维人员。用途可以罗列为：</p>
 <ul>
-<li>ResourceServer配置</li>
+<li>展现了软件系统的整体形态</li>
+<li>体现了高层次的技术决策</li>
+<li>系统中的职责是如何分布的，容器间的是如何交互的</li>
+<li>告诉开发者在哪里写代码</li>
 </ul>
-<h2 id="AuthorizationServer配置文件"><a href="#AuthorizationServer配置文件" class="headerlink" title="AuthorizationServer配置文件"></a>AuthorizationServer配置文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerSecurityConfigurer security)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  <span class="comment">//配置安全策略</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ClientDetailsServiceConfigurer clients)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  <span class="comment">//配置客户端认证信息</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerEndpointsConfigurer endpoints)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  <span class="comment">//配置token的数据源、自定义的tokenServices等信息</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>配置示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* AuthorizationServerConfig.java</span></span><br><span class="line"><span class="comment">* 功能：授权服务器配置</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> kavenran 2018年2月23日</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAuthorizationServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthorizationServerConfig</span> <span class="keyword">extends</span> <span class="title">AuthorizationServerConfigurerAdapter</span> </span>&#123;</span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> AuthenticationManager authenticationManager;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> DataSource dataSource;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//自定义用户服务覆盖默认User</span></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> UserDetailsServiceImpl userDetailsService;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//token存储数据库</span></span><br><span class="line"><span class="comment">//	@Bean</span></span><br><span class="line"><span class="comment">//	public JdbcTokenStore jdbcTokenStore() &#123;</span></span><br><span class="line"><span class="comment">//		return new JdbcTokenStore(dataSource);</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//JWT存储Token</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> TokenStore <span class="title">jwtTokenStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> JwtTokenStore(jwtAccessTokenConverter());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//配置OAuth2的客户端相关信息，client信息包括：clientId、secret、scope、authorizedGrantTypes</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ClientDetailsServiceConfigurer clients)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   clients.withClientDetails(<span class="keyword">new</span> JdbcClientDetailsService(dataSource));<span class="comment">//基于oauth_client_token表的操作</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerEndpointsConfigurer endpoints)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   endpoints.tokenStore(jwtTokenStore())</span><br><span class="line">       .accessTokenConverter(jwtAccessTokenConverter())</span><br><span class="line">       .tokenServices(defaultTokenServices())</span><br><span class="line">       .authenticationManager(authenticationManager);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//Token校验方式采用JWT协议</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> JwtAccessTokenConverter <span class="title">jwtAccessTokenConverter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   JwtAccessTokenConverter converter = <span class="keyword">new</span> JwtAccessTokenConverter(); <span class="comment">//CustomTokenEnhancer() //自定义Token信息</span></span><br><span class="line">   converter.setSigningKey(<span class="string">"123"</span>);</span><br><span class="line">   <span class="keyword">return</span> converter;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//按默认规则生成Token</span></span><br><span class="line"> <span class="meta">@Primary</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> DefaultTokenServices <span class="title">defaultTokenServices</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   DefaultTokenServices tokenServices = <span class="keyword">new</span> DefaultTokenServices();</span><br><span class="line">   tokenServices.setTokenStore(jwtTokenStore());</span><br><span class="line">   tokenServices.setSupportRefreshToken(<span class="keyword">true</span>);</span><br><span class="line">   tokenServices.setClientDetailsService(<span class="keyword">new</span> JdbcClientDetailsService(dataSource));</span><br><span class="line">   tokenServices.setAccessTokenValiditySeconds(<span class="number">60</span> * <span class="number">60</span> * <span class="number">12</span>); <span class="comment">// token有效期自定义设置，默认12小时</span></span><br><span class="line">   tokenServices.setRefreshTokenValiditySeconds(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>);<span class="comment">//默认30天，这里修改为7天</span></span><br><span class="line">   tokenServices.setTokenEnhancer(jwtAccessTokenConverter());<span class="comment">//使用JWT生成密钥</span></span><br><span class="line">   <span class="keyword">return</span> tokenServices;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerSecurityConfigurer security)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">     security.tokenKeyAccess(<span class="string">"permitAll()"</span>);</span><br><span class="line">     security.checkTokenAccess(<span class="string">"isAuthenticated()"</span>);<span class="comment">//allow check token</span></span><br><span class="line">     security.allowFormAuthenticationForClients();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="ResourceServer配置"><a href="#ResourceServer配置" class="headerlink" title="ResourceServer配置"></a>ResourceServer配置</h2><p>主要配置以下两个：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ResourceServerSecurityConfigurer resources)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//配置资源信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   <span class="comment">//配置安全策略信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>配置示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* ResourceServerConfig.java</span></span><br><span class="line"><span class="comment">* 功能：资源服务器配置</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>  kavenran</span></span><br><span class="line"><span class="comment">* 2018年2月23日</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableResourceServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceServerConfig</span> <span class="keyword">extends</span> <span class="title">ResourceServerConfigurerAdapter</span></span>&#123;</span><br><span class="line"> <span class="comment">//自定义的JWT</span></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> JwtTokenStore jwtTokenStore;<span class="comment">//自定义的tokenStore</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//自定义的converter</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   JwtAccessTokenConverter jwtAccessTokenConverter;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//设置资源ID，经过授权访问此资源ID的Token才能访问此资源</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ResourceServerSecurityConfigurer resources)</span> </span>&#123;</span><br><span class="line">       resources.resourceId(<span class="string">"order-service"</span>).tokenStore(jwtTokenStore);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       http</span><br><span class="line">               .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)</span><br><span class="line">               .and()</span><br><span class="line">               .requestMatchers().anyRequest()</span><br><span class="line">               .and()</span><br><span class="line">               .anonymous()</span><br><span class="line">               .and()</span><br><span class="line">               .authorizeRequests()</span><br><span class="line">               .antMatchers(<span class="string">"/order/**"</span>).authenticated();<span class="comment">//配置order访问控制，必须认证过后才可以访问</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>OAuth自带的认证endpoint：</p>
-<pre><code>/oauth/authorize：验证
-/oauth/token：获取token
-/oauth/confirm_access：用户授权
-/oauth/error：认证失败
-/oauth/check_token：资源服务器用来校验token
-/oauth/token_key：如果jwt模式则可以用此来从认证服务器获取公钥  
-
-刷新token是通过`oauth/token?grant_type=refresh_token`实现的
-
-</code></pre><hr>
-<p><br></p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><blockquote>
-<p><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0 </a><br><a href="http://blueskykong.com/2017/10/19/security1/" target="_blank" rel="noopener">认证鉴权与API权限控制在微服务架构中的设计与实现</a><br><a href="https://www.cnkirito.moe/2017/08/08/Re%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Spring%20Security%20OAuth2%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">从零开始的Spring Security OAuth2</a></p>
+<p><em>怎么画</em></p>
+<p>用一个框图来表示，内部可能包括名称、技术选择、职责，以及这些框图之间的交互，如果涉及外部系统，最好明确边界。</p>
+<p>3、组件图(Component Diagram)</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsiaU8rRbTxaAlTD3TjIQKt2WzMYs8NePmvcVECwHrwpM32nBlRapK0S3A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>组件图是把某个容器进行展开，描述其内部的模块。</p>
+<p><em>用途</em></p>
+<p>这个图主要是给内部开发人员看的，怎么去做代码的组织和构建。其用途有：</p>
+<ul>
+<li>描述了系统由哪些组件/服务组成</li>
+<li>厘清了组件之间的关系和依赖</li>
+<li>为软件开发如何分解交付提供了框架</li>
+</ul>
+<p>4、类图(Code/Class Diagram)</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/qdzZBE73hWsamXzVLZJ8tU4pN53dQtsia0nPE0Iiavs9ecEeO3vSCjWXvUEJhGncW4fIOZ8sicFkZPaTKYOViafebA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>这个图很显然是给技术人员看的，比较常见，就不详细介绍了。</p>
+<p><strong>案例分享</strong></p>
+<hr>
+<p>下面是内部的一个实时数据工具的架构图。作为一个应该自描述的架构图，这里不多做解释了。如果有看不明白的，那肯定是还画的不够好。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/qdzZBE73hWvcclOwGU9iajINwGlLEgic3l7egzz3TJRf7n7CSy1TiceFC9H21Ziar9l1iasabhIM8ibc9yH4GQjPgxfw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>画好架构图可能有许多方法论，本篇主要介绍了C4这种方法，C4的理论也是不断进化的。但不论是哪种画图方法论，我们回到画图初衷，更好的交流，我们在画的过程中不必被条条框框所限制。简而言之，画之前想好：画图给谁看，看什么，怎么样不解释就看懂。</p>
+<p><em>参考资料：</em></p>
+<p>C4官网：</p>
+<p><a href="https://c4model.com/" target="_blank" rel="noopener">https://c4model.com/</a></p>
+<p>为什么需要软件架构图：</p>
+<p><a href="https://www.infoq.cn/article/GhprrUlOYyOqS8*FR1pH" target="_blank" rel="noopener">https://www.infoq.cn/article/GhprrUlOYyOqS8*FR1pH</a></p>
+<p>书籍：《程序员必读之软件架构》</p>
+<blockquote>
+<p>本文作者：三画，阿里巴巴技术专家。曾多年从事工作流引擎研发工作，现专注于高并发移动互联网应用的架构和开发，和本文贡献者均来自阿里巴巴零售通部门。</p>
 </blockquote>
 
       
@@ -328,7 +353,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">microservice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件架构</a>
         		</li>
       		
 		</ul>
@@ -384,7 +409,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2018/04/20/micoservice-auth/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2019/03/02/architecture-c4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -398,18 +423,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/22/knowage-zh/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpagoBI/knowage中文乱码问题解决
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/12/rabbitmq-stomp/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于RabbitMQ实现异步消息通知处理</div>
+    <a href="/2019/02/24/konwage-install-k8s/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kubernetes环境部署Knowage</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -436,7 +452,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内容简介"><span class="toc-number">1.</span> <span class="toc-text">内容简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单体应用转变为分布式应用"><span class="toc-number">2.</span> <span class="toc-text">单体应用转变为分布式应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见的授权认证解决方案"><span class="toc-number">3.</span> <span class="toc-text">常见的授权认证解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OAuth认证介绍"><span class="toc-number">4.</span> <span class="toc-text">OAuth认证介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth角色定义"><span class="toc-number">4.1.</span> <span class="toc-text">OAuth角色定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth认证流程"><span class="toc-number">4.2.</span> <span class="toc-text">OAuth认证流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端的授权模式"><span class="toc-number">4.3.</span> <span class="toc-text">客户端的授权模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#授权码模式"><span class="toc-number">4.3.1.</span> <span class="toc-text">授权码模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简化模式"><span class="toc-number">4.3.2.</span> <span class="toc-text">简化模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密码模式"><span class="toc-number">4.3.3.</span> <span class="toc-text">密码模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端模式"><span class="toc-number">4.3.4.</span> <span class="toc-text">客户端模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">4.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT协议介绍"><span class="toc-number">5.</span> <span class="toc-text">JWT协议介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT认证流程"><span class="toc-number">5.1.</span> <span class="toc-text">JWT认证流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT结构"><span class="toc-number">5.2.</span> <span class="toc-text">JWT结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT优点"><span class="toc-number">5.3.</span> <span class="toc-text">JWT优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT缺点"><span class="toc-number">5.4.</span> <span class="toc-text">JWT缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OAuth与JWT结合"><span class="toc-number">6.</span> <span class="toc-text">OAuth与JWT结合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Cloud集成OAuth2-0"><span class="toc-number">7.</span> <span class="toc-text">Spring Cloud集成OAuth2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AuthorizationServer配置文件"><span class="toc-number">7.1.</span> <span class="toc-text">AuthorizationServer配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResourceServer配置"><span class="toc-number">7.2.</span> <span class="toc-text">ResourceServer配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">8.</span> <span class="toc-text">参考文档</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -461,7 +477,7 @@
 <script src="https://billts.site/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Fri Apr 20 2018 13:01:59 GMT+0800",
+  id: "Sat Mar 02 2019 09:27:41 GMT+0800",
   owner: 'ranying666',
   repo: 'ranying666.github.io',
   oauth: {
