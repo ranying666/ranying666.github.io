@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ranying666.github.io">
-  <title>Archives: 2018/4 | KavenRan&#39;s Blog</title>
+  <title>Superset集成LDAP经验总结 | KavenRan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KavenRan&#39;s Blog">
-<meta property="og:url" content="https://ranying666.github.io/archives/2018/04/index.html">
+  <meta name="description" content="团队需要解决Superset的单点登录问题，看网上有集成LDAP的经验，根据配置但并未成功，经过摸索和阅读源码，终于搞定了，分享一下。 环境说明 version: 0.28.1 安装方式：docker  配置修改修改配置文件：/usr/local/lib/python3.6/site-packages/superset/config.py   123456789101112131415161718">
+<meta name="keywords" content="bigdata,superset">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Superset集成LDAP经验总结">
+<meta property="og:url" content="https://ranying666.github.io/2019/06/06/superset-ldap/index.html">
 <meta property="og:site_name" content="KavenRan&#39;s Blog">
+<meta property="og:description" content="团队需要解决Superset的单点登录问题，看网上有集成LDAP的经验，根据配置但并未成功，经过摸索和阅读源码，终于搞定了，分享一下。 环境说明 version: 0.28.1 安装方式：docker  配置修改修改配置文件：/usr/local/lib/python3.6/site-packages/superset/config.py   123456789101112131415161718">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-06T08:35:16.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KavenRan&#39;s Blog">
+<meta name="twitter:title" content="Superset集成LDAP经验总结">
+<meta name="twitter:description" content="团队需要解决Superset的单点登录问题，看网上有集成LDAP的经验，根据配置但并未成功，经过摸索和阅读源码，终于搞定了，分享一下。 环境说明 version: 0.28.1 安装方式：docker  配置修改修改配置文件：/usr/local/lib/python3.6/site-packages/superset/config.py   123456789101112131415161718">
   
     <link rel="alternative" href="/atom.xml" title="KavenRan&#39;s Blog" type="application/atom+xml">
   
@@ -140,31 +145,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-superset-ldap" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/20/micoservice-auth/" class="archive-article-date">
-  	<time datetime="2018-04-20T05:01:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/micoservice-auth/">微服务架构下的安全认证与鉴权</a>
+    <h1 class="article-title" itemprop="name">
+      Superset集成LDAP经验总结
     </h1>
   
 
@@ -172,36 +160,246 @@
 <!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
 
   <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2018/04/20/micoservice-auth/" class="pageViews">0</span>
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/06/06/superset-ldap/" class="pageViews">0</span>
   </a>
 
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/06/superset-ldap/" class="archive-article-date">
+  	<time datetime="2019-06-06T07:18:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>团队需要解决Superset的单点登录问题，看网上有集成LDAP的经验，根据配置但并未成功，经过摸索和阅读源码，终于搞定了，分享一下。</p>
+<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><ul>
+<li>version: 0.28.1</li>
+<li>安装方式：docker</li>
+</ul>
+<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><p>修改配置文件：<br><code>/usr/local/lib/python3.6/site-packages/superset/config.py</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 引入AUTH_LDAP</span><br><span class="line">from flask_appbuilder.security.manager import AUTH_DB,AUTH_LDAP</span><br><span class="line"></span><br><span class="line"># 修改LDAP配置</span><br><span class="line">AUTH_TYPE = AUTH_LDAP</span><br><span class="line"></span><br><span class="line"># Uncomment to setup Full admin role name</span><br><span class="line">AUTH_ROLE_ADMIN = &apos;admin&apos;</span><br><span class="line"></span><br><span class="line"># Uncomment to setup Public role name, no authentication needed</span><br><span class="line">#AUTH_ROLE_PUBLIC = &apos;Public&apos;</span><br><span class="line"></span><br><span class="line"># 打开自注册配置</span><br><span class="line"># Will allow user self registration</span><br><span class="line">AUTH_USER_REGISTRATION = True</span><br><span class="line"></span><br><span class="line"># 打开此注释，并改为admin角色</span><br><span class="line"># The default user self registration role</span><br><span class="line">AUTH_USER_REGISTRATION_ROLE = &quot;admin&quot; </span><br><span class="line"></span><br><span class="line"># When using LDAP Auth, setup the ldap server</span><br><span class="line">AUTH_LDAP_SERVER = &quot;ldap://ldap.xx/&quot;</span><br><span class="line">AUTH_LDAP_SEARCH = &quot;ou=People,dc=ldap,dc=xx&quot;</span><br><span class="line">AUTH_LDAP_UID_FIELD = &quot;cn&quot;</span><br><span class="line"></span><br><span class="line">#绑定某个初始账号，我这里用的app组织的账号，跟上面People不是同一个ou,无所谓，能登录就行，主要是不希望配置个人账号到应用里。</span><br><span class="line">AUTH_LDAP_BIND_USER = &quot;cn=superset,ou=app,dc=ldap,dc=xx&quot;</span><br><span class="line">AUTH_LDAP_BIND_PASSWORD = &quot;********&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h2><ul>
+<li><p>如果你配置了AUTH_LDAP_APPEND_DOMAIN 或 AUTH_LDAP_USERNAME_FORMAT，那要保证接起来的DN是可登录的。  </p>
+</li>
+<li><p>AUTH_LDAP_UID_FIELD 默认是uid，而我们LDAP是用cn作为用户名，所以也必须配置。  </p>
+</li>
+<li>AUTH_USER_REGISTRATION：允许验证用户注册，之前这个没有打开，一直提示用户密码不正确，跟踪源码发现，LDAP用户验证通过后会自动注册用户成为superset自己的用户，如果没有打开就会返回None，当然登录不了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def auth_user_ldap(self, username, password):</span><br><span class="line"></span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line"># If user does not exist on the DB and not self user registration, go away</span><br><span class="line">    if not user and not self.auth_user_registration:</span><br><span class="line">       return None</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>Flask-AppBuilder源代码：<br><a href="https://github.com/dpgaspar/Flask-AppBuilder/blob/master/flask_appbuilder/security/manager.py" target="_blank" rel="noopener">https://github.com/dpgaspar/Flask-AppBuilder/blob/master/flask_appbuilder/security/manager.py</a></p>
+</blockquote>
+<ul>
+<li>AUTH_USER_REGISTRATION_ROLE：默认Public角色，权限太少，修改为admin角色。</li>
+</ul>
+<blockquote>
+<p>参数含义说明：<br><a href="https://github.com/dpgaspar/Flask-AppBuilder/blob/master/docs/config.rst" target="_blank" rel="noopener">https://github.com/dpgaspar/Flask-AppBuilder/blob/master/docs/config.rst</a></p>
+</blockquote>
+<h2 id="镜像部署"><a href="#镜像部署" class="headerlink" title="镜像部署"></a>镜像部署</h2><p>如果你想从源代码重新打镜像，下载代码修改：<br><code>https://github.com/apache/incubator-superset/blob/master/contrib/docker/superset_config.py</code></p>
+<p>基于0.28.1叠加一层打包：Dockerfile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM 10.1.1.2/bigdata/superset:0.28.1</span><br><span class="line">MAINTAINER kaven@ran.com</span><br><span class="line"></span><br><span class="line">WORKDIR /usr/local/lib/python3.6/site-packages/superset</span><br><span class="line"></span><br><span class="line"># 官方镜像默认用户为superset无修改权限</span><br><span class="line">USER root</span><br><span class="line"></span><br><span class="line">RUN mv config.py config_bak.py</span><br><span class="line">COPY config.py .</span><br><span class="line"></span><br><span class="line">WORKDIR /home/superset</span><br></pre></td></tr></table></figure></p>
+<p>build镜像：<br><code>docker build -t 10.1.1.2/bigdata/superset:0.28.2 .</code></p>
+<p>挂载启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -p 8088:8088 -v /opt/app/dockerimages/superset:/home/superset 10.1.1.2/bigdata/superset:0.28.2 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/local/bin/superset-init --username admin --firstname admin --lastname user --email admin@fab.org --password admin</span><br></pre></td></tr></table></figure></p>
+<p>启动web server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset runserver</span><br></pre></td></tr></table></figure></p>
+<p>debug模式启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset runserver -d --console-log</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>官方镜像默认没有console-log，需要自己安装：<br>cd /usr/local/lib/python3.6/site-packages/<br>pip install console-log</p>
+</blockquote>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
+<li>打出详细的日志是解决问题要做的第一件事</li>
+<li>源码永远是最好的文档</li>
+<li>如果问题一直解决不了，你应该回顾一下你选择这条路是不是对的，找一切证据证明你是对的，能证明就坚定的走下来，如果不能证明，你应该考虑及时换一条路</li>
+</ol>
+<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><blockquote>
+<p>LDAP服务器的概念和原理简单介绍：<br><a href="https://segmentfault.com/a/1190000002607140" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002607140</a></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝咖啡<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">microservice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">superset</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2019/06/06/superset-ldap/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/06/data-analysis-delivery/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">交付频率数据分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境说明"><span class="toc-number">1.</span> <span class="toc-text">环境说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置修改"><span class="toc-number">2.</span> <span class="toc-text">配置修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置说明"><span class="toc-number">3.</span> <span class="toc-text">配置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像部署"><span class="toc-number">4.</span> <span class="toc-text">镜像部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经验总结"><span class="toc-number">5.</span> <span class="toc-text">经验总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展阅读"><span class="toc-number">6.</span> <span class="toc-text">扩展阅读</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "Thu Jun 06 2019 15:18:41 GMT+0800",
+  owner: 'ranying666',
+  repo: 'ranying666.github.io',
+  oauth: {
+    client_id: '7a9fb30922910af299a8',
+    client_secret: 'b50b74b1d89f3628ec586690e7a2048260233354',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+
+  
 
 
           </div>
@@ -224,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
