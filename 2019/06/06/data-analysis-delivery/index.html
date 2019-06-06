@@ -16,18 +16,25 @@
 <meta property="og:site_name" content="KavenRan&#39;s Blog">
 <meta property="og:description" content="从2018年起，团队一直在做数据度量与分析相关的工作，今天就以大数据应用团队发布的“交付频率”分析指标为例，看看在BI上实现的可视化分析应用。  交付频率定义：统计周期内平均每月投产次数  视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）  图中可以看到交付频率最高KAVEN系统，平均每月交付7.38次，堪称火箭一样的速度。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das1.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das1.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das2.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das2.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das3.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das3.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das4.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das4.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das5.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das5.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das6.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das6.png">
+<meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das7.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das7.png">
-<meta property="og:updated_time" content="2019-06-06T07:00:42.344Z">
+<meta property="og:updated_time" content="2019-06-06T07:08:26.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="交付频率数据分析">
 <meta name="twitter:description" content="从2018年起，团队一直在做数据度量与分析相关的工作，今天就以大数据应用团队发布的“交付频率”分析指标为例，看看在BI上实现的可视化分析应用。  交付频率定义：统计周期内平均每月投产次数  视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）  图中可以看到交付频率最高KAVEN系统，平均每月交付7.38次，堪称火箭一样的速度。">
-<meta name="twitter:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/2019-06-06-data-analysis-delivery/das1.png">
+<meta name="twitter:image" content="https://ranying666.github.io/2019/06/06/data-analysis-delivery/das1.png">
   
     <link rel="alternative" href="/atom.xml" title="KavenRan&#39;s Blog" type="application/atom+xml">
   
@@ -52,7 +59,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #55AA77"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -103,7 +110,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #55AA77"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -185,21 +192,21 @@
 <blockquote>
 <p>交付频率定义：统计周期内平均每月投产次数</p>
 </blockquote>
-<h3 id="视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）"><a href="#视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）" class="headerlink" title="视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）"></a>视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）</h3>
+<h3 id="视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）"><a href="#视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）" class="headerlink" title="视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）"></a>视图一：每月交付频率TOP20（数据范围从2018-01-01到2019-05-01）</h3><img src="/2019/06/06/data-analysis-delivery/das1.png">
 <p><img src="./2019-06-06-data-analysis-delivery/das1.png" alt=""></p>
 <p>图中可以看到交付频率最高KAVEN系统，平均每月交付7.38次，堪称火箭一样的速度。</p>
 <a id="more"></a>
-<h3 id="视图二：系统两个版本投产间隔天数（KAVEN系统）"><a href="#视图二：系统两个版本投产间隔天数（KAVEN系统）" class="headerlink" title="视图二：系统两个版本投产间隔天数（KAVEN系统）"></a>视图二：系统两个版本投产间隔天数（KAVEN系统）</h3>
+<h3 id="视图二：系统两个版本投产间隔天数（KAVEN系统）"><a href="#视图二：系统两个版本投产间隔天数（KAVEN系统）" class="headerlink" title="视图二：系统两个版本投产间隔天数（KAVEN系统）"></a>视图二：系统两个版本投产间隔天数（KAVEN系统）</h3><img src="/2019/06/06/data-analysis-delivery/das2.png">
 <p><img src="./2019-06-06-data-analysis-delivery/das2.png" alt=""></p>
 <p>从左图看到KAVEN两个版本投产间隔绝大多数情况小于5天，右图为数据示例说明，投产间隔越小而且有固定频率的越好。</p>
-<h3 id="视图三：系统交付频率趋势分析"><a href="#视图三：系统交付频率趋势分析" class="headerlink" title="视图三：系统交付频率趋势分析"></a>视图三：系统交付频率趋势分析</h3>
+<h3 id="视图三：系统交付频率趋势分析"><a href="#视图三：系统交付频率趋势分析" class="headerlink" title="视图三：系统交付频率趋势分析"></a>视图三：系统交付频率趋势分析</h3><img src="/2019/06/06/data-analysis-delivery/das3.png">
 <p><img src="./2019-06-06-data-analysis-delivery/das3.png" alt=""></p>
 <p>图中的点代表每一次投产，纵坐标为相邻两次投产间隔天数，红色线代表交付频率趋势线。从上图可以看到，从2018年最初每2.167天投产一次到目前 3.005天投产一次，频率有所降低，但不管怎么样，KAVEN都太优秀了，想想那些还在20天以外徘徊的“活跃项目”估计已经哭晕在厕所。</p>
-<h1 id="分析优化过程"><a href="#分析优化过程" class="headerlink" title="分析优化过程"></a>分析优化过程</h1><p>交付频率中的趋势线是对所有的离散点进行线性回归得出的一条直线。线性回归，能够用一个直线较为精确地描述数据之间的关系，通过线性回归构造出来的函数一般称之为了线性回归模型。<br>最初通过线性回归模型得出的图形是这样的：<br><br><img src="./2019-06-06-data-analysis-delivery/das4.png" alt=""></p>
-<p>这是否有点问题，有几个值太大了，影响了整体的数据准确度，所以先进行处理。经过箱线图分布，排队异常值之后得到图形如下，明显好多了。<br><br><img src="./2019-06-06-data-analysis-delivery/das5.png" alt=""></p>
-<p>把数据放到BI系统上呈现出来后，我哭了……说好的直线呢？<br><br><img src="./2019-06-06-data-analysis-delivery/das6.png" alt=""></p>
+<h1 id="分析优化过程"><a href="#分析优化过程" class="headerlink" title="分析优化过程"></a>分析优化过程</h1><p>交付频率中的趋势线是对所有的离散点进行线性回归得出的一条直线。线性回归，能够用一个直线较为精确地描述数据之间的关系，通过线性回归构造出来的函数一般称之为了线性回归模型。<br>最初通过线性回归模型得出的图形是这样的：<br><img src="/2019/06/06/data-analysis-delivery/das4.png"><br><img src="./2019-06-06-data-analysis-delivery/das4.png" alt=""></p>
+<p>这是否有点问题，有几个值太大了，影响了整体的数据准确度，所以先进行处理。经过箱线图分布，排队异常值之后得到图形如下，明显好多了。<br><img src="/2019/06/06/data-analysis-delivery/das5.png"><br><img src="./2019-06-06-data-analysis-delivery/das5.png" alt=""></p>
+<p>把数据放到BI系统上呈现出来后，我哭了……说好的直线呢？<br><img src="/2019/06/06/data-analysis-delivery/das6.png"><br><img src="./2019-06-06-data-analysis-delivery/das6.png" alt=""></p>
 <p>经过一翻排查，原因很简单，线性回归算出来的值小数后面多达11位小数，而BI上仅支持最多3位小数，把后面值舍弃了，当然就不能生成直线了。  </p>
-<p>最后，为了生成出真正的直线，只选用了第一个点与最后一个点，“两点一线”，从线性回归模型可以看到，线的斜率是一样的，所以理论上任何的点都应该在这条直线上。最终生成了下面这个效果，虽然可能会有万分之几的误差，但这种精度对于我们的场景已经完全足够了。<br><br><img src="./2019-06-06-data-analysis-delivery/das7.png" alt=""></p>
+<p>最后，为了生成出真正的直线，只选用了第一个点与最后一个点，“两点一线”，从线性回归模型可以看到，线的斜率是一样的，所以理论上任何的点都应该在这条直线上。最终生成了下面这个效果，虽然可能会有万分之几的误差，但这种精度对于我们的场景已经完全足够了。<br><img src="/2019/06/06/data-analysis-delivery/das7.png"><br><img src="./2019-06-06-data-analysis-delivery/das7.png" alt=""></p>
 <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><blockquote>
 <p>扩展阅读：<br>机器学习–线性回归<br><a href="https://blog.csdn.net/weixin_42398658/article/details/83501330" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42398658/article/details/83501330</a><br>箱线图的理解<br><a href="https://blog.csdn.net/ningyanggege/article/details/82625947" target="_blank" rel="noopener">https://blog.csdn.net/ningyanggege/article/details/82625947</a></p>
 </blockquote>
@@ -247,7 +254,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">bigdata,data-analysis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">data-analysis</a>
         		</li>
       		
 		</ul>
@@ -543,10 +554,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -556,6 +563,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,19 +586,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">bigdata,data-analysis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
