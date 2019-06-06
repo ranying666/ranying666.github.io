@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://ranying666.github.io/2019/05/11/knowage-zh-6-3-0/20190511091630.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/05/11/knowage-zh-6-3-0/2019-05-11-knowage-zh-6-3-0/20190511091630.png">
 <meta property="og:image" content="https://ranying666.github.io/2019/01/25/knowage-zh-cn/BIQQ.png">
-<meta property="og:updated_time" content="2019-05-11T01:52:13.244Z">
+<meta property="og:updated_time" content="2019-06-06T06:35:57.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="knowage-6.3.0中文版全网首发">
 <meta name="twitter:description" content="中文版升级日志 所有界面及提示文字汉化  扩展文档标题支持中文  扩展文档标题20个字符长度限制  扩展图表类型支持highchart,从默认6个图表类型扩展到9个  优化内存设置  解决登录后报错： An error has occurred. Retry later  解决部分小BUG">
@@ -215,9 +215,9 @@
 </ul>
 <p>因为整个程序比较大，目前只放了两个主要的包，如果还需要其它汉化版Engine包的可以在下面留言。</p>
 <h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><p>很多朋友下载后不知道怎么用，这里简单说一下。</p>
-<h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><p>首先在官方下载6.1版本安装，配置好数据库。下载网盘中的中文版，将<code>tomcat/webapps/knowage</code>及<code>knowagecockpit</code>拷到外部。解压网盘中的zip，得到war包放入webapps中。重启tomcat服务。</p>
+<h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><p>首先在官方下载6.3版本安装，配置好数据库。下载网盘中的中文版，将<code>tomcat/webapps/knowage</code>及<code>knowagecockpit</code>拷到外部。解压网盘中的zip，得到war包放入webapps中。重启tomcat服务。</p>
 <h2 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h2><p>对于做过java开发的人，可用这种方式。</p>
-<p>1.下载官方的6.1的mysql.sql脚本，创建一个数据并导入脚本。</p>
+<p>1.下载官方的6.3的mysql.sql脚本，创建一个数据并导入脚本。</p>
 <p>2.安装好tomcat，用网盘中的server.xml替换<code>tomcat/conf/server.xml</code></p>
 <p>3.修改<code>name=&quot;jdbc/knowage&quot;</code>及<code>name=&quot;jdbc/ds_cache&quot;</code>两个JNDI.</p>
 <p>4.其它本地路径你看着改.</p>
@@ -340,6 +340,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/06/06/data-analysis-delivery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          交付频率数据分析
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/02/architecture-c4/" id="article-nav-older" class="article-nav-link-wrap">
@@ -595,15 +604,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">bigdata,data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,10 +629,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
             
             <div class="clearfix"></div>
@@ -667,27 +680,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="https://www.knowage-suite.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>knowage-suite</a>
             </li>
           
         </ul>
