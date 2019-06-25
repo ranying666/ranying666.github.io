@@ -142,6 +142,156 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-postgre-functions" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/25/postgre-functions/">PostgreSQL格式化与日期函数</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/06/25/postgre-functions/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2019/06/25/postgre-functions/" class="archive-article-date">
+  	<time datetime="2019-06-25T08:13:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="七、PostgreSQL数据类型格式化函数："><a href="#七、PostgreSQL数据类型格式化函数：" class="headerlink" title="七、PostgreSQL数据类型格式化函数："></a><strong>七、PostgreSQL数据类型格式化函数：</strong></h2><pre><code>PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。
+</code></pre><table>
+<thead>
+<tr>
+<th><strong>函数</strong></th>
+<th><strong>返回类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>例子</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_char(timestamp, text)</td>
+<td>text</td>
+<td>把时间戳转换成字串</td>
+<td>to_char(current_timestamp, ‘HH12:MI:SS’)</td>
+</tr>
+<tr>
+<td>to_char(interval, text)</td>
+<td>text</td>
+<td>把时间间隔转为字串</td>
+<td>to_char(interval ‘15h 2m 12s’, ‘HH24:MI:SS’)</td>
+</tr>
+<tr>
+<td>to_char(int, text)</td>
+<td>text</td>
+<td>把整数转换成字串</td>
+<td>to_char(125, ‘999’)</td>
+</tr>
+<tr>
+<td>to_char(double precision, text)</td>
+<td>text</td>
+<td>把实数/双精度数转换成字串</td>
+<td>to_char(125.8::real, ‘999D9’)</td>
+</tr>
+<tr>
+<td>to_char(numeric, text)</td>
+<td>text</td>
+<td>把numeric转换成字串</td>
+<td>to_char(-125.8, ‘999D99S’)</td>
+</tr>
+<tr>
+<td>to_date(text, text)</td>
+<td>date</td>
+<td>把字串转换成日期</td>
+<td>to_date(‘05 Dec 2000’, ‘DD Mon YYYY’)</td>
+</tr>
+<tr>
+<td>to_timestamp(text, text)</td>
+<td>timestamp</td>
+<td>把字串转换成时间戳</td>
+<td>to_timestamp(‘05 Dec 2000’, ‘DD Mon YYYY’)</td>
+</tr>
+<tr>
+<td>to_timestamp(double)</td>
+<td>timestamp</td>
+<td>把UNIX纪元转换成时间戳</td>
+<td>to_timestamp(200120400)</td>
+</tr>
+<tr>
+<td>to_number(text, text)</td>
+<td>numeric</td>
+<td>把字串转换成numeric</td>
+<td>to_number(‘12,454.8-‘, ‘99G999D9S’)</td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2019/06/25/postgre-functions/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PostgreSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/25/postgre-functions/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-superset-ldap" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -971,98 +1121,6 @@
 
 
   
-    <article id="post-knowage-zh-doc" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/20/knowage-zh-doc/">Knowage汉化Document不能保存中文字符问题修复</a>
-    </h1>
-  
-
-
-<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2018/08/20/knowage-zh-doc/" class="pageViews">0</span>
-  </a>
-
-
-        
-        <a href="/2018/08/20/knowage-zh-doc/" class="archive-article-date">
-  	<time datetime="2018-08-20T07:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <img src="/2018/08/20/knowage-zh-doc/101.png">
-<p><img src="./2018-08-20-knowage-zh-doc/101.png" alt=""></p>
-<p>Knoage-6.x社区版（spagoBI升级版）在使用时发现Document不能保存中文字符。  </p>
-<p>TAG：Knowage汉化,SpagoBI汉化,Knowage中文版,Knowage中文乱码  </p>
-<h1 id="场景现象"><a href="#场景现象" class="headerlink" title="场景现象"></a>场景现象</h1><p>如果想报表名或描述保存为中文时会发生如下错误：  </p>
-<img src="/2018/08/20/knowage-zh-doc/102.png">
-<p><img src="./2018-08-20-knowage-zh-doc/102.png" alt=""></p>
-<p>提示错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERRORS:</span><br><span class="line">The field Description must be an alphanumeric string (letters and numbers with other character such as parenthesis and -_;:!?,.\/)</span><br></pre></td></tr></table></figure></p>
-<p>只能输入字母数字及某些特殊字符的组合。<br>查询源代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">9016 = The field %0 must be an alphanumeric string (letters and numbers with other character such as parenthesis and -_;:!?,./)﻿​</span><br><span class="line"></span><br><span class="line">ERROR_EXTENDED_ALFANUMERIC=&quot;9016&quot;;﻿​</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/08/20/knowage-zh-doc/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Knowage</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/20/knowage-zh-doc/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1232,14 +1290,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1248,15 +1298,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1280,15 +1342,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
             
             <div class="clearfix"></div>
