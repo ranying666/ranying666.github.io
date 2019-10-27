@@ -142,6 +142,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitmq-install" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/11/rabbitmq-install/">RabbitMQ在CentOS7安装</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/12/11/rabbitmq-install/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2017/12/11/rabbitmq-install/" class="archive-article-date">
+  	<time datetime="2017-12-11T02:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>下载rpm安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#rpm -ihv erlang-18.1-1.el6.x86_64.rpm</span><br><span class="line">#rpm -ihv rabbitmq-server-3.5.6-1.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>默认配置启动：<br><code>#systemctl start rabbitmq-server</code></p>
+<blockquote>
+<p>如果超时，或无响应：<br>那么只需要修改一下hosts文件，增加你的主机名，注意，比如你的主机叫 demo.woplus，在hosts中配了 127.0.0.1 demo.woplus 也不行，你需要在hosts中再加一个 127.0.0.1 demo。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/12/11/rabbitmq-install/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/11/rabbitmq-install/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-postman" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1184,11 +1261,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,14 +1289,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
@@ -1232,11 +1301,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superset</a>
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,11 +1317,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
               </li>
             
             <div class="clearfix"></div>
