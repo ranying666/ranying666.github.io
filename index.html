@@ -152,6 +152,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-idea-maven-error" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/11/idea-maven-error/">Intellij IDEA整合Maven不能加载的问题</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/02/11/idea-maven-error/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2020/02/11/idea-maven-error/" class="archive-article-date">
+  	<time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题一：解决IntelliJ创建Maven项目一直显”Loading-archetype-list”"><a href="#问题一：解决IntelliJ创建Maven项目一直显”Loading-archetype-list”" class="headerlink" title="问题一：解决IntelliJ创建Maven项目一直显”Loading archetype list”"></a>问题一：解决IntelliJ创建Maven项目一直显”Loading archetype list”</h3><p>展开最近在使用idea的过程中，创建maven项目，一直会遇到这个问题，查了很多资料，最终解决啦。</p>
+<img src="/2020/02/11/idea-maven-error/1.png">
+<p><img src="./2020-02-11-idea-maven-error/1.png" alt=""></p>
+<p>网上普遍存在两种方式</p>
+<p>但是我是用第三种方式解决的…..</p>
+<p> 首先，说说前两种方式，</p>
+<p> 1.删除{User_Home}/.IntelliJIdea{Version}/system/Maven/Indices下面的文件，然后重启idea。</p>
+ <img src="/2020/02/11/idea-maven-error/2.png">
+<p><img src="./2020-02-11-idea-maven-error/2.png" alt=""> </p>
+<p>这种方式，我做完，一点反应都没有，差评！</p>
+<p> 2.增加maven运行时的jre内存溢出，如下图所示，改为-Xmx1024m，</p>
+<img src="/2020/02/11/idea-maven-error/3.png">
+<p><img src="./2020-02-11-idea-maven-error/3.png" alt=""></p>
+<p>这个改完之后，他还是一直在loading没有作用！</p>
+<p>所以来到了第三个方法！</p>
+<p> 3.上图同样的位置，换一个jdk，问题就完美解决了~非常神奇<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% asset_img 4.png  %&#125;</span><br><span class="line">![](./2020-02-11-idea-maven-error/4.png)</span><br><span class="line"></span><br><span class="line">这里是结果~</span><br></pre></td></tr></table></figure></p>
+<img src="/2020/02/11/idea-maven-error/5.png">
+<p><img src="./2020-02-11-idea-maven-error/5.png" alt=""></p>
+<p>以上信息转自：<a href="https://blog.csdn.net/oliveraaaaaa/article/details/79125526" target="_blank" rel="noopener">https://blog.csdn.net/oliveraaaaaa/article/details/79125526</a>  </p>
+<h3 id="问题二：提示“Unable-to-import-Maven-project”"><a href="#问题二：提示“Unable-to-import-Maven-project”" class="headerlink" title="问题二：提示“Unable to import Maven project”"></a>问题二：提示“Unable to import Maven project”</h3><p>我这边除了，创建Maven项目一直显”Loading archetype list”，另外就在导到Maven项目时，提示“Unable to import Maven project”,查看日志，显示的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> ERROR - #org.jetbrains.idea.maven - Cannot reconnect. </span><br><span class="line">java.lang.RuntimeException: Cannot reconnect.</span><br><span class="line">...</span><br><span class="line">Caused by: java.rmi.RemoteException: Cannot start maven service; nested exception is: </span><br><span class="line">	com.intellij.execution.ExecutionException: </span><br><span class="line">...</span><br><span class="line">Caused by: com.intellij.execution.ExecutionException:</span><br></pre></td></tr></table></figure>
+<p>找了很多方式也没有解决。</p>
+<p>后面发现我这边配置是这样的：</p>
+<img src="/2020/02/11/idea-maven-error/6.png">
+<p><img src="./2020-02-11-idea-maven-error/6.png" alt=""></p>
+<p>然后把VM options for importer 修改为: -Xmx1024m 就可以了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/11/idea-maven-error/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-knowage-release7" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1126,99 +1222,6 @@
 
 
   
-    <article id="post-architecture-c4" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/02/architecture-c4/">如何画好架构图</a>
-    </h1>
-  
-
-
-<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/03/02/architecture-c4/" class="pageViews">0</span>
-  </a>
-
-
-        
-        <a href="/2019/03/02/architecture-c4/" class="archive-article-date">
-  	<time datetime="2019-03-02T01:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：</p>
-<ul>
-<li>对着画布无从下手、删了又来？</li>
-<li>用一张图描述我的系统，并且让产品、运营、开发都能看明白？</li>
-<li>画了一半的图还不清楚受众是谁？</li>
-<li>画出来的图到底是产品图功能图还是技术图又或是大杂烩？</li>
-<li>图上的框框有点少是不是要找点儿框框加进来？</li>
-<li>布局怎么画都不满意……</li>
-</ul>
-<p>如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。</p>
-        
-          <a class="article-more-a" href="/2019/03/02/architecture-c4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/02/architecture-c4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1381,18 +1384,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1401,7 +1392,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,18 +1413,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1441,15 +1432,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">

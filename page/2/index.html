@@ -152,6 +152,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-architecture-c4" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/02/architecture-c4/">如何画好架构图</a>
+    </h1>
+  
+
+
+<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/03/02/architecture-c4/" class="pageViews">0</span>
+  </a>
+
+
+        
+        <a href="/2019/03/02/architecture-c4/" class="archive-article-date">
+  	<time datetime="2019-03-02T01:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当我们想用一张或几张图来描述我们的系统时，是不是经常遇到以下情况：</p>
+<ul>
+<li>对着画布无从下手、删了又来？</li>
+<li>用一张图描述我的系统，并且让产品、运营、开发都能看明白？</li>
+<li>画了一半的图还不清楚受众是谁？</li>
+<li>画出来的图到底是产品图功能图还是技术图又或是大杂烩？</li>
+<li>图上的框框有点少是不是要找点儿框框加进来？</li>
+<li>布局怎么画都不满意……</li>
+</ul>
+<p>如果有同样的困惑，本文将介绍一种画图的方法论，来让架构图更清晰。</p>
+        
+          <a class="article-more-a" href="/2019/03/02/architecture-c4/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/02/architecture-c4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-konwage-install-k8s" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -991,110 +1084,6 @@
 
 
   
-    <article id="post-micoservice-auth" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/20/micoservice-auth/">微服务架构下的安全认证与鉴权</a>
-    </h1>
-  
-
-
-<!-- #上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码 span 给的 id 是文章的 url 作为唯一的 key 值 -->
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2018/04/20/micoservice-auth/" class="pageViews">0</span>
-  </a>
-
-
-        
-        <a href="/2018/04/20/micoservice-auth/" class="archive-article-date">
-  	<time datetime="2018-04-20T05:01:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><br></p>
-<h1 id="内容简介"><a href="#内容简介" class="headerlink" title="内容简介"></a>内容简介</h1><ol>
-<li>微服务下常见认证解决方案；</li>
-<li>OAuth认证与授权；</li>
-<li>JWT认证介绍；</li>
-<li>Spring Cloud的OAuth2实现；<br><br><br><br><br><br></li>
-</ol>
-<hr>
-<h1 id="单体应用转变为分布式应用"><a href="#单体应用转变为分布式应用" class="headerlink" title="单体应用转变为分布式应用"></a>单体应用转变为分布式应用</h1><p>单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：</p>
-<img src="/2018/04/20/micoservice-auth/1520834704305_2.png">
-<p><br><br><br><br>分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下：<br><img src="/2018/04/20/micoservice-auth/1520834803874_3.png"><br><br><br><br></p>
-<h1 id="常见的授权认证解决方案"><a href="#常见的授权认证解决方案" class="headerlink" title="常见的授权认证解决方案"></a>常见的授权认证解决方案</h1><ol>
-<li><p>单点登录SSO<br>统一的认证服务器(CAS)<br>缺点：每一个用户请求都要经过认证服务器，容易形成瓶颈  </p>
-</li>
-<li><p>Session共享<br>Session共享存储，共享用户信息(Spring Session)<br>缺点：不同平台、不同架构中实现难度较高</p>
-</li>
-<li><p>Token认证<br>认证服务器颁发包含用户身份信息的Token，资源服务器验证合法性(OAuth)<br>缺点：资源服务器想注销用户Token较困难</p>
-</li>
-<li><p>Token+Gateway<br>所有的请求通过网关，可在网关中完成认证或注销Token<br>缺点：Gateway必须保证高可用</p>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2018/04/20/micoservice-auth/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">microservice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/20/micoservice-auth/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1257,18 +1246,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1277,7 +1254,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,18 +1275,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,15 +1294,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
