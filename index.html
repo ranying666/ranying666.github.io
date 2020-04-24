@@ -162,6 +162,133 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-keycloak-quickstarts" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/keycloak-quickstarts/">Keycloak Docker镜像安装与Springboot集成使用入门</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/04/24/keycloak-quickstarts/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2020/04/24/keycloak-quickstarts/" class="archive-article-date">
+  	<time datetime="2020-04-24T03:21:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker镜像安装Keycloak"><a href="#Docker镜像安装Keycloak" class="headerlink" title="Docker镜像安装Keycloak"></a>Docker镜像安装Keycloak</h1><blockquote>
+<p>官方入门文档：<a href="https://www.keycloak.org/docs/latest/getting_started/" target="_blank" rel="noopener">https://www.keycloak.org/docs/latest/getting_started/</a></p>
+</blockquote>
+<h2 id="1-安装mysql"><a href="#1-安装mysql" class="headerlink" title="1.安装mysql"></a>1.安装mysql</h2><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><p><code>docker pull mysql:5.7</code></p>
+<blockquote>
+<p>内网仓库：<br>docker pull registry-1.docker.io/library/mysql:5.7`</p>
+</blockquote>
+<h3 id="创建服务网络"><a href="#创建服务网络" class="headerlink" title="创建服务网络"></a>创建服务网络</h3><p><code>docker network create keycloak-network</code></p>
+<h3 id="创建本地数据卷"><a href="#创建本地数据卷" class="headerlink" title="创建本地数据卷"></a>创建本地数据卷</h3><p><code>docker volume create mysql-data-keycloak</code></p>
+<h3 id="启动Mysql实例"><a href="#启动Mysql实例" class="headerlink" title="启动Mysql实例"></a>启动Mysql实例</h3><p>First start a MySQL instance using the MySQL docker image:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name mysql  \</span><br><span class="line">--network keycloak-network \</span><br><span class="line">-p 13306:3306 \</span><br><span class="line">-v mysql-data-keycloak:/var/lib/mysql \</span><br><span class="line">-e MYSQL_DATABASE=keycloak \</span><br><span class="line">-e MYSQL_USER=keycloak \</span><br><span class="line">-e MYSQL_PASSWORD=keycloak \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root123 \</span><br><span class="line">-d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p>登录mysql授权：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker attach mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line">GRANT ALL PRIVILEGES ON `keycloak`.* TO &apos;keycloak&apos; @&apos;%&apos;;</span><br><span class="line">grant all on *.* to &apos;keycloak&apos;@&apos;%&apos; identified by &apos;keycloak&apos; with grant option; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装Keycloak"><a href="#安装Keycloak" class="headerlink" title="安装Keycloak"></a>安装Keycloak</h2><p>下载镜像：<br><code>docker pull docker.io/jboss/keycloak</code><br>或者：<br><code>docker.io/icolabora/keycloak</code></p>
+<p>启动keycloak：需要设置useSSL=false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name keycloak \</span><br><span class="line">--network keycloak-network  \</span><br><span class="line">-p 6060:8080 \</span><br><span class="line">-e KEYCLOAK_USER=admin \</span><br><span class="line">-e KEYCLOAK_PASSWORD=admin \</span><br><span class="line">-e DB_VENDOR=mysql \</span><br><span class="line">-e DB_ADDR=mysql \</span><br><span class="line">-e DB_PORT=3306 \</span><br><span class="line">-e DB_DATABASE=keycloak \</span><br><span class="line">-e DB_USER=root \</span><br><span class="line">-e DB_PASSWORD=root123 \</span><br><span class="line">-e JDBC_PARAMS=&apos;connectTimeout=90&amp;useSSL=false&apos; \</span><br><span class="line">-e TZ=Asia/Shanghai -v /etc/localtime:/etc/localtime \</span><br><span class="line">docker.io/jboss/keycloak</span><br></pre></td></tr></table></figure></p>
+<p>启动成功后，访问：<br><code>http://192.168.56.101:6060/</code></p>
+<h1 id="Keycloak使用入门"><a href="#Keycloak使用入门" class="headerlink" title="Keycloak使用入门"></a>Keycloak使用入门</h1><h2 id="理解关键点"><a href="#理解关键点" class="headerlink" title="理解关键点"></a>理解关键点</h2><ul>
+<li>Realm：域，理解为一个项目空间，彼此隔离</li>
+<li>Client：客户端，理解为某个微服务应用</li>
+<li>Role：角色</li>
+<li>User：用户</li>
+<li>Access type：访问类型</li>
+</ul>
+<h2 id="理解授权过程"><a href="#理解授权过程" class="headerlink" title="理解授权过程"></a>理解授权过程</h2><p>Three main processes define the necessary steps to understand how to use Keycloak to enable fine-grained authorization to your applications:</p>
+<ul>
+<li>Resource Management 资源管理：就是哪些是受保护的内容</li>
+<li>Permission and Policy Management 权限和政策管理：即资源权限与政策对应关系</li>
+<li>Policy Enforcement 政策执行：角色对应关系</li>
+</ul>
+<h2 id="部署代码"><a href="#部署代码" class="headerlink" title="部署代码"></a>部署代码</h2><p>下载<a href="https://github.com/keycloak/keycloak-quickstarts" target="_blank" rel="noopener">keycloak-quickstarts</a>,导入app-athuz-springboot项目。<br>修改配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">keycloak.auth-server-url=http://192.168.56.101:6060/auth</span><br><span class="line">keycloak.ssl-required=none</span><br><span class="line">...</span><br><span class="line">logging.level.root=ON</span><br><span class="line">logging.level.org.springframework.boot=ON</span><br><span class="line">spring.main.banner-mode=CONSOLE</span><br></pre></td></tr></table></figure></p>
+<p>由于原来项目httpclint包有冲突，修改pom.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;httpclient&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.5.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>启动项目。</p>
+<h2 id="配置keycloak"><a href="#配置keycloak" class="headerlink" title="配置keycloak"></a>配置keycloak</h2><p>admin登录keycloak之后，<code>Add Realm -&gt; select file</code>,选择项目中<code>config/quickstart-realm.json</code><br>查看clint中app-authz-springboot是否正常。</p>
+<p>主要查看Authorization中的<code>Resources</code> <code>Policies</code> <code>Permissions</code> 是否有效。<br>我导入后发现政策和权限没有对应的资源，删除后手动建的。<br><img src="/2020/04/24/keycloak-quickstarts/0908.png"></p>
+<h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><p>访问：<code>http://localhost:8080/</code><br>在user角色中的用户可以访问普通保护资源<code>/protected/*</code>，在user-premium中的用户可以访问高级保护资源<code>/protected/premium/*</code>.</p>
+<h2 id="异常记录"><a href="#异常记录" class="headerlink" title="异常记录"></a>异常记录</h2><h3 id="无效的参数-redirect-uri"><a href="#无效的参数-redirect-uri" class="headerlink" title="无效的参数 : redirect_uri"></a>无效的参数 : redirect_uri</h3><p>在keycloak服务器client中修改valid-redirect uris:<br><code>http://localhost:8080/*</code></p>
+<h3 id="failed-verification-of-token-Token-is-not-active"><a href="#failed-verification-of-token-Token-is-not-active" class="headerlink" title="failed verification of token: Token is not active"></a>failed verification of token: Token is not active</h3><p>keycloak服务器与应用服务器的时区不一致导致token过期</p>
+<h2 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h2><ul>
+<li><a href="https://hub.docker.com/r/jboss/keycloak" target="_blank" rel="noopener">https://hub.docker.com/r/jboss/keycloak</a></li>
+<li><a href="https://github.com/keycloak/keycloak-quickstarts" target="_blank" rel="noopener">https://github.com/keycloak/keycloak-quickstarts</a></li>
+<li><a href="https://github.com/jboss-dockerfiles/keycloak" target="_blank" rel="noopener">https://github.com/jboss-dockerfiles/keycloak</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">keycloak</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">认证与授权</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/24/keycloak-quickstarts/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python-presto" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1086,101 +1213,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-superset-ldap" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/06/superset-ldap/">Superset集成LDAP经验总结</a>
-    </h1>
-  
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/06/06/superset-ldap/" class="pageViews">0</span>
-  </a>
-
-
-
-        
-        <a href="/2019/06/06/superset-ldap/" class="archive-article-date">
-  	<time datetime="2019-06-06T07:18:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>团队需要解决Superset的单点登录问题，看网上有集成LDAP的经验，根据配置但并未成功，经过摸索和阅读源码，终于搞定了，分享一下。</p>
-<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><ul>
-<li>version: 0.28.1</li>
-<li>安装方式：docker</li>
-</ul>
-<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><p>修改配置文件：<br><code>/usr/local/lib/python3.6/site-packages/superset/config.py</code>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 引入AUTH_LDAP</span><br><span class="line">from flask_appbuilder.security.manager import AUTH_DB,AUTH_LDAP</span><br><span class="line"></span><br><span class="line"># 修改LDAP配置</span><br><span class="line">AUTH_TYPE = AUTH_LDAP</span><br><span class="line"></span><br><span class="line"># Uncomment to setup Full admin role name</span><br><span class="line">AUTH_ROLE_ADMIN = &apos;admin&apos;</span><br><span class="line"></span><br><span class="line"># Uncomment to setup Public role name, no authentication needed</span><br><span class="line">#AUTH_ROLE_PUBLIC = &apos;Public&apos;</span><br><span class="line"></span><br><span class="line"># 打开自注册配置</span><br><span class="line"># Will allow user self registration</span><br><span class="line">AUTH_USER_REGISTRATION = True</span><br><span class="line"></span><br><span class="line"># 打开此注释，并改为admin角色</span><br><span class="line"># The default user self registration role</span><br><span class="line">AUTH_USER_REGISTRATION_ROLE = &quot;admin&quot; </span><br><span class="line"></span><br><span class="line"># When using LDAP Auth, setup the ldap server</span><br><span class="line">AUTH_LDAP_SERVER = &quot;ldap://ldap.xx/&quot;</span><br><span class="line">AUTH_LDAP_SEARCH = &quot;ou=People,dc=ldap,dc=xx&quot;</span><br><span class="line">AUTH_LDAP_UID_FIELD = &quot;cn&quot;</span><br><span class="line"></span><br><span class="line">#绑定某个初始账号，我这里用的app组织的账号，跟上面People不是同一个ou,无所谓，能登录就行，主要是不希望配置个人账号到应用里。</span><br><span class="line">AUTH_LDAP_BIND_USER = &quot;cn=superset,ou=app,dc=ldap,dc=xx&quot;</span><br><span class="line">AUTH_LDAP_BIND_PASSWORD = &quot;********&quot;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/06/superset-ldap/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">superset</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/06/superset-ldap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1347,7 +1379,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,7 +1387,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,10 +1415,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
              
@@ -1399,15 +1427,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superset</a>
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,6 +1456,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
               </li>
              
               <li class="article-tag-list-item">
