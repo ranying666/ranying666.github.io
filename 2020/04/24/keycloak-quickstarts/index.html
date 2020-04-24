@@ -17,7 +17,7 @@
 <meta property="og:description" content="Docker镜像安装Keycloak 官方入门文档：https://www.keycloak.org/docs/latest/getting_started/  1.安装mysql拉取镜像docker pull mysql:5.7  内网仓库：docker pull registry-1.docker.io/library/mysql:5.7`  创建服务网络docker network crea">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://ranying666.github.io/2020/04/24/keycloak-quickstarts/0908.png">
-<meta property="og:updated_time" content="2020-04-24T03:37:58.493Z">
+<meta property="og:updated_time" content="2020-04-24T06:03:23.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keycloak Docker镜像安装与Springboot集成使用入门">
 <meta name="twitter:description" content="Docker镜像安装Keycloak 官方入门文档：https://www.keycloak.org/docs/latest/getting_started/  1.安装mysql拉取镜像docker pull mysql:5.7  内网仓库：docker pull registry-1.docker.io/library/mysql:5.7`  创建服务网络docker network crea">
@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name mysql  \</span><br><span class="line">--network keycloak-network \</span><br><span class="line">-p 13306:3306 \</span><br><span class="line">-v mysql-data-keycloak:/var/lib/mysql \</span><br><span class="line">-e MYSQL_DATABASE=keycloak \</span><br><span class="line">-e MYSQL_USER=keycloak \</span><br><span class="line">-e MYSQL_PASSWORD=keycloak \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root123 \</span><br><span class="line">-d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
 <p>登录mysql授权：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker attach mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line">GRANT ALL PRIVILEGES ON `keycloak`.* TO &apos;keycloak&apos; @&apos;%&apos;;</span><br><span class="line">grant all on *.* to &apos;keycloak&apos;@&apos;%&apos; identified by &apos;keycloak&apos; with grant option; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
 <h2 id="安装Keycloak"><a href="#安装Keycloak" class="headerlink" title="安装Keycloak"></a>安装Keycloak</h2><p>下载镜像：<br><code>docker pull docker.io/jboss/keycloak</code><br>或者：<br><code>docker.io/icolabora/keycloak</code></p>
-<p>启动keycloak：需要设置useSSL=false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name keycloak \</span><br><span class="line">--network keycloak-network  \</span><br><span class="line">-p 6060:8080 \</span><br><span class="line">-e KEYCLOAK_USER=admin \</span><br><span class="line">-e KEYCLOAK_PASSWORD=admin \</span><br><span class="line">-e DB_VENDOR=mysql \</span><br><span class="line">-e DB_ADDR=mysql \</span><br><span class="line">-e DB_PORT=3306 \</span><br><span class="line">-e DB_DATABASE=keycloak \</span><br><span class="line">-e DB_USER=root \</span><br><span class="line">-e DB_PASSWORD=root123 \</span><br><span class="line">-e JDBC_PARAMS=&apos;connectTimeout=90&amp;useSSL=false&apos; \</span><br><span class="line">-e TZ=Asia/Shanghai -v /etc/localtime:/etc/localtime \</span><br><span class="line">docker.io/jboss/keycloak</span><br></pre></td></tr></table></figure></p>
+<p>启动keycloak：需要设置useSSL=false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name keycloak \</span><br><span class="line">--network keycloak-network  \</span><br><span class="line">-p 6060:8080 \</span><br><span class="line">-e KEYCLOAK_USER=admin \</span><br><span class="line">-e KEYCLOAK_PASSWORD=admin \</span><br><span class="line">-e DB_VENDOR=mysql \</span><br><span class="line">-e DB_ADDR=mysql \</span><br><span class="line">-e DB_PORT=3306 \</span><br><span class="line">-e DB_DATABASE=keycloak \</span><br><span class="line">-e DB_USER=root \</span><br><span class="line">-e DB_PASSWORD=root123 \</span><br><span class="line">-e JDBC_PARAMS=&apos;connectTimeout=90&amp;useSSL=false&apos; \</span><br><span class="line">-v /etc/localtime:/etc/localtime \</span><br><span class="line">docker.io/jboss/keycloak</span><br></pre></td></tr></table></figure></p>
 <p>启动成功后，访问：<br><code>http://192.168.56.101:6060/</code></p>
 <h1 id="Keycloak使用入门"><a href="#Keycloak使用入门" class="headerlink" title="Keycloak使用入门"></a>Keycloak使用入门</h1><h2 id="理解关键点"><a href="#理解关键点" class="headerlink" title="理解关键点"></a>理解关键点</h2><ul>
 <li>Realm：域，理解为一个项目空间，彼此隔离</li>
@@ -587,23 +587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +595,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,11 +667,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
               </li>
              
               <li class="article-tag-list-item">
