@@ -200,39 +200,9 @@ var _hmt = _hmt || [];
 </blockquote>
 <h3 id="创建服务网络"><a href="#创建服务网络" class="headerlink" title="创建服务网络"></a>创建服务网络</h3><p><code>docker network create keycloak-network</code></p>
 <h3 id="创建本地数据卷"><a href="#创建本地数据卷" class="headerlink" title="创建本地数据卷"></a>创建本地数据卷</h3><p><code>docker volume create mysql-data-keycloak</code></p>
-<h3 id="启动Mysql实例"><a href="#启动Mysql实例" class="headerlink" title="启动Mysql实例"></a>启动Mysql实例</h3><p>First start a MySQL instance using the MySQL docker image:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name mysql  \</span><br><span class="line">--network keycloak-network \</span><br><span class="line">-p 13306:3306 \</span><br><span class="line">-v mysql-data-keycloak:/var/lib/mysql \</span><br><span class="line">-e MYSQL_DATABASE=keycloak \</span><br><span class="line">-e MYSQL_USER=keycloak \</span><br><span class="line">-e MYSQL_PASSWORD=keycloak \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root123 \</span><br><span class="line">-d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p>登录mysql授权：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker attach mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line">GRANT ALL PRIVILEGES ON `keycloak`.* TO &apos;keycloak&apos; @&apos;%&apos;;</span><br><span class="line">grant all on *.* to &apos;keycloak&apos;@&apos;%&apos; identified by &apos;keycloak&apos; with grant option; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
-<h2 id="安装Keycloak"><a href="#安装Keycloak" class="headerlink" title="安装Keycloak"></a>安装Keycloak</h2><p>下载镜像：<br><code>docker pull docker.io/jboss/keycloak</code><br>或者：<br><code>docker.io/icolabora/keycloak</code></p>
-<p>启动keycloak：需要设置useSSL=false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always --name keycloak \</span><br><span class="line">--network keycloak-network  \</span><br><span class="line">-p 6060:8080 \</span><br><span class="line">-e KEYCLOAK_USER=admin \</span><br><span class="line">-e KEYCLOAK_PASSWORD=admin \</span><br><span class="line">-e DB_VENDOR=mysql \</span><br><span class="line">-e DB_ADDR=mysql \</span><br><span class="line">-e DB_PORT=3306 \</span><br><span class="line">-e DB_DATABASE=keycloak \</span><br><span class="line">-e DB_USER=root \</span><br><span class="line">-e DB_PASSWORD=root123 \</span><br><span class="line">-e JDBC_PARAMS=&apos;connectTimeout=90&amp;useSSL=false&apos; \</span><br><span class="line">-e TZ=Asia/Shanghai -v /etc/localtime:/etc/localtime \</span><br><span class="line">docker.io/jboss/keycloak</span><br></pre></td></tr></table></figure></p>
-<p>启动成功后，访问：<br><code>http://192.168.56.101:6060/</code></p>
-<h1 id="Keycloak使用入门"><a href="#Keycloak使用入门" class="headerlink" title="Keycloak使用入门"></a>Keycloak使用入门</h1><h2 id="理解关键点"><a href="#理解关键点" class="headerlink" title="理解关键点"></a>理解关键点</h2><ul>
-<li>Realm：域，理解为一个项目空间，彼此隔离</li>
-<li>Client：客户端，理解为某个微服务应用</li>
-<li>Role：角色</li>
-<li>User：用户</li>
-<li>Access type：访问类型</li>
-</ul>
-<h2 id="理解授权过程"><a href="#理解授权过程" class="headerlink" title="理解授权过程"></a>理解授权过程</h2><p>Three main processes define the necessary steps to understand how to use Keycloak to enable fine-grained authorization to your applications:</p>
-<ul>
-<li>Resource Management 资源管理：就是哪些是受保护的内容</li>
-<li>Permission and Policy Management 权限和政策管理：即资源权限与政策对应关系</li>
-<li>Policy Enforcement 政策执行：角色对应关系</li>
-</ul>
-<h2 id="部署代码"><a href="#部署代码" class="headerlink" title="部署代码"></a>部署代码</h2><p>下载<a href="https://github.com/keycloak/keycloak-quickstarts" target="_blank" rel="noopener">keycloak-quickstarts</a>,导入app-athuz-springboot项目。<br>修改配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">keycloak.auth-server-url=http://192.168.56.101:6060/auth</span><br><span class="line">keycloak.ssl-required=none</span><br><span class="line">...</span><br><span class="line">logging.level.root=ON</span><br><span class="line">logging.level.org.springframework.boot=ON</span><br><span class="line">spring.main.banner-mode=CONSOLE</span><br></pre></td></tr></table></figure></p>
-<p>由于原来项目httpclint包有冲突，修改pom.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;httpclient&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.5.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p>启动项目。</p>
-<h2 id="配置keycloak"><a href="#配置keycloak" class="headerlink" title="配置keycloak"></a>配置keycloak</h2><p>admin登录keycloak之后，<code>Add Realm -&gt; select file</code>,选择项目中<code>config/quickstart-realm.json</code><br>查看clint中app-authz-springboot是否正常。</p>
-<p>主要查看Authorization中的<code>Resources</code> <code>Policies</code> <code>Permissions</code> 是否有效。<br>我导入后发现政策和权限没有对应的资源，删除后手动建的。<br><img src="/2020/04/24/keycloak-quickstarts/0908.png"></p>
-<h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><p>访问：<code>http://localhost:8080/</code><br>在user角色中的用户可以访问普通保护资源<code>/protected/*</code>，在user-premium中的用户可以访问高级保护资源<code>/protected/premium/*</code>.</p>
-<h2 id="异常记录"><a href="#异常记录" class="headerlink" title="异常记录"></a>异常记录</h2><h3 id="无效的参数-redirect-uri"><a href="#无效的参数-redirect-uri" class="headerlink" title="无效的参数 : redirect_uri"></a>无效的参数 : redirect_uri</h3><p>在keycloak服务器client中修改valid-redirect uris:<br><code>http://localhost:8080/*</code></p>
-<h3 id="failed-verification-of-token-Token-is-not-active"><a href="#failed-verification-of-token-Token-is-not-active" class="headerlink" title="failed verification of token: Token is not active"></a>failed verification of token: Token is not active</h3><p>keycloak服务器与应用服务器的时区不一致导致token过期</p>
-<h2 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h2><ul>
-<li><a href="https://hub.docker.com/r/jboss/keycloak" target="_blank" rel="noopener">https://hub.docker.com/r/jboss/keycloak</a></li>
-<li><a href="https://github.com/keycloak/keycloak-quickstarts" target="_blank" rel="noopener">https://github.com/keycloak/keycloak-quickstarts</a></li>
-<li><a href="https://github.com/jboss-dockerfiles/keycloak" target="_blank" rel="noopener">https://github.com/jboss-dockerfiles/keycloak</a></li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2020/04/24/keycloak-quickstarts/#more">more >></a>
+        
       
 
       
@@ -1379,18 +1349,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1399,11 +1357,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1415,18 +1385,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
@@ -1435,11 +1393,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superset</a>
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1464,6 +1422,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
