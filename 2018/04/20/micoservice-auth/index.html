@@ -9,7 +9,7 @@
   <title>微服务架构下的安全认证与鉴权 | KavenRan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="内容简介 微服务下常见认证解决方案； OAuth认证与授权； JWT认证介绍； Spring Cloud的OAuth2实现；   单体应用转变为分布式应用单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：  分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下： 常见的授权认证解决方案 单">
-<meta name="keywords" content="microservice">
+<meta name="keywords" content="SpringCloud,认证与授权">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务架构下的安全认证与鉴权">
 <meta property="og:url" content="https://ranying666.github.io/2018/04/20/micoservice-auth/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520834704305_2.png">
 <meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520834803874_3.png">
 <meta property="og:image" content="https://ranying666.github.io/2018/04/20/micoservice-auth/1520838823566_4.png">
-<meta property="og:updated_time" content="2018-06-22T06:19:30.000Z">
+<meta property="og:updated_time" content="2020-05-11T03:03:49.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务架构下的安全认证与鉴权">
 <meta name="twitter:description" content="内容简介 微服务下常见认证解决方案； OAuth认证与授权； JWT认证介绍； Spring Cloud的OAuth2实现；   单体应用转变为分布式应用单体应用转变为分布式应用在架构方式上存在较大区别，单体应用下的简单架构方式如下：  分布式应用的安全认证相对更加复杂，既要考虑它的安全性，一致性，还要考虑它的性能问题，开发成本等问题。分布式应用下的简单架构方式如下： 常见的授权认证解决方案 单">
@@ -300,17 +300,8 @@ var _hmt = _hmt || [];
 <p>配置示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* AuthorizationServerConfig.java</span></span><br><span class="line"><span class="comment">* 功能：授权服务器配置</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> kavenran 2018年2月23日</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAuthorizationServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthorizationServerConfig</span> <span class="keyword">extends</span> <span class="title">AuthorizationServerConfigurerAdapter</span> </span>&#123;</span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> AuthenticationManager authenticationManager;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> DataSource dataSource;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//自定义用户服务覆盖默认User</span></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="keyword">private</span> UserDetailsServiceImpl userDetailsService;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//token存储数据库</span></span><br><span class="line"><span class="comment">//	@Bean</span></span><br><span class="line"><span class="comment">//	public JdbcTokenStore jdbcTokenStore() &#123;</span></span><br><span class="line"><span class="comment">//		return new JdbcTokenStore(dataSource);</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//JWT存储Token</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> TokenStore <span class="title">jwtTokenStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> JwtTokenStore(jwtAccessTokenConverter());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//配置OAuth2的客户端相关信息，client信息包括：clientId、secret、scope、authorizedGrantTypes</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ClientDetailsServiceConfigurer clients)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   clients.withClientDetails(<span class="keyword">new</span> JdbcClientDetailsService(dataSource));<span class="comment">//基于oauth_client_token表的操作</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerEndpointsConfigurer endpoints)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   endpoints.tokenStore(jwtTokenStore())</span><br><span class="line">       .accessTokenConverter(jwtAccessTokenConverter())</span><br><span class="line">       .tokenServices(defaultTokenServices())</span><br><span class="line">       .authenticationManager(authenticationManager);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//Token校验方式采用JWT协议</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> JwtAccessTokenConverter <span class="title">jwtAccessTokenConverter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   JwtAccessTokenConverter converter = <span class="keyword">new</span> JwtAccessTokenConverter(); <span class="comment">//CustomTokenEnhancer() //自定义Token信息</span></span><br><span class="line">   converter.setSigningKey(<span class="string">"123"</span>);</span><br><span class="line">   <span class="keyword">return</span> converter;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//按默认规则生成Token</span></span><br><span class="line"> <span class="meta">@Primary</span></span><br><span class="line"> <span class="meta">@Bean</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> DefaultTokenServices <span class="title">defaultTokenServices</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   DefaultTokenServices tokenServices = <span class="keyword">new</span> DefaultTokenServices();</span><br><span class="line">   tokenServices.setTokenStore(jwtTokenStore());</span><br><span class="line">   tokenServices.setSupportRefreshToken(<span class="keyword">true</span>);</span><br><span class="line">   tokenServices.setClientDetailsService(<span class="keyword">new</span> JdbcClientDetailsService(dataSource));</span><br><span class="line">   tokenServices.setAccessTokenValiditySeconds(<span class="number">60</span> * <span class="number">60</span> * <span class="number">12</span>); <span class="comment">// token有效期自定义设置，默认12小时</span></span><br><span class="line">   tokenServices.setRefreshTokenValiditySeconds(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>);<span class="comment">//默认30天，这里修改为7天</span></span><br><span class="line">   tokenServices.setTokenEnhancer(jwtAccessTokenConverter());<span class="comment">//使用JWT生成密钥</span></span><br><span class="line">   <span class="keyword">return</span> tokenServices;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerSecurityConfigurer security)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">     security.tokenKeyAccess(<span class="string">"permitAll()"</span>);</span><br><span class="line">     security.checkTokenAccess(<span class="string">"isAuthenticated()"</span>);<span class="comment">//allow check token</span></span><br><span class="line">     security.allowFormAuthenticationForClients();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ResourceServer配置"><a href="#ResourceServer配置" class="headerlink" title="ResourceServer配置"></a>ResourceServer配置</h2><p>主要配置以下两个：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ResourceServerSecurityConfigurer resources)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//配置资源信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   <span class="comment">//配置安全策略信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>配置示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* ResourceServerConfig.java</span></span><br><span class="line"><span class="comment">* 功能：资源服务器配置</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>  kavenran</span></span><br><span class="line"><span class="comment">* 2018年2月23日</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableResourceServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceServerConfig</span> <span class="keyword">extends</span> <span class="title">ResourceServerConfigurerAdapter</span></span>&#123;</span><br><span class="line"> <span class="comment">//自定义的JWT</span></span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> JwtTokenStore jwtTokenStore;<span class="comment">//自定义的tokenStore</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//自定义的converter</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   JwtAccessTokenConverter jwtAccessTokenConverter;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//设置资源ID，经过授权访问此资源ID的Token才能访问此资源</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ResourceServerSecurityConfigurer resources)</span> </span>&#123;</span><br><span class="line">       resources.resourceId(<span class="string">"order-service"</span>).tokenStore(jwtTokenStore);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       http</span><br><span class="line">               .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)</span><br><span class="line">               .and()</span><br><span class="line">               .requestMatchers().anyRequest()</span><br><span class="line">               .and()</span><br><span class="line">               .anonymous()</span><br><span class="line">               .and()</span><br><span class="line">               .authorizeRequests()</span><br><span class="line">               .antMatchers(<span class="string">"/order/**"</span>).authenticated();<span class="comment">//配置order访问控制，必须认证过后才可以访问</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>OAuth自带的认证endpoint：</p>
-<pre><code>/oauth/authorize：验证
-/oauth/token：获取token
-/oauth/confirm_access：用户授权
-/oauth/error：认证失败
-/oauth/check_token：资源服务器用来校验token
-/oauth/token_key：如果jwt模式则可以用此来从认证服务器获取公钥  
-
-刷新token是通过`oauth/token?grant_type=refresh_token`实现的
-
-</code></pre><hr>
+<p>OAuth自带的认证endpoint：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/oauth/authorize：验证</span><br><span class="line">/oauth/token：获取token</span><br><span class="line">/oauth/confirm_access：用户授权</span><br><span class="line">/oauth/error：认证失败</span><br><span class="line">/oauth/check_token：资源服务器用来校验token</span><br><span class="line">/oauth/token_key：如果jwt模式则可以用此来从认证服务器获取公钥  </span><br><span class="line"></span><br><span class="line">刷新token是通过`oauth/token?grant_type=refresh_token`实现的</span><br></pre></td></tr></table></figure></p>
+<hr>
 <p><br></p>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><blockquote>
 <p><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0 </a><br><a href="http://blueskykong.com/2017/10/19/security1/" target="_blank" rel="noopener">认证鉴权与API权限控制在微服务架构中的设计与实现</a><br><a href="https://www.cnkirito.moe/2017/08/08/Re%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Spring%20Security%20OAuth2%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">从零开始的Spring Security OAuth2</a></p>
@@ -359,7 +350,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">microservice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">认证与授权</a>
         		</li>
       		
 		</ul>
@@ -673,7 +668,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,27 +692,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,6 +724,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
@@ -725,15 +736,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,18 +753,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">microservice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
