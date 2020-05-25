@@ -162,6 +162,178 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-postgres-datatype" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/postgres-datatype/">PostgreSQL9.6数据类型梳理</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/07/06/postgres-datatype/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2017/07/06/postgres-datatype/" class="archive-article-date">
+  	<time datetime="2017-07-06T06:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><p>数据类型指定要在表字段中存储哪种类型的数据。 在创建表时，对于每列必须使用数据类型。<br>PotgreSQL中主要有三种类型的数据类型。 此外，用户还可以使用<code>CREATE TYPE</code> SQL命令创建自己的自定义数据类型。</p><p></p>
+<p></p><p>以下是PostgreSQL中主要有三种类型的数据类型：</p><p></p>
+<ul><br><li>数值数据类型</li><li>字符串数据类型</li><li>日期/时间数据类型</li></ul>
+
+<h2 id="数值数据类型"><a href="#数值数据类型" class="headerlink" title="数值数据类型"></a>数值数据类型</h2><p>数字数据类型用于指定表中的数字数据。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">存储大小</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">smallint</td>
+<td style="text-align:left">存储整数，小范围</td>
+<td style="text-align:left">2字节</td>
+<td style="text-align:left">-32768 至 +32767</td>
+</tr>
+<tr>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">存储整数。使用这个类型可存储典型的整数</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">-2147483648 至 +2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigint</td>
+<td style="text-align:left">存储整数，大范围。</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">-9223372036854775808 至 9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:left">decimal</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">变量</td>
+<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
+</tr>
+<tr>
+<td style="text-align:left">numeric</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">变量</td>
+<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
+</tr>
+<tr>
+<td style="text-align:left">real</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">6位数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">15位数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">smallserial</td>
+<td style="text-align:left">自动递增整数</td>
+<td style="text-align:left">2字节</td>
+<td style="text-align:left">1 至 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">serial</td>
+<td style="text-align:left">自动递增整数</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">1 至 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigserial</td>
+<td style="text-align:left">大的自动递增整数</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">1 至 9223372036854775807</td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2017/07/06/postgres-datatype/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PostgreSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PostgreSQL//" class="article-tag-list-link color1">PostgreSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/06/postgres-datatype/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-github-hexo" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -968,6 +1140,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
@@ -980,14 +1160,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -997,26 +1169,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,11 +1188,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,7 +1212,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
