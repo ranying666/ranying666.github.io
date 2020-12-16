@@ -16,16 +16,21 @@
 <meta property="og:site_name" content="KavenRan&#39;s Blog">
 <meta property="og:description" content="1.1 数据湖的定义及发展需求数据湖(Data Lake)是Pentaho的CTO James Dixon提出来的，是一种数据存储理念——即在系统或存储库中以自然格式存储数据的方法。 目前，Hadoop是最常用的部署数据湖的技术，所以很多人会觉得数据湖就是Hadoop集群。数据湖是一个概念，而Hadoop是用于实现这个概念的技术。数据湖到底是什么？业内并没有达成共识定义。我们先看看Amazon A">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelWwKej7JrRB3Sg0L631I0qOxZVg2YHguGmZPyOETwQBiciaSIc7MaF6Yw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelkzernpxReTxmxpXGXkicF50mdSOZr0xLPYFCURTl3HbmS95YqUUm1kA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelibFFAEgODbYkhdGf6mIVXj5UdGHesmHtlUeccyDhMHAGTKt6S7zQK4w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51Ael7LGC4OEouMIye9X7Uf1LD1yLicAamXib4kGols8pOZR3g2mpoqf4ZrWg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelSkGOF5CpCtzTRJ8KV8eCiaxZDvbFicWEo0kGLyhKKxJqTMV4L2rJ8rGg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2020-12-16T06:54:32.497Z">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/1.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/1.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/2.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/3.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/3.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/4.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/4.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/5.png">
+<meta property="og:image" content="https://ranying666.github.io/2020/12/16/datalake/5.png">
+<meta property="og:updated_time" content="2020-12-16T07:28:49.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一文读懂数据湖架构体系">
 <meta name="twitter:description" content="1.1 数据湖的定义及发展需求数据湖(Data Lake)是Pentaho的CTO James Dixon提出来的，是一种数据存储理念——即在系统或存储库中以自然格式存储数据的方法。 目前，Hadoop是最常用的部署数据湖的技术，所以很多人会觉得数据湖就是Hadoop集群。数据湖是一个概念，而Hadoop是用于实现这个概念的技术。数据湖到底是什么？业内并没有达成共识定义。我们先看看Amazon A">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelWwKej7JrRB3Sg0L631I0qOxZVg2YHguGmZPyOETwQBiciaSIc7MaF6Yw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="https://ranying666.github.io/2020/12/16/datalake/2020-12-16-datalake/1.png">
   
     <link rel="alternative" href="/atom.xml" title="KavenRan&#39;s Blog" type="application/atom+xml">
   
@@ -203,16 +208,17 @@ var _hmt = _hmt || [];
         <h3 id="1-1-数据湖的定义及发展需求"><a href="#1-1-数据湖的定义及发展需求" class="headerlink" title="1.1 数据湖的定义及发展需求"></a>1.1 数据湖的定义及发展需求</h3><p><strong>数据湖(Data Lake)</strong>是Pentaho的CTO James Dixon提出来的，是一种数据存储理念——即在系统或存储库中以自然格式存储数据的方法。</p>
 <p>目前，Hadoop是最常用的部署数据湖的技术，所以很多人会觉得数据湖就是Hadoop集群。数据湖是一个概念，而Hadoop是用于实现这个概念的技术。数据湖到底是什么？业内并没有达成共识定义。我们先看看Amazon AWS把数据湖定义为: Amazon S3存储、数据目录、数据冷备；并辅之以数据移动工具、数据分析工具、机器学习工具。注：为了维持定义的精确性， 看英文原文如何描述。从Amazon AWS得到的解释：</p>
 <p>A <strong>data lake</strong> is a centralized repository that allows you to store all your structured and unstructured data at any scale. You can store your data as-is, without having to first structure the data, and run different types of analytics—from dashboards and visualizations to big data processing, real-time analytics, and machine learning to guide better decisions.          </p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelWwKej7JrRB3Sg0L631I0qOxZVg2YHguGmZPyOETwQBiciaSIc7MaF6Yw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="./2020-12-16-datalake/1.png" alt=""> <img src="/2020/12/16/datalake/1.png"></p>
 <p>图1.数据湖存储数据类型</p>
+<a id="more"></a>
 <p>数据湖是一个存储企业的各种各样原始数据的大型仓库，其中的数据可供存取、处理、分析及传输。数据湖从企业的多个数据源获取原始数据，并且针对不同的目的，同一份原始数据还可能有多种满足特定内部模型格式的数据副本。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelkzernpxReTxmxpXGXkicF50mdSOZr0xLPYFCURTl3HbmS95YqUUm1kA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="./2020-12-16-datalake/2.png" alt=""> <img src="/2020/12/16/datalake/2.png"></p>
 <p>图2.未经处理和包装的原生状态“水库”</p>
 <p><strong>（1）数据湖</strong>是有一个中心化的存储，所有的数据以它本来的形式【包括结构化数据（关系数据库数据），半结构化数据（CSV、XML、JSON等），非结构化数据（电子邮件，文档，PDF）和二进制数据（图像、音频、视频）】从而形成一个容纳所有形式数据的集中式数据存储，进而为后续的报表、可视化分析、实时分析、以至于机器学习提供数据支撑。</p>
 <p><strong>（2）数据湖</strong>就像一个大型容器，与真正的湖泊和河流非常相似。就像在湖中你有多个支流进来一样，数据湖有结构化数据，非结构化数据，机器到机器，实时流动的日志。</p>
 <p><strong>（3）数据湖</strong>是一种经济有效的方式来存储组织的所有数据以供以后处理。研究分析师可以专注于在数据中找到意义模式而不是数据本身。</p>
 <h3 id="1-2-从数据库、数据仓库到数据湖演变趋势"><a href="#1-2-从数据库、数据仓库到数据湖演变趋势" class="headerlink" title="1.2 从数据库、数据仓库到数据湖演变趋势"></a>1.2 从数据库、数据仓库到数据湖演变趋势</h3><p>从1960年开始，数据管理经历了数据收集、数据库、数据仓库的阶段，2001年后随着互联网的迅速发展，大数据时代来临，对数据管理技术提出了全新的要求，未来朝着数据湖的方向演进。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelibFFAEgODbYkhdGf6mIVXj5UdGHesmHtlUeccyDhMHAGTKt6S7zQK4w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="./2020-12-16-datalake/3.png" alt=""> <img src="/2020/12/16/datalake/3.png"></p>
 <p>图3.数据库、数据仓库到数据湖发展历程</p>
 <p>数据库的数据有对齐的要求，数据库是面向应用的，每个应用可能需要一个数据库。如果一个公司有几十个应用，就会有几十个数据库。几十个数据库之间怎么去连接分析、统一分析？是没有办法的。</p>
 <p>随后就由数据库发展成了一个数据仓库，数据仓库不面向任何应用。但是，它对接到数据库，如果需要每天定时有些 ETL 的批处理的任务，将不同应用和数据汇总起来，按照一些范式模型去做连接分析，得到一定时间段的总体数据视图。这个前提是很多数据库要给数仓供应数据。</p>
@@ -225,7 +231,7 @@ var _hmt = _hmt || [];
 <li>数据湖的目的就是数据湖适合深入分析的非结构化数据。数据科学家可能会用具有预测建模和统计分析等功能的高级分析工具。而数据仓库就是数据仓库非常适用于数据指标、报表、报告等分析用途，因为它具有高度结构化。</li>
 <li>数据湖通常在存储数据之后定义架构，较少的初始工作并提供更大的灵活性。而在数据仓库中存储数据之前需定义架构。</li>
 </ul>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51Ael7LGC4OEouMIye9X7Uf1LD1yLicAamXib4kGols8pOZR3g2mpoqf4ZrWg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="./2020-12-16-datalake/4.png" alt=""> <img src="/2020/12/16/datalake/4.png"></p>
 <p>图4.数据仓库和数据湖的差异和联系</p>
 <p><strong>（2）</strong> <strong>数据湖主要特点</strong></p>
 <ul>
@@ -237,7 +243,7 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="1-4-数据湖架构体系"><a href="#1-4-数据湖架构体系" class="headerlink" title="1.4 数据湖架构体系"></a>1.4 数据湖架构体系</h3><p>数据、算法和算力三大因素正在全力推动数据湖应用快速发展。企业建立统一的数据湖平台，完成数据的采集、存储、处理、治理，提供数据集成共享服务、高性能计算能力和大数据分析算法模型，支撑经营管理数据分析应用的全面开展。为规模化数据应用赋能。</p>
 <p>笔者认为，数据湖技术架构涉及了数据接入（转移）、数据存储、数据计算、数据应用、数据治理、元数据、数据质量、数据资源目录、数据安全及数据审计等10个方面领域，以下简要作一介绍：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5olT2uiaWT4QToZaTO1Rhwhm3NJf51AelSkGOF5CpCtzTRJ8KV8eCiaxZDvbFicWEo0kGLyhKKxJqTMV4L2rJ8rGg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="./2020-12-16-datalake/5.png" alt=""> <img src="/2020/12/16/datalake/5.png"></p>
 <p>图5.数据湖包含技术体系</p>
 <p><strong>1）数据接入（移动）</strong></p>
 <p>数据提取允许连接器从不同的数据源获取数据并加载到数据湖中。数据提取支持：所有类型的结构化，半结构化和非结构化数据。批量，实时，一次性负载等多次摄取；在数据接入方面，需提供适配的多源异构数据资源接入方式，为企业数据湖的数据抽取汇聚提供通道。</p>
@@ -619,19 +625,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,6 +637,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -651,7 +657,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,7 +669,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,11 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,11 +705,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IPD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,10 +725,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
@@ -727,11 +733,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
