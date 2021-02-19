@@ -63,20 +63,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,12 +121,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -148,11 +152,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -197,18 +205,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="https://www.knowage-suite.com/site/wp-content/uploads/2016/03/KNOWAGE_logo_color.png" alt=""></p>
-<h1 id="What-is-Knowage"><a href="#What-is-Knowage" class="headerlink" title="What is Knowage?"></a>What is Knowage?</h1><p>Knowage is the professional open source suite for modern business analytics over traditional sources and big data systems.</p>
+<h1><span id="what-is-knowage">What is Knowage?</span></h1><p>Knowage is the professional open source suite for modern business analytics over traditional sources and big data systems.</p>
 <blockquote>
 <p><a href="https://www.knowage-suite.com/" target="_blank" rel="noopener">knowage-suite.com</a></p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Docker-Compose-部署Mysql-及Knowage"><a href="#Docker-Compose-部署Mysql-及Knowage" class="headerlink" title="Docker Compose 部署Mysql 及Knowage"></a>Docker Compose 部署Mysql 及Knowage</h1><p>Knowage-server-docker 镜像：<code>https://hub.docker.com/r/knowagelabs/knowage-server-docker</code></p>
-<h2 id="获取官方镜像"><a href="#获取官方镜像" class="headerlink" title="获取官方镜像"></a>获取官方镜像</h2><p> <code>docker pull knowagelabs/knowage-server-docker</code></p>
+<h1><span id="docker-compose-部署mysql-及knowage">Docker Compose 部署Mysql 及Knowage</span></h1><p>Knowage-server-docker 镜像：<code>https://hub.docker.com/r/knowagelabs/knowage-server-docker</code></p>
+<h2><span id="获取官方镜像">获取官方镜像</span></h2><p> <code>docker pull knowagelabs/knowage-server-docker</code></p>
 <p><code>docker pull mysql:5.6.38</code></p>
-<h2 id="修改mysql默认字符集"><a href="#修改mysql默认字符集" class="headerlink" title="修改mysql默认字符集"></a>修改mysql默认字符集</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@master mysql]# cat Dockerfile </span><br><span class="line">FROM mysql:5.6.38</span><br><span class="line"></span><br><span class="line">MAINTAINER kavenran &lt;ranyut@163.com&gt;</span><br><span class="line"></span><br><span class="line">RUN sed -i "s|\[mysql\]|[mysql]\ndefault-character-set=utf8\n[mysqld]\ncharacter-set-server=utf8\nlower_case_table_names=1|g" /etc/mysql/conf.d/mysql.cnf</span><br></pre></td></tr></table></figure>
+<h2><span id="修改mysql默认字符集">修改mysql默认字符集</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@master mysql]# cat Dockerfile </span><br><span class="line">FROM mysql:5.6.38</span><br><span class="line"></span><br><span class="line">MAINTAINER kavenran &lt;ranyut@163.com&gt;</span><br><span class="line"></span><br><span class="line">RUN sed -i "s|\[mysql\]|[mysql]\ndefault-character-set=utf8\n[mysqld]\ncharacter-set-server=utf8\nlower_case_table_names=1|g" /etc/mysql/conf.d/mysql.cnf</span><br></pre></td></tr></table></figure>
 <p>覆盖原镜像：  </p>
 <p><code>docker build -t mysql:5.6.38 .</code></p>
-<h2 id="创建docker-compose-yml"><a href="#创建docker-compose-yml" class="headerlink" title="创建docker-compose.yml"></a>创建docker-compose.yml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knowage:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">knowagelabs/knowage-server-docker:6.1.1</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="attr">        - knowagedb:</span><span class="string">db</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">"8080:8080"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">WAIT_MYSQL=true</span></span><br><span class="line">	    <span class="bullet">-</span> <span class="string">PUBLIC_ADDRESS=bi.x</span></span><br><span class="line"></span><br><span class="line"><span class="attr">knowagedb:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">mysql:5.6.38</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_USER=user</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_PASSWORD=password</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_DATABASE=knowagedb</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_ROOT_PASSWORD=rootpassword</span></span><br></pre></td></tr></table></figure>
+<h2><span id="创建docker-composeyml">创建docker-compose.yml</span></h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">knowage:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">knowagelabs/knowage-server-docker:6.1.1</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="attr">        - knowagedb:</span><span class="string">db</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">"8080:8080"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">WAIT_MYSQL=true</span></span><br><span class="line">	    <span class="bullet">-</span> <span class="string">PUBLIC_ADDRESS=bi.x</span></span><br><span class="line"></span><br><span class="line"><span class="attr">knowagedb:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">mysql:5.6.38</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_USER=user</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_PASSWORD=password</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_DATABASE=knowagedb</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_ROOT_PASSWORD=rootpassword</span></span><br></pre></td></tr></table></figure>
 <p>执行：<code>docker-compose up</code></p>
 <p>最后再分别启动mysql及knowage即可。</p>
 <p>可通过<code>http://$PUBLIC_ADDRESS:8080/knowage</code> 访问。</p>
@@ -364,7 +372,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-is-Knowage"><span class="toc-number">1.</span> <span class="toc-text">What is Knowage?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-Compose-部署Mysql-及Knowage"><span class="toc-number">2.</span> <span class="toc-text">Docker Compose 部署Mysql 及Knowage</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取官方镜像"><span class="toc-number">2.1.</span> <span class="toc-text">获取官方镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改mysql默认字符集"><span class="toc-number">2.2.</span> <span class="toc-text">修改mysql默认字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建docker-compose-yml"><span class="toc-number">2.3.</span> <span class="toc-text">创建docker-compose.yml</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">What is Knowage?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Docker Compose 部署Mysql 及Knowage</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">获取官方镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">修改mysql默认字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">创建docker-compose.yml</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -414,7 +422,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -438,7 +446,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -566,11 +574,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,19 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,19 +622,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,15 +630,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +670,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,7 +678,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,15 +698,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

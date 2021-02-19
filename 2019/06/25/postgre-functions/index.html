@@ -9,14 +9,14 @@
   <title>PostgreSQL格式化与日期函数 | Thinking insights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="七、PostgreSQL数据类型格式化函数：PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。    函数 返回类型 描述 例子">
-<meta name="keywords" content="PostgreSQL">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostgreSQL格式化与日期函数">
 <meta property="og:url" content="https://ranying666.github.io/2019/06/25/postgre-functions/index.html">
 <meta property="og:site_name" content="Thinking insights">
 <meta property="og:description" content="七、PostgreSQL数据类型格式化函数：PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。    函数 返回类型 描述 例子">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T08:16:57.000Z">
+<meta property="og:updated_time" content="2021-02-19T09:32:08.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PostgreSQL格式化与日期函数">
 <meta name="twitter:description" content="七、PostgreSQL数据类型格式化函数：PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。    函数 返回类型 描述 例子">
@@ -61,20 +61,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,12 +119,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -146,11 +150,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -194,7 +202,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="七、PostgreSQL数据类型格式化函数："><a href="#七、PostgreSQL数据类型格式化函数：" class="headerlink" title="七、PostgreSQL数据类型格式化函数："></a><strong>七、PostgreSQL数据类型格式化函数：</strong></h2><pre><code>PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。
+        <h2><span id="七-postgresql数据类型格式化函数"><strong>七、PostgreSQL数据类型格式化函数：</strong></span></h2><pre><code>PostgreSQL格式化函数提供一套有效的工具用于把各种数据类型(日期/时间、integer、floating point和numeric)转换成格式化的字符串以及反过来从格式化的字符串转换成指定的数据类型。下面列出了这些函数，它们都遵循一个公共的调用习惯：第一个参数是待格式化的值，而第二个是定义输出或输出格式的模板。
 </code></pre><table>
 <thead>
 <tr>
@@ -262,7 +270,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <a id="more"></a>
-<h3 id="1-用于日期-时间格式化的模式："><a href="#1-用于日期-时间格式化的模式：" class="headerlink" title="1. 用于日期/时间格式化的模式："></a>1. 用于日期/时间格式化的模式：</h3><table>
+<h3><span id="1-用于日期时间格式化的模式">1. 用于日期/时间格式化的模式：</span></h3><table>
 <thead>
 <tr>
 <th><strong>模式</strong></th>
@@ -396,7 +404,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h3 id="2-用于数值格式化的模板模式："><a href="#2-用于数值格式化的模板模式：" class="headerlink" title="2. 用于数值格式化的模板模式："></a>2. 用于数值格式化的模板模式：</h3><table>
+<h3><span id="2-用于数值格式化的模板模式">2. 用于数值格式化的模板模式：</span></h3><table>
 <thead>
 <tr>
 <th><strong>模式</strong></th>
@@ -454,7 +462,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h2 id="八、时间-日期函数和操作符："><a href="#八、时间-日期函数和操作符：" class="headerlink" title="八、时间/日期函数和操作符：**"></a>八、时间/日期函数和操作符：**</h2><h3 id="1-下面是PostgreSQL中支持的时间-日期操作符的列表："><a href="#1-下面是PostgreSQL中支持的时间-日期操作符的列表：" class="headerlink" title="1. 下面是PostgreSQL中支持的时间/日期操作符的列表："></a>1. 下面是PostgreSQL中支持的时间/日期操作符的列表：</h3><table>
+<h2><span id="八-时间日期函数和操作符">八、时间/日期函数和操作符：**</span></h2><h3><span id="1-下面是postgresql中支持的时间日期操作符的列表">1. 下面是PostgreSQL中支持的时间/日期操作符的列表：</span></h3><table>
 <thead>
 <tr>
 <th><strong>操作符</strong></th>
@@ -550,7 +558,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h3 id="2-日期-时间函数："><a href="#2-日期-时间函数：" class="headerlink" title="2. 日期/时间函数："></a>2. 日期/时间函数：</h3><table>
+<h3><span id="2-日期时间函数">2. 日期/时间函数：</span></h3><table>
 <thead>
 <tr>
 <th><strong>函数</strong></th>
@@ -660,7 +668,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h3 id="3-EXTRACT，date-part函数支持的field："><a href="#3-EXTRACT，date-part函数支持的field：" class="headerlink" title="3. EXTRACT，date_part函数支持的field："></a>3. EXTRACT，date_part函数支持的field：</h3><table>
+<h3><span id="3-extractdate_part函数支持的field">3. EXTRACT，date_part函数支持的field：</span></h3><table>
 <thead>
 <tr>
 <th><strong>域</strong></th>
@@ -762,7 +770,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h3 id="4-当前日期-时间："><a href="#4-当前日期-时间：" class="headerlink" title="4.当前日期/时间："></a>4.当前日期/时间：</h3><p>我们可以使用下面的函数获取当前的日期和/或时间∶<br>    CURRENT_DATE<br>    CURRENT_TIME<br>    CURRENT_TIMESTAMP<br>    CURRENT_TIME (precision)<br>    CURRENT_TIMESTAMP (precision)<br>    LOCALTIME<br>    LOCALTIMESTAMP<br>    LOCALTIME (precision)<br>    LOCALTIMESTAMP (precision)</p>
+<h3><span id="4当前日期时间">4.当前日期/时间：</span></h3><p>我们可以使用下面的函数获取当前的日期和/或时间∶<br>    CURRENT_DATE<br>    CURRENT_TIME<br>    CURRENT_TIMESTAMP<br>    CURRENT_TIME (precision)<br>    CURRENT_TIMESTAMP (precision)<br>    LOCALTIME<br>    LOCALTIMESTAMP<br>    LOCALTIME (precision)<br>    LOCALTIMESTAMP (precision)</p>
 <pre><code>*该博客中提供的所有信息均源自PostgreSQL官方文档，编写该篇博客的主要目的是便于今后的查阅，特此声明。*
 </code></pre><blockquote>
 <p>博客原文：<a href="https://www.cnblogs.com/stephen-liu74/archive/2012/05/04/2294643.html" target="_blank" rel="noopener">https://www.cnblogs.com/stephen-liu74/archive/2012/05/04/2294643.html</a></p>
@@ -811,13 +819,24 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PostgreSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -919,7 +938,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#七、PostgreSQL数据类型格式化函数："><span class="toc-number">1.</span> <span class="toc-text">七、PostgreSQL数据类型格式化函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-用于日期-时间格式化的模式："><span class="toc-number">1.1.</span> <span class="toc-text">1. 用于日期/时间格式化的模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-用于数值格式化的模板模式："><span class="toc-number">1.2.</span> <span class="toc-text">2. 用于数值格式化的模板模式：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、时间-日期函数和操作符："><span class="toc-number">2.</span> <span class="toc-text">八、时间/日期函数和操作符：**</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下面是PostgreSQL中支持的时间-日期操作符的列表："><span class="toc-number">2.1.</span> <span class="toc-text">1. 下面是PostgreSQL中支持的时间/日期操作符的列表：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-日期-时间函数："><span class="toc-number">2.2.</span> <span class="toc-text">2. 日期/时间函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-EXTRACT，date-part函数支持的field："><span class="toc-number">2.3.</span> <span class="toc-text">3. EXTRACT，date_part函数支持的field：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-当前日期-时间："><span class="toc-number">2.4.</span> <span class="toc-text">4.当前日期/时间：</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">七、PostgreSQL数据类型格式化函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">1. 用于日期/时间格式化的模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">2. 用于数值格式化的模板模式：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">八、时间/日期函数和操作符：**</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">1. 下面是PostgreSQL中支持的时间/日期操作符的列表：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">2. 日期/时间函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">3. EXTRACT，date_part函数支持的field：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.</span> <span class="toc-text">4.当前日期/时间：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -969,7 +988,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -993,7 +1012,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -1121,11 +1140,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1141,19 +1172,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1165,19 +1188,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,15 +1196,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,7 +1236,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,7 +1244,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,15 +1264,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

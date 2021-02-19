@@ -65,20 +65,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -121,12 +123,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -150,11 +154,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -204,7 +212,7 @@ var _hmt = _hmt || [];
 <p>刷新多次可能正常登录。  </p>
 <a id="more"></a>
 <p>跟踪日志发现错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 69,949,658 milliseconds ago.  The last packet sent successfully to the server was 69,949,659 milliseconds ago. is longer than the server configured value of &apos;wait_timeout&apos;. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property &apos;autoReconnect=true&apos; to avoid this problem.</span><br><span class="line">        at sun.reflect.GeneratedConstructorAccessor249.newInstance(Unknown Source)</span><br><span class="line">        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</span><br><span class="line">        at java.lang.reflect.Constructor.newInstance(Constructor.java:423)</span><br><span class="line">        at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)</span><br><span class="line">        at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1036)</span><br><span class="line">        at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3661)</span><br><span class="line">        at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2417)</span><br><span class="line">        at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)</span><br><span class="line">        at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2526)</span><br><span class="line">        at com.mysql.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:4842)</span><br><span class="line">        at org.apache.tomcat.dbcp.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)</span><br><span class="line">        at org.apache.tomcat.dbcp.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)</span><br><span class="line">        at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:87)</span><br><span class="line">        ... 43 more</span><br><span class="line">Caused by: java.net.SocketException: Connection reset</span><br><span class="line">        at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:113)</span><br><span class="line">        at java.net.SocketOutputStream.write(SocketOutputStream.java:153)</span><br><span class="line">        at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)</span><br><span class="line">        at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)</span><br><span class="line">        at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3643)</span><br><span class="line">        ... 50 more</span><br></pre></td></tr></table></figure></p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>修改server.xml中JNDI配置：  </p>
+<h1><span id="解决方案">解决方案</span></h1><p>修改server.xml中JNDI配置：  </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Resource</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">maxActive</span>=<span class="string">"200"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">maxIdle</span>=<span class="string">"50"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">maxWait</span>=<span class="string">"-1"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">name</span>=<span class="string">"jdbc/knowage"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">url</span>=<span class="string">"jdbc:mysql://a.x:3306/knowagedb"</span> <span class="attr">username</span>=<span class="string">"knowageuser"</span> <span class="attr">password</span>=<span class="string">"knowagepassword"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">logAbandoned</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">removeAbandoned</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">removeAbandonedTimeout</span>=<span class="string">"10"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">validationQuery</span>=<span class="string">"select 1 from dual"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">testWhileIdle</span>=<span class="string">"true"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">testOnBorrow</span>=<span class="string">"false"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">timeBetweenEvictionRunsMillis</span>=<span class="string">"30000"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">minEvictableIdleTimeMillis</span>=<span class="string">"1800000"</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">numTestsPerEvictionRun</span>=<span class="string">"3"</span>  </span></span><br><span class="line"><span class="tag">	    /&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
 <p>使用过程中遇到任何问题欢迎留言或加入Knowage开源BI中国社区：QQ <code>158245788</code>  </p>
@@ -361,7 +369,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -411,7 +419,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -435,7 +443,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -563,11 +571,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,19 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,19 +619,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,15 +627,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,7 +667,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,7 +675,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,15 +695,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

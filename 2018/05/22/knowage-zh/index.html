@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://ranying666.github.io/2018/05/22/knowage-zh/20180622132642.png">
 <meta property="og:image" content="https://ranying666.github.io/2018/05/22/knowage-zh/2018-05-22-knowage-zh/20180622132642.png">
 <meta property="og:image" content="https://ranying666.github.io/2018/05/22/knowage-zh/BIQQ.png">
-<meta property="og:updated_time" content="2020-12-16T08:42:32.923Z">
+<meta property="og:updated_time" content="2021-02-19T09:31:33.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpagoBI&#x2F;knowage中文乱码问题解决">
 <meta name="twitter:description" content="SpagoBI升级版改名为knowage了。在使用Knowage-6.x的时候，发现user模块可以存中文但页面不能正确编码中文，而menu模块页面可以存部分中文，但数据库中却是乱码。   User: Menu: 通过跟代码发现代码中都是设置的UTF-8，都是支持中文的，那问题就出在环境上。">
@@ -71,20 +71,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -127,12 +129,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -156,11 +160,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -210,7 +218,7 @@ var _hmt = _hmt || [];
 <p>User:<br><img src="/2018/05/22/knowage-zh/20180521114609.jpg"><br><img src="./2018-05-22-knowage-zh/20180521114609.jpg" alt=""></p>
 <p>Menu:<br><img src="/2018/05/22/knowage-zh/20180521115021.jpg"><br><img src="./2018-05-22-knowage-zh/20180521115021.jpg" alt=""></p>
 <p>通过跟代码发现代码中都是设置的UTF-8，都是支持中文的，那问题就出在环境上。<br><a id="more"></a></p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><p><em>以Mysql为例</em>  </p>
+<h1><span id="解决办法">解决办法</span></h1><h2><span id="数据库配置">数据库配置</span></h2><p><em>以Mysql为例</em>  </p>
 <p>查找修改mysql.conf之类的配置文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-server=utf8</span><br></pre></td></tr></table></figure>
 <p>Docker安装方式：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM mysql/mysql:5.6.38</span><br><span class="line"></span><br><span class="line">MAINTAINER kavenran &lt;ranyut@163.com&gt;</span><br><span class="line"></span><br><span class="line">RUN sed -i <span class="string">"s|\[mysql\]|[mysql]\ndefault-character-set=utf8\n[mysqld]\ncharacter-set-server=utf8\nlower_case_table_names=1|g"</span> /etc/mysql/conf.d/mysql.cnfs</span><br></pre></td></tr></table></figure></p>
@@ -220,7 +228,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>mysql&gt; GRANT ALL PRIVILEGES ON <em>.</em> TO root@”%” IDENTIFIED BY “rootpassword”;<br>mysql&gt; GRANT ALL PRIVILEGES ON <em>.</em> TO knowageuser@”%” IDENTIFIED BY “knowagepassword”;<br>mysql&gt; flush privileges;</p>
 </blockquote>
-<h2 id="Tomcat配置"><a href="#Tomcat配置" class="headerlink" title="Tomcat配置"></a>Tomcat配置</h2><p>1.Windows 修改<code>$tomcat_path/bin/catalina.bat</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
+<h2><span id="tomcat配置">Tomcat配置</span></h2><p>1.Windows 修改<code>$tomcat_path/bin/catalina.bat</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
 <p>2.Linux 修改 <code>$tomcat_path/bin/catalina.sh</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=<span class="string">"-Dfile.encoding=UTF-8"</span></span><br></pre></td></tr></table></figure></p>
 <p>3.Docker 修改官方镜像脚本 <code>entrypoint.sh</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">"s|#!\/bin\/sh|#!\/bin\/sh\nJAVA_OPTS=\"-Dfile.encoding=UTF-8\"|g"</span> <span class="variable">$&#123;KNOWAGE_DIRECTORY&#125;</span>/<span class="variable">$&#123;APACHE_TOMCAT_PACKAGE&#125;</span>/bin/catalina.sh</span><br></pre></td></tr></table></figure>
@@ -286,7 +294,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据可视化//" class="article-tag-list-link color1">数据可视化</a>
+        			<a href="/categories/数据治理//" class="article-tag-list-link color5">数据治理</a>
         		</li>
       		
 		</ul>
@@ -393,7 +401,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解决办法"><span class="toc-number">1.</span> <span class="toc-text">解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库配置"><span class="toc-number">1.1.</span> <span class="toc-text">数据库配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat配置"><span class="toc-number">1.2.</span> <span class="toc-text">Tomcat配置</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">数据库配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">Tomcat配置</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -443,7 +451,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -467,7 +475,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -595,11 +603,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,19 +635,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,19 +651,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,15 +659,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,7 +699,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,7 +707,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,15 +727,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

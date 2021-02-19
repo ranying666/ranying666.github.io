@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://ranying666.github.io/2017/08/10/postman/postman-test.png">
 <meta property="og:image" content="https://ranying666.github.io/2017/08/10/postman/postman-runner.png">
 <meta property="og:image" content="https://ranying666.github.io/2017/08/10/postman/postman-doc.png">
-<meta property="og:updated_time" content="2017-12-13T06:27:59.000Z">
+<meta property="og:updated_time" content="2021-02-19T09:27:43.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Postman进行高效API开发及自动化测试">
 <meta name="twitter:description" content="POSTMAN A powerful GUI platform to make your API development faster &amp;amp; easier, from building API requests through testing, documentation and sharing.   From  https://www.getpostman.com/   亮点： 1.A">
@@ -68,20 +68,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -124,12 +126,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -153,11 +157,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -207,24 +215,24 @@ var _hmt = _hmt || [];
 </blockquote>
 <p> 亮点：<br> 1.API接口验证方便<br> 2.环境变量支持多个环境快速切换<br> 3.支持请求拦截<br> 4.支持断言测试<br> 5.支持打包自动化测试<br> 6.支持生成API文档（收费）</p>
 <a id="more"></a>
-<h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h1><p>两种安装方式:<br>Chrome插件<br>App<br>考虑到Chrome插件一般都打不开，所以选择下载桌面程序。</p>
-<h1 id="2-发送请求"><a href="#2-发送请求" class="headerlink" title="2. 发送请求"></a>2. 发送请求</h1><p>Postman最基础的功能就是发送http请求，支持GET/PUT/POST/DELETE，还有很多我不认识的http方法。</p>
+<h1><span id="1-安装">1. 安装</span></h1><p>两种安装方式:<br>Chrome插件<br>App<br>考虑到Chrome插件一般都打不开，所以选择下载桌面程序。</p>
+<h1><span id="2-发送请求">2. 发送请求</span></h1><p>Postman最基础的功能就是发送http请求，支持GET/PUT/POST/DELETE，还有很多我不认识的http方法。</p>
 <p>通过填写URL、header、body等就可以发送一个请求，这对于我们平时做一些简单的测试是够用的。</p>
 <p>如果你的应用需要用到登录验证，可以通过填写Authorization以满足你的需求。<br>另外也可以使用Chrome浏览器已经登录的cookie，同步浏览器的cookie需要安装另一个插件Interceptor（拦截机）。它可以在你发送请求时帮你将已经存在于浏览器的数据随header请求，另外它可以将浏览器的请求写到postman的历史中（需要开启“Request Capture”<br>）。<br><img src="/2017/08/10/postman/postman-send.png"></p>
-<h1 id="3-集合Collections"><a href="#3-集合Collections" class="headerlink" title="3. 集合Collections"></a>3. 集合Collections</h1><p>每次配置完一个请求都可以保存到一个集合中，如此一来，下次测试可以直接从集合中找到你要执行的测试。</p>
+<h1><span id="3-集合collections">3. 集合Collections</span></h1><p>每次配置完一个请求都可以保存到一个集合中，如此一来，下次测试可以直接从集合中找到你要执行的测试。</p>
 <p>集合不单单只有分类和存储功能，Postman支持一键运行整个集合内的测试。</p>
 <p>我们可以把一个请求当做一个Test Case, 那么集合就是一个Test Suite。</p>
 <p>每个集合都对应一个URL，可以通过Share按钮获得你的集合URL，这个URL可以用于分享给你的队友，或者用于Newman执行。</p>
 <p>Newman是Postman的一个命令行工具，可以让API测试加入到你的持续集成任务上。  </p>
 <img src="/2017/08/10/postman/postman-collections.png">
-<h1 id="4-环境变量"><a href="#4-环境变量" class="headerlink" title="4. 环境变量"></a>4. 环境变量</h1><p>当做API测试时，你可能经常需要切换不同的设置。比如，开发环境的API设置、测试环境和产品环境的API设置，你可能需要在不同的测试环境下使用不同的配置。为此Postman提供了环境变量，这样你就可以通过修改环境变量，而不需修改请求了。</p>
+<h1><span id="4-环境变量">4. 环境变量</span></h1><p>当做API测试时，你可能经常需要切换不同的设置。比如，开发环境的API设置、测试环境和产品环境的API设置，你可能需要在不同的测试环境下使用不同的配置。为此Postman提供了环境变量，这样你就可以通过修改环境变量，而不需修改请求了。</p>
 <p>你可以通过右上角的下拉菜单选择环境，可以通过点击右侧的小眼睛来查看当前环境变量。  </p>
 <img src="/2017/08/10/postman/postman-env.png">
-<h1 id="5-API测试"><a href="#5-API测试" class="headerlink" title="5. API测试"></a>5. API测试</h1><p>Postman测试沙箱是一个JavaScript执行环境，可以通过JS脚本来编写pre-requist和测试脚本。pre-requist可以用来修改一些默认参数。</p>
+<h1><span id="5-api测试">5. API测试</span></h1><p>Postman测试沙箱是一个JavaScript执行环境，可以通过JS脚本来编写pre-requist和测试脚本。pre-requist可以用来修改一些默认参数。</p>
 <p>Postman沙箱集成了几个工具库，比如lodash、SugarJs、tv4，还有一些内置函数如xml2JSON..</p>
 <p>tv4用于验证JSON数据，通过编写JSON Schema来验证，JSON Schema的语法请参照这里<br>可以用Tests来设置断言，验证返回数据的正确性。<br><img src="/2017/08/10/postman/postman-test.png"></p>
 <p>runner 集成测试<br><img src="/2017/08/10/postman/postman-runner.png"></p>
-<h1 id="6-API文档"><a href="#6-API文档" class="headerlink" title="6.API文档"></a>6.API文档</h1><p>Postman可以生成API Docment,就public给其他人。可惜这个是收费的，一个用户每月$8.<br>生成的文档还是非常漂亮的。  </p>
+<h1><span id="6api文档">6.API文档</span></h1><p>Postman可以生成API Docment,就public给其他人。可惜这个是收费的，一个用户每月$8.<br>生成的文档还是非常漂亮的。  </p>
 <img src="/2017/08/10/postman/postman-doc.png">
 
       
@@ -367,7 +375,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-安装"><span class="toc-number">1.</span> <span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-发送请求"><span class="toc-number">2.</span> <span class="toc-text">2. 发送请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-集合Collections"><span class="toc-number">3.</span> <span class="toc-text">3. 集合Collections</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-环境变量"><span class="toc-number">4.</span> <span class="toc-text">4. 环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-API测试"><span class="toc-number">5.</span> <span class="toc-text">5. API测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-API文档"><span class="toc-number">6.</span> <span class="toc-text">6.API文档</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">2. 发送请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">3. 集合Collections</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">4. 环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">5. API测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">6.API文档</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -417,7 +425,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -441,7 +449,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -569,11 +577,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,19 +609,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,19 +625,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,15 +633,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,7 +673,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,7 +681,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,15 +701,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

@@ -63,20 +63,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,12 +121,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -148,11 +152,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -239,22 +247,22 @@ var _hmt = _hmt || [];
 </ul>
 <p>有时间的话可以接着往下看具体内容：</p>
 <a id="more"></a>
-<h2 id="提供–help标记"><a href="#提供–help标记" class="headerlink" title="提供–help标记"></a>提供–help标记</h2><p>安装在系统上的二进制文件通常带有man帮助文档，但对于脚本来说就不一定了。因此我们通常需要为脚本提供-h或–help标记来打印有关如何使用脚本的信息。如果其他工程师需要修改脚本，这也可以作为脚本的内联文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--help&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  printf -- &apos;...help...\n&apos;;</span><br><span class="line">  exit 0;</span><br><span class="line">fi;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="提供help标记">提供–help标记</span></h2><p>安装在系统上的二进制文件通常带有man帮助文档，但对于脚本来说就不一定了。因此我们通常需要为脚本提供-h或–help标记来打印有关如何使用脚本的信息。如果其他工程师需要修改脚本，这也可以作为脚本的内联文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--help&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  printf -- &apos;...help...\n&apos;;</span><br><span class="line">  exit 0;</span><br><span class="line">fi;</span><br></pre></td></tr></table></figure></p>
 <p>这段脚本先计算参数长度<code>（${\#@} -ne 0）</code>，只有当参数长度不为零时才会检查–help标记。下一个条件会检查参数中是否存在字符串“–help” 。第一个条件是必需的，如果参数长度为零则不需要打印帮助信息。</p>
-<h2 id="检查所有命令的可用性"><a href="#检查所有命令的可用性" class="headerlink" title="检查所有命令的可用性"></a>检查所有命令的可用性</h2><p>脚本通常会调用其他脚本或二进制文件。在调用可能不存在的命令时，请先检查它们是否可用。可以使用<code>“command -v 二进制文件名称”</code>来执行此操作，看看它的退出代码是否为零。如果命令不可用，可以告诉用户应该如何获得这个二进制文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">_=$(command -v docker);</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;You don\&apos;t seem to have Docker installed.\n&apos;;</span><br><span class="line">  printf -- &apos;Get it: https://www.docker.com/community-edition\n&apos;;</span><br><span class="line">  printf -- &apos;Exiting with code 127...\n&apos;;</span><br><span class="line">  exit 127;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
-<h2 id="独立于当前工作目录"><a href="#独立于当前工作目录" class="headerlink" title="独立于当前工作目录"></a>独立于当前工作目录</h2><p>从不同的目录执行脚本可能会发生错误，这样的脚本没有人会喜欢。要解决这个问题，请使用绝对路径<code>（/path/to/something）</code>和脚本的相对路径（如下所示）。</p>
+<h2><span id="检查所有命令的可用性">检查所有命令的可用性</span></h2><p>脚本通常会调用其他脚本或二进制文件。在调用可能不存在的命令时，请先检查它们是否可用。可以使用<code>“command -v 二进制文件名称”</code>来执行此操作，看看它的退出代码是否为零。如果命令不可用，可以告诉用户应该如何获得这个二进制文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">_=$(command -v docker);</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;You don\&apos;t seem to have Docker installed.\n&apos;;</span><br><span class="line">  printf -- &apos;Get it: https://www.docker.com/community-edition\n&apos;;</span><br><span class="line">  printf -- &apos;Exiting with code 127...\n&apos;;</span><br><span class="line">  exit 127;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
+<h2><span id="独立于当前工作目录">独立于当前工作目录</span></h2><p>从不同的目录执行脚本可能会发生错误，这样的脚本没有人会喜欢。要解决这个问题，请使用绝对路径<code>（/path/to/something）</code>和脚本的相对路径（如下所示）。</p>
 <p>可以使用<code>dirname $0</code>引用脚本的当前路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">CURR_DIR=&quot;$(dirname $0);&quot;</span><br><span class="line">printf -- &apos;moving application to /opt/app.jar&apos;;</span><br><span class="line">mv &quot;$&#123;CURR_DIR&#125;/application.jar&quot; /opt/app.jar;</span><br></pre></td></tr></table></figure></p>
-<h2 id="如何读取输入：环境变量-vs-标记"><a href="#如何读取输入：环境变量-vs-标记" class="headerlink" title="如何读取输入：环境变量 vs. 标记"></a>如何读取输入：环境变量 vs. 标记</h2><p>脚本通过两种方式接受输入：环境变量和选项标记（参数）。根据经验，对于不影响脚本行为的值，可以使用环境变量，而对于可能触发脚本不同流程的值，可以使用脚本参数。</p>
+<h2><span id="如何读取输入环境变量-vs-标记">如何读取输入：环境变量 vs. 标记</span></h2><p>脚本通过两种方式接受输入：环境变量和选项标记（参数）。根据经验，对于不影响脚本行为的值，可以使用环境变量，而对于可能触发脚本不同流程的值，可以使用脚本参数。</p>
 <p>不影响脚本行为的变量可能是访问令牌和 ID 之类的东西：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># do this</span><br><span class="line">export AWS_ACCESS_TOKEN=&apos;xxxxxxxxxxxx&apos;;</span><br><span class="line">./provision-everything</span><br><span class="line"># and not</span><br><span class="line">./provisiong-everything --token &apos;xxxxxxxxxxx&apos;;</span><br></pre></td></tr></table></figure></p>
 <p>影响脚本行为的变量可能是需要运行实例的数量、是异步还是同步运行、是否在后台运行等参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># do this</span><br><span class="line">./provision-everything --async --instance-count 400</span><br><span class="line"># and not</span><br><span class="line">INSTANCE_COUNT=400 ASYNC=true ./provision-everything</span><br></pre></td></tr></table></figure></p>
-<h2 id="打印对系统执行的所有操作"><a href="#打印对系统执行的所有操作" class="headerlink" title="打印对系统执行的所有操作"></a>打印对系统执行的所有操作</h2><p>脚本通常会对系统执行有状态的更改。不过，由于我们不知道用户何时会向发送SIGINT，也不知道脚本错误何时可能导致脚本意外终止，因此很有必要将正在做的事情打印在终端上，这样用户就可以在不去查看脚本的情况下回溯这些步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">printf -- &apos;Downloading required document to ./downloaded... &apos;;</span><br><span class="line">wget -o ./downloaded https://some.site.com/downloaded;</span><br><span class="line">printf -- &apos;Moving ./downloaded to /opt/downloaded...&apos;;</span><br><span class="line">mv ./downloaded /opt/;</span><br><span class="line">printf -- &apos;Creating symlink to /opt/downloaded...&apos;;</span><br><span class="line">ln -s /opt/downloaded /usr/bin/downloaded;</span><br></pre></td></tr></table></figure></p>
-<h2 id="在必要时提供–silent选项"><a href="#在必要时提供–silent选项" class="headerlink" title="在必要时提供–silent选项"></a>在必要时提供–silent选项</h2><p>有些脚本是为了将其输出传给其他脚本。虽说脚本都应该能够单独运行，不过有时候也有必要让它们把输出结果传给另一个脚本。可以利用stty -echo来实现–silent标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--silent&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  stty -echo;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br><span class="line"># before point of intended output:</span><br><span class="line">stty +echo &amp;&amp; printf -- &apos;intended output\n&apos;;</span><br><span class="line"># silence it again till end of script</span><br><span class="line">stty -echo;</span><br><span class="line"># ...</span><br><span class="line">stty +echo;</span><br><span class="line">exit 0;</span><br></pre></td></tr></table></figure></p>
-<h2 id="重新开启显示"><a href="#重新开启显示" class="headerlink" title="重新开启显示"></a>重新开启显示</h2><p>在使用<code>stty -echo</code>关闭脚本显示之后，如果发生致命错误，脚本将终止，而且不会恢复终端输出，这样对用户来说是没有意义的。可以使用trap来捕捉SIGINT和其他操作系统级别的信号，然后使用stty echo打开终端显示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">error_handle() &#123;</span><br><span class="line">  stty echo;</span><br><span class="line">&#125;</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--silent&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  stty -echo;</span><br><span class="line">  trap error_handle INT;</span><br><span class="line">  trap error_handle TERM;</span><br><span class="line">  trap error_handle KILL;</span><br><span class="line">  trap error_handle EXIT;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
-<h2 id="用动画的方式显示进度"><a href="#用动画的方式显示进度" class="headerlink" title="用动画的方式显示进度"></a>用动画的方式显示进度</h2><p>有些命令需要运行很长时间，并非所有脚本都提供了进度条。在用户等待异步任务完成时，可以通过一些方式告诉他们脚本仍在运行。比如在while循环中打印一些信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">printf -- &apos;Performing asynchronous action..&apos;;</span><br><span class="line">./trigger-action;</span><br><span class="line">DONE=0;</span><br><span class="line">while [ $DONE -eq 0 ]; do</span><br><span class="line">  ./async-checker;</span><br><span class="line">  if [ &quot;$?&quot; = &quot;0&quot; ]; then DONE=1; fi;</span><br><span class="line">  printf -- &apos;.&apos;;</span><br><span class="line">  sleep 1;</span><br><span class="line">done;</span><br><span class="line">printf -- &apos; DONE!\n&apos;;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="打印对系统执行的所有操作">打印对系统执行的所有操作</span></h2><p>脚本通常会对系统执行有状态的更改。不过，由于我们不知道用户何时会向发送SIGINT，也不知道脚本错误何时可能导致脚本意外终止，因此很有必要将正在做的事情打印在终端上，这样用户就可以在不去查看脚本的情况下回溯这些步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">printf -- &apos;Downloading required document to ./downloaded... &apos;;</span><br><span class="line">wget -o ./downloaded https://some.site.com/downloaded;</span><br><span class="line">printf -- &apos;Moving ./downloaded to /opt/downloaded...&apos;;</span><br><span class="line">mv ./downloaded /opt/;</span><br><span class="line">printf -- &apos;Creating symlink to /opt/downloaded...&apos;;</span><br><span class="line">ln -s /opt/downloaded /usr/bin/downloaded;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="在必要时提供silent选项">在必要时提供–silent选项</span></h2><p>有些脚本是为了将其输出传给其他脚本。虽说脚本都应该能够单独运行，不过有时候也有必要让它们把输出结果传给另一个脚本。可以利用stty -echo来实现–silent标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--silent&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  stty -echo;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br><span class="line"># before point of intended output:</span><br><span class="line">stty +echo &amp;&amp; printf -- &apos;intended output\n&apos;;</span><br><span class="line"># silence it again till end of script</span><br><span class="line">stty -echo;</span><br><span class="line"># ...</span><br><span class="line">stty +echo;</span><br><span class="line">exit 0;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="重新开启显示">重新开启显示</span></h2><p>在使用<code>stty -echo</code>关闭脚本显示之后，如果发生致命错误，脚本将终止，而且不会恢复终端输出，这样对用户来说是没有意义的。可以使用trap来捕捉SIGINT和其他操作系统级别的信号，然后使用stty echo打开终端显示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">error_handle() &#123;</span><br><span class="line">  stty echo;</span><br><span class="line">&#125;</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--silent&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  stty -echo;</span><br><span class="line">  trap error_handle INT;</span><br><span class="line">  trap error_handle TERM;</span><br><span class="line">  trap error_handle KILL;</span><br><span class="line">  trap error_handle EXIT;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
+<h2><span id="用动画的方式显示进度">用动画的方式显示进度</span></h2><p>有些命令需要运行很长时间，并非所有脚本都提供了进度条。在用户等待异步任务完成时，可以通过一些方式告诉他们脚本仍在运行。比如在while循环中打印一些信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">printf -- &apos;Performing asynchronous action..&apos;;</span><br><span class="line">./trigger-action;</span><br><span class="line">DONE=0;</span><br><span class="line">while [ $DONE -eq 0 ]; do</span><br><span class="line">  ./async-checker;</span><br><span class="line">  if [ &quot;$?&quot; = &quot;0&quot; ]; then DONE=1; fi;</span><br><span class="line">  printf -- &apos;.&apos;;</span><br><span class="line">  sleep 1;</span><br><span class="line">done;</span><br><span class="line">printf -- &apos; DONE!\n&apos;;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>或者可以做一些更好玩的小玩意儿，比如 <a href="http://mywiki.wooledge.org/BashFAQ/034。" target="_blank" rel="noopener">http://mywiki.wooledge.org/BashFAQ/034。</a></p>
 </blockquote>
-<h2 id="用颜色编码输出"><a href="#用颜色编码输出" class="headerlink" title="用颜色编码输出"></a>用颜色编码输出</h2><p>在脚本中调用其他二进制文件或脚本时，对它们的输出进行颜色编码，这样就可以知道哪个输出来自哪个脚本或二进制文件。这样我们就不需要在满屏的黑白输出文本中查找想要的输出结果。</p>
+<h2><span id="用颜色编码输出">用颜色编码输出</span></h2><p>在脚本中调用其他二进制文件或脚本时，对它们的输出进行颜色编码，这样就可以知道哪个输出来自哪个脚本或二进制文件。这样我们就不需要在满屏的黑白输出文本中查找想要的输出结果。</p>
 <p>理想情况下，脚本应该输出白色（默认的，前台进程），子进程应该使用灰色（通常不需要，除非出现错误），使用绿色表示成功，红色表示失败，黄色表示警告。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">printf -- &apos;doing something... \n&apos;;</span><br><span class="line">printf -- &apos;\033[37m someone else&apos;s output \033[0m\n&apos;;</span><br><span class="line">printf -- &apos;\033[32m SUCCESS: yay \033[0m\n&apos;;</span><br><span class="line">printf -- &apos;\033[33m WARNING: hmm \033[0m\n&apos;;</span><br><span class="line">printf -- &apos;\033[31m ERROR: fubar \033[0m\n&apos;;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>可以使用\033[Xm，其中X代表颜色代码。有些脚本使用\e而不是\033，但要注意\e不适用于所有的 UNIX 系统。</p>
@@ -262,16 +270,16 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>正确示范 可在.sh 中使用的所有颜色和修饰符 <a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting。" target="_blank" rel="noopener">https://misc.flogisoft.com/bash/tip_colors_and_formatting。</a></p>
 </blockquote>
-<h2 id="出现错误立即退出脚本"><a href="#出现错误立即退出脚本" class="headerlink" title="出现错误立即退出脚本"></a>出现错误立即退出脚本</h2><p><code>set -e</code>表示从当前位置开始，如果出现任何错误都将触发EXIT。相反，<code>set +e</code>表示不管出现任何错误继续执行脚本。</p>
+<h2><span id="出现错误立即退出脚本">出现错误立即退出脚本</span></h2><p><code>set -e</code>表示从当前位置开始，如果出现任何错误都将触发EXIT。相反，<code>set +e</code>表示不管出现任何错误继续执行脚本。</p>
 <p>如果脚本是有状态的（每个后续步骤都依赖前一个步骤），那么请使用<code>set -e</code>，在脚本出现错误时立即退出脚本。如果要求所有命令都要执行完（很少会这样），那么就使用<code>set +e</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">set +e;</span><br><span class="line">./script-1;</span><br><span class="line">./script-2; # does not depend on ./script-1</span><br><span class="line">./script-3; # does not depend on ./script-2</span><br><span class="line">set -e;</span><br><span class="line">./script-4;</span><br><span class="line">./script-5; # depends on success of ./script-4</span><br><span class="line"># ...</span><br></pre></td></tr></table></figure></p>
-<h2 id="自己执行清理工作"><a href="#自己执行清理工作" class="headerlink" title="自己执行清理工作"></a>自己执行清理工作</h2><p>大多数脚本在出现错误时不会执行清理工作，能够做好这方面工作的脚本实属罕见，但这样做其实很有用，还可以省下不少时间。前面已经给出过示例，让stty恢复正常，并借助trap命令来执行清理工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">handle_exit_code() &#123;</span><br><span class="line">  ERROR_CODE=&quot;$?&quot;;</span><br><span class="line">  printf -- &quot;an error occurred. cleaning up now... &quot;;</span><br><span class="line">  # ... cleanup code ...</span><br><span class="line">  printf -- &quot;DONE.\nExiting with error code $&#123;ERROR_CODE&#125;.\n&quot;;</span><br><span class="line">  exit $&#123;ERROR_CODE&#125;;</span><br><span class="line">&#125;</span><br><span class="line">trap &quot;handle_exit_code&quot; EXIT;</span><br><span class="line"># ... actual script...</span><br></pre></td></tr></table></figure></p>
-<h2 id="在退出时使用不同的错误码"><a href="#在退出时使用不同的错误码" class="headerlink" title="在退出时使用不同的错误码"></a>在退出时使用不同的错误码</h2><p>在绝大多数 shell 脚本中，exit 0 表示执行成功，exit 1 表示发生错误。对错误与错误码进行一对一的映射，这样有助于脚本调试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># ...</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;X happened. Exiting with status code 1.\n&apos;;</span><br><span class="line">  exit 1;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;Y happened. Exiting with status code 2.\n&apos;;</span><br><span class="line">  exit 2;</span><br><span class="line">fi;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="自己执行清理工作">自己执行清理工作</span></h2><p>大多数脚本在出现错误时不会执行清理工作，能够做好这方面工作的脚本实属罕见，但这样做其实很有用，还可以省下不少时间。前面已经给出过示例，让stty恢复正常，并借助trap命令来执行清理工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">handle_exit_code() &#123;</span><br><span class="line">  ERROR_CODE=&quot;$?&quot;;</span><br><span class="line">  printf -- &quot;an error occurred. cleaning up now... &quot;;</span><br><span class="line">  # ... cleanup code ...</span><br><span class="line">  printf -- &quot;DONE.\nExiting with error code $&#123;ERROR_CODE&#125;.\n&quot;;</span><br><span class="line">  exit $&#123;ERROR_CODE&#125;;</span><br><span class="line">&#125;</span><br><span class="line">trap &quot;handle_exit_code&quot; EXIT;</span><br><span class="line"># ... actual script...</span><br></pre></td></tr></table></figure></p>
+<h2><span id="在退出时使用不同的错误码">在退出时使用不同的错误码</span></h2><p>在绝大多数 shell 脚本中，exit 0 表示执行成功，exit 1 表示发生错误。对错误与错误码进行一对一的映射，这样有助于脚本调试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># ...</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;X happened. Exiting with status code 1.\n&apos;;</span><br><span class="line">  exit 1;</span><br><span class="line">fi;</span><br><span class="line"># ...</span><br><span class="line">if [ &quot;$?&quot; != &quot;0&quot; ]; then</span><br><span class="line">  printf -- &apos;Y happened. Exiting with status code 2.\n&apos;;</span><br><span class="line">  exit 2;</span><br><span class="line">fi;</span><br></pre></td></tr></table></figure></p>
 <p>这样做有另一个额外的好处，就是其他脚本在调用你的脚本时，可以根据错误码来判断发生了什么错误。</p>
 <p>在结束时打印一个新行<br>如果你有在遵循脚本的最佳实践，那么可能会使用<code>printf</code>代替<code>echo</code>（它在不同系统中的行为有所差别）。问题是printf在命令结束后不会自动添加一个新行，导致控制台看起来是这样的：</p>
 <p>这样一点也不酷，可以通过简单的方式打印一个新行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># ... your awesome script ...</span><br><span class="line">printf -- &apos;\n&apos;;</span><br><span class="line">exit 0;</span><br></pre></td></tr></table></figure></p>
 <p>这样就可以得到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh</span><br><span class="line">this is a line string</span><br></pre></td></tr></table></figure></p>
 <p>别人会感谢你这么做的。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这篇文章大致总结了一些简单易用的技巧，让 shell 脚本更易于调试和使用。</p>
+<h1><span id="总结">总结</span></h1><p>这篇文章大致总结了一些简单易用的技巧，让 shell 脚本更易于调试和使用。</p>
 <blockquote>
 <p>原文链接：<a href="https://codeburst.io/13-tips-tricks-for-writing-shell-scripts-with-awesome-ux-19a525ae05ae" target="_blank" rel="noopener">https://codeburst.io/13-tips-tricks-for-writing-shell-scripts-with-awesome-ux-19a525ae05ae</a></p>
 </blockquote>
@@ -427,7 +435,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#提供–help标记"><span class="toc-number">1.</span> <span class="toc-text">提供–help标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查所有命令的可用性"><span class="toc-number">2.</span> <span class="toc-text">检查所有命令的可用性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#独立于当前工作目录"><span class="toc-number">3.</span> <span class="toc-text">独立于当前工作目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何读取输入：环境变量-vs-标记"><span class="toc-number">4.</span> <span class="toc-text">如何读取输入：环境变量 vs. 标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打印对系统执行的所有操作"><span class="toc-number">5.</span> <span class="toc-text">打印对系统执行的所有操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在必要时提供–silent选项"><span class="toc-number">6.</span> <span class="toc-text">在必要时提供–silent选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重新开启显示"><span class="toc-number">7.</span> <span class="toc-text">重新开启显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用动画的方式显示进度"><span class="toc-number">8.</span> <span class="toc-text">用动画的方式显示进度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用颜色编码输出"><span class="toc-number">9.</span> <span class="toc-text">用颜色编码输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出现错误立即退出脚本"><span class="toc-number">10.</span> <span class="toc-text">出现错误立即退出脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自己执行清理工作"><span class="toc-number">11.</span> <span class="toc-text">自己执行清理工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在退出时使用不同的错误码"><span class="toc-number">12.</span> <span class="toc-text">在退出时使用不同的错误码</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">提供–help标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">检查所有命令的可用性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">独立于当前工作目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">如何读取输入：环境变量 vs. 标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">打印对系统执行的所有操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">在必要时提供–silent选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">重新开启显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">用动画的方式显示进度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">用颜色编码输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">出现错误立即退出脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">自己执行清理工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">12.</span> <span class="toc-text">在退出时使用不同的错误码</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">总结</span></a>
                     </li></div>
                 </span>
             </div>
@@ -477,7 +485,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -501,7 +509,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -629,11 +637,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,19 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,19 +685,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,15 +693,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,7 +733,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,7 +741,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,15 +761,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>

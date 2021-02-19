@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Thinking insights">
 <meta property="og:description" content="问题场景由于误操作，windows环境删除了minizlib模块，导致使用任何npm指令都报以下错误： 1234567E:\gitlabspace\dmax\front&amp;gt;npm inpm ERR! code MODULE_NOT_FOUNDnpm ERR! Cannot find module &amp;apos;minizlib&amp;apos;npm ERR! A complete log of th">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-11T03:02:43.864Z">
+<meta property="og:updated_time" content="2021-02-19T09:30:32.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NPM无法执行任何命令的解决方案（npm ERR! code MODULE_NOT_FOUND）">
 <meta name="twitter:description" content="问题场景由于误操作，windows环境删除了minizlib模块，导致使用任何npm指令都报以下错误： 1234567E:\gitlabspace\dmax\front&amp;gt;npm inpm ERR! code MODULE_NOT_FOUNDnpm ERR! Cannot find module &amp;apos;minizlib&amp;apos;npm ERR! A complete log of th">
@@ -61,20 +61,22 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/avatar.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Thinking insights</a></h1>
+		  <h1 class="header-author"><a href="/">Thinking insights——预见方能遇见</a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">预见方能遇见</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/categories/技术架构">技术架构</a></li>
 	        
-				<li><a href="/tags/knowage">Knowage专题</a></li>
+				<li><a href="/categories/数据治理">数据治理</a></li>
 	        
-				<li><a href="/archives">归档</a></li>
+				<li><a href="/categories/管理实践">管理实践</a></li>
+	        
+				<li><a href="/categories/大数据">大数据</a></li>
+	        
+				<li><a href="/tags/knowage">BI专题</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,12 +119,14 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/avatar.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Thinking insights</h1>
+			  <h1 class="header-author js-header-author">Thinking insights——预见方能遇见</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>预见方能遇见<i class="icon icon-quo-right"></i></p>
 			
 			
+				
+			
+				
 			
 				
 			
@@ -146,11 +150,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/categories/技术架构">技术架构</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/knowage">Knowage专题</a></li>
+					<li style="width: 20%"><a href="/categories/数据治理">数据治理</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories/管理实践">管理实践</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/大数据">大数据</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/knowage">BI专题</a></li>
 		        
 				</ul>
 			</nav>
@@ -194,20 +202,20 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h1><p>由于误操作，windows环境删除了minizlib模块，导致使用任何npm指令都报以下错误：</p>
+        <h1><span id="问题场景">问题场景</span></h1><p>由于误操作，windows环境删除了minizlib模块，导致使用任何npm指令都报以下错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">E:\gitlabspace\dmax\front&gt;npm i</span><br><span class="line">npm ERR! code MODULE_NOT_FOUND</span><br><span class="line">npm ERR! Cannot find module &apos;minizlib&apos;</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     F:\KavenRan\nodejs\node_cache\_logs\2019-01-14T04_00_15_811Z-debug.</span><br><span class="line">log</span><br></pre></td></tr></table></figure>
 <p>知道原因但是怎么恢复，找了半天也没找到办法，什么清空缓存都没用。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>要解决这个问题，只有重新安装npm，而npm是安装nodejs时自带安装的，所有重新下载安装包node-v10.15.0-x64.msi，使用Repair模式修复安装一次即可恢复。</p>
+<h1><span id="解决方案">解决方案</span></h1><p>要解决这个问题，只有重新安装npm，而npm是安装nodejs时自带安装的，所有重新下载安装包node-v10.15.0-x64.msi，使用Repair模式修复安装一次即可恢复。</p>
 <blockquote>
 <p>受这篇文章启发，感谢：<a href="https://www.cnblogs.com/xxcanghai/p/8205500.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxcanghai/p/8205500.html</a></p>
 </blockquote>
 <a id="more"></a>
-<h1 id="由于版本升级导致解决办法"><a href="#由于版本升级导致解决办法" class="headerlink" title="由于版本升级导致解决办法"></a>由于版本升级导致解决办法</h1><p>如果是由于npm升级导致的MODULE_NOT_FOUND，可参考以下解决办法。</p>
+<h1><span id="由于版本升级导致解决办法">由于版本升级导致解决办法</span></h1><p>如果是由于npm升级导致的MODULE_NOT_FOUND，可参考以下解决办法。</p>
 <p>首先降级node版本，降回当前npm可用的node版本，然后先升级npm，再升级node，即可。</p>
-<h3 id="1-降级node版本"><a href="#1-降级node版本" class="headerlink" title="1.降级node版本"></a>1.降级node版本</h3><p>sudo n 6.3</p>
-<h3 id="2-降级node后npm正常可用了，先升级npm版本"><a href="#2-降级node后npm正常可用了，先升级npm版本" class="headerlink" title="2.降级node后npm正常可用了，先升级npm版本"></a>2.降级node后npm正常可用了，先升级npm版本</h3><p>sudo npm install npm -g</p>
-<h3 id="3-再次升级node版本"><a href="#3-再次升级node版本" class="headerlink" title="3.再次升级node版本"></a>3.再次升级node版本</h3><p>sudo n 9.2</p>
-<h3 id="4-至此npm恢复正常"><a href="#4-至此npm恢复正常" class="headerlink" title="4.至此npm恢复正常"></a>4.至此npm恢复正常</h3>
+<h3><span id="1降级node版本">1.降级node版本</span></h3><p>sudo n 6.3</p>
+<h3><span id="2降级node后npm正常可用了先升级npm版本">2.降级node后npm正常可用了，先升级npm版本</span></h3><p>sudo npm install npm -g</p>
+<h3><span id="3再次升级node版本">3.再次升级node版本</span></h3><p>sudo n 9.2</p>
+<h3><span id="4至此npm恢复正常">4.至此npm恢复正常</span></h3>
       
 
       
@@ -258,6 +266,17 @@ var _hmt = _hmt || [];
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -359,7 +378,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题场景"><span class="toc-number">1.</span> <span class="toc-text">问题场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#由于版本升级导致解决办法"><span class="toc-number">3.</span> <span class="toc-text">由于版本升级导致解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-降级node版本"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.降级node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-降级node后npm正常可用了，先升级npm版本"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.降级node后npm正常可用了，先升级npm版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-再次升级node版本"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.再次升级node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-至此npm恢复正常"><span class="toc-number">3.0.4.</span> <span class="toc-text">4.至此npm恢复正常</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">问题场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">由于版本升级导致解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.降级node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.降级node后npm正常可用了，先升级npm版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.再次升级node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.0.4.</span> <span class="toc-text">4.至此npm恢复正常</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -409,7 +428,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Thinking insights
+    		&copy; 2021 Thinking insights——预见方能遇见
     		<span id="busuanzi_container_site_pv">
 			    本站总访问量<span id="busuanzi_value_site_pv"></span>次
 			</span>
@@ -433,7 +452,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -561,11 +580,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,19 +612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,19 +628,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,15 +636,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,7 +676,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,7 +684,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,15 +704,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keycloak</a>
               </li>
             
             <div class="clearfix"></div>
