@@ -170,6 +170,112 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rule-engine" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/11/rule-engine/">规则引擎核心知识与开源产品对比选型</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2021/03/11/rule-engine/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2021/03/11/rule-engine/" class="archive-article-date">
+  	<time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>规则引擎由推理引擎发展而来，是一种嵌入在应用程序中的组件，实现了将业务决策从应用程序代码中分离出来，并使用预定义的语义模块编写业务决策。接受数据输入，解释业务规则，并根据业务规则做出业务决策，一个好的规则引擎能大大提高系统的灵活性，扩展性。</p>
+<p>规则条件匹配的效率决定了引擎的性能，引擎需要迅速测试工作区中的数据对象，从加载的规则集中发现符合条件的规则，生成规则执行实例。</p>
+<h2 id="定义规则"><a href="#定义规则" class="headerlink" title="定义规则"></a>定义规则</h2><p>大多数业务规则可以由以下定义表示：</p>
+<ul>
+<li>名称：规则命名空间中的唯一规则名称</li>
+<li>说明：规则的简要说明</li>
+<li>优先级：相对于其他规则的规则优先级</li>
+<li>事实：去匹配规则时的一组已知事实</li>
+<li>条件：为了匹配该规则，在给定某些事实的情况下应满足的一组条件</li>
+<li>动作：当条件满足时要执行的一组动作（可以添加/删除/修改事实）</li>
+</ul>
+        
+          <a class="article-more-a" href="/2021/03/11/rule-engine/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">规则引擎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/11/rule-engine/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dgg2021" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1104,130 +1210,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-okr2" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/24/okr2/">深入浅出了解 OKR（下）</a>
-    </h1>
-  
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/06/24/okr2/" class="pageViews">0</span>
-  </a>
-
-
-
-        
-        <a href="/2020/06/24/okr2/" class="archive-article-date">
-  	<time datetime="2020-06-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- toc -->
-<ul>
-<li><a href="#深入浅出了解-okr六复盘是-okr-的强大引擎">深入浅出了解 OKR（六）：复盘是 OKR 的强大引擎</a><ul>
-<li><a href="#个人-okr-复盘中需要对季度的工作进行回顾">个人 OKR 复盘中，需要对季度的工作进行回顾：</a></li>
-<li><a href="#团队-okr-复盘中需要关注的点为">团队 OKR 复盘中，需要关注的点为：</a></li>
-<li><a href="#团队-okr-复盘会也是非常好的文化建设节点要关注的核心内容为">团队 OKR 复盘会也是非常好的文化建设节点，要关注的核心内容为：</a></li>
-<li><a href="#组织层级的-okr-复盘会关注点为组织-okr-的达成需要关注的核心内容为">组织层级的 OKR 复盘会关注点为组织 OKR 的达成，需要关注的核心内容为：</a></li>
-</ul>
-</li>
-<li><a href="#深入浅出了解-okr七okr-导入如何让组织和团队高效使用">深入浅出了解 OKR（七）：OKR 导入，如何让组织和团队高效使用</a><ul>
-<li><a href="#okr-的导入需要-2-个角色的人员参与">OKR 的导入需要 2 个角色的人员参与：</a></li>
-</ul>
-</li>
-<li><a href="#深入浅出了解-okr八okr-的催化剂持续性绩效管理-cfr">深入浅出了解 OKR（八）：OKR 的催化剂：持续性绩效管理 CFR</a><ul>
-<li><a href="#cfr-是持续性绩效管理continuous-performance-managementcpm的实现工具">CFR 是持续性绩效管理（Continuous Performance Management，CPM）的实现工具</a></li>
-<li><a href="#持续性绩效管理是指">持续性绩效管理是指：</a></li>
-<li><a href="#典型的-cfr-中的对话典型场景">典型的 CFR 中的对话典型场景</a></li>
-</ul>
-</li>
-<li><a href="#深入浅出了解-okr九okr-和-scrum-共舞">深入浅出了解 OKR（九）：OKR 和 Scrum 共舞</a><ul>
-<li><a href="#okr-和-scrum-融合的收益">OKR 和 Scrum 融合的收益</a></li>
-</ul>
-</li>
-<li><a href="#深入浅出了解-okr十okr-在敏捷转型中的实践">深入浅出了解 OKR（十）：OKR 在敏捷转型中的实践</a><ul>
-<li><a href="#未来组织">未来组织</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-        
-          <a class="article-more-a" href="/2020/06/24/okr2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目标管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/管理实践//" class="article-tag-list-link color5">管理实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/24/okr2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1402,18 +1384,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1422,15 +1392,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,7 +1420,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,6 +1432,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
               </li>
              
@@ -1462,23 +1448,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Dataset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1490,6 +1468,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目标管理</a>
               </li>
              
@@ -1498,11 +1480,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1519,6 +1501,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">规则引擎</a>
               </li>
              
               <li class="article-tag-list-item">
