@@ -170,6 +170,152 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-web-plugin-artch" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/15/web-plugin-artch/">基于Jenkins、Figma插件实现原理探究web系统插件化架构</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2021/06/15/web-plugin-artch/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2021/06/15/web-plugin-artch/" class="archive-article-date">
+  	<time datetime="2021-06-15T02:10:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>背景：对于大型web应用而言，功能极其丰富复杂，为了具备扩展性，部分项目选择插件化架构方式，开放一部分系统Hook给具备开发能力的用户，不但提升用户的体验感，还同时丰富平台功能，一举两得。如何构建具备插件化能力的平台？本文尝试通过分析jenkins jar包插件实现方式及Figma前端插件实现方式探究插件化架构方案。</p>
+</blockquote>
+<p>我们常见的支持插件化的应用是一些桌面端编辑器，如VSCode，Eclipse，Idea，Sublime等，也有支持动态扩展的web应用，如构建工具Jenkins，支持前端插件扩展的web应用，如设计工具Figma。不管哪种应用方式，基本的设计逻辑大致如下。</p>
+<p><img src="2021-06-15-web-plugin-artch/插件系统通用方案.png" alt=""></p>
+<img src="/2021/06/15/web-plugin-artch/插件系统通用方案.png">
+<p>我们当前主要研究的是web系统的插件化构架方案，本地插件化软件先不讨论。主要以jenkins和figma的两种实现方式进行探讨。</p>
+<h2><span id="jenkins插件化系统">Jenkins插件化系统</span></h2><p><img src="https://upload-images.jianshu.io/upload_images/12359666-2f908ccf0592962b.png?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp" alt="img"></p>
+<p>Jenkins可以支持git, svn, maven等很多功能，这些都是Jenkins的插件，Jenkins通过扩展点及前端视图模板来提供插件扩展能力，以jar包的方式上传到指定目录，创建类加载器 class-loader，使用插件策略PluginStrategy加载可以激活的插件。</p>
+<h5><span id="一扩展点">（一）扩展点</span></h5><p>Jenkins有很多的<strong>扩展点</strong>（<strong>ExtensitonPoint</strong>），它是Jenkins系统的某个方面的接口或抽象类。这些接口定义了需要实现的方法，而Jenkins插件需要实现这些方法，也可以叫做在此扩展点之上进行扩展Jenkins。有关扩展点的详细信息，请参阅<a href="https://link.jianshu.com?t=https://wiki.jenkins-ci.org/display/JENKINS/Extension+points" target="_blank" rel="noopener">Jenkins 官方ExtentionPoints文档</a>。通过这些扩展点我们可以写插件来实现自己的需求。<br> 下面是一些常用的扩展点：</p>
+<ul>
+<li><p><strong>Scm</strong> ：代表源码管理的一个步骤，如下面的Git，Subversion就是扩展的Scm</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2797589-2db61f3fd4fc74df?imageMogr2/auto-orient/strip|imageView2/2/w/887/format/webp" alt="img"></p>
+</li>
+<li><p><strong>Builder</strong> ： 代表构建的一个步骤，如下图中在构建过程中，我们可以增加一个构建步骤，而每一个选项都是对应一个Builder，在每一个Builder中都有自己不同的功能。如Execute shell，这就是一个ShellBuilder，意味着在构建过程中会执行一个shell命令</p>
+</li>
+</ul>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2797589-49c522f7119805e3?imageMogr2/auto-orient/strip|imageView2/2/w/707/format/webp" alt="img"></p>
+<ul>
+<li><p><strong>Trigger</strong>：代表一个构建的触发，当满足一个什么样的条件时触发这个项目开始构建。比较常用的触发就是当代码变更时触发，如果我们需要实现一些比较复杂的触发逻辑，就需要扩展Trigger这个扩展点<img src="https:////upload-images.jianshu.io/upload_images/2797589-5e4e7b27bd4b5f44?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img"></p>
+</li>
+<li><p><strong>Publisher</strong>：Publisher代表一个项目构建完成后需要执行的步骤，如选项中的E-Mail Notifaction就是一个Publisher插件，选择这个选项后，当项目构建完成，就会使用email来通知用户，假如想要在项目构建完成后将构建目标产物发送到服务器上，则可以扩展此扩展点。<img src="https://upload-images.jianshu.io/upload_images/2797589-6ec909ab8d51e1a8?imageMogr2/auto-orient/strip|imageView2/2/w/1193/format/webp" alt="img"></p>
+</li>
+</ul>
+<h5><span id="二jenkins中的视图">（二）Jenkins中的视图</span></h5><p>Jenkins 使用<strong>jelly</strong>来编写视图，Jelly 是一种基于 <code>Java</code> 技术和 <code>XML</code> 的脚本编制和处理引擎。Jelly 的特点是有许多基于 JSTL (JSP 标准标记库，JSP Standard Tag Library）、Ant、Velocity 及其它众多工具的可执行标记。Jelly 还支持 Jexl（Java 表达式语言，Java Expression Language），Jexl 是 JSTL 表达式语言的扩展版本。Jenkins的界面绘制就是通过Jelly实现的。</p>
+<blockquote>
+<p>另外一个开源的插件化后台管理系统：<a href="https://gitee.com/starblues/grape" target="_blank" rel="noopener">grape: 前后端可插件开发的后台管理系统 (gitee.com)</a></p>
+</blockquote>
+<h2><span id="figma前端插件系统">Figma前端插件系统</span></h2><p><a href="https://www.figma.com/?spm=a2c6h.12873639.0.0.742d60bbju5ASD" target="_blank" rel="noopener">Figma</a> 是一个在线协作式 UI 设计工具，具有插件扩展功能，只要有前端开发能力的用户均可开发自己的插件来扩展设计体验。</p>
+<p><img src="2021-06-15-web-plugin-artch/image-20210611163806313.png" alt=""></p>
+
+<p>Figma的插件是纯前端的插件方式，没有后端代码，它的插件系统是如何工作的？</p>
+<p>这是一个基于 TypeScript + React 技术栈，使用 Webpack 构建的 Figma <a href="https://github.com/figma/plugin-samples" target="_blank" rel="noopener">插件</a>目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── README.md</span><br><span class="line">├── figma.d.ts</span><br><span class="line">├── manifest.json</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   ├── code.ts</span><br><span class="line">│   ├── logo.svg</span><br><span class="line">│   ├── ui.css</span><br><span class="line">│   ├── ui.html</span><br><span class="line">│   └── ui.tsx</span><br><span class="line">├── tsconfig.json</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure>
+<p>在其 <code>manifest.json</code> 文件中包含了一些简单的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;  </span><br><span class="line">&quot;name&quot;: &quot;React Sample&quot;,  </span><br><span class="line">&quot;id&quot;: &quot;738168449509241862&quot;,  </span><br><span class="line">&quot;api&quot;: &quot;1.0.0&quot;,  </span><br><span class="line">&quot;main&quot;: &quot;dist/code.js&quot;,  </span><br><span class="line">&quot;ui&quot;: &quot;dist/ui.html&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出 Figma 将插件入口分为了 <code>main</code> 与 <code>ui</code> 两部分， main 中包含了插件实际运行时的逻辑，而 ui 则是一个插件的 HTML 片段。即 UI 与逻辑分离。 <code>main</code> 中的 js 文件被包裹在一个 iframe 里加载到页面上。而 <code>ui</code> 中的 HTML 最终也被包裹在一个 iframe 里渲染出来，这将有效的避免插件 UI 层 CSS 代码导致全局样式污染。</p>
+<p>ui展示是通过如下代码加载，会弹出个DIV，展示manifest.josn中指定的ui地址内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">figma.showUI(__html__);</span><br></pre></td></tr></table></figure>
+<p>在上一层使用 <code>window.addEventListener</code>进行监控，事件通信使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage" target="_blank" rel="noopener">parent.postMessage</a>，发送事件及数据。figma使用了两层iframe来嵌套装载插件内容。</p>
+<p>我画了架构图来描述，大致如下：<br><img src="2021-06-15-web-plugin-artch/Figma插件系统.png" alt=""></p>
+<img src="/2021/06/15/web-plugin-artch/Figma插件系统.png">
+<p>开发的插件可在本地app中进行调试，最终发布到服务器。</p>
+<p><img src="2021-06-15-web-plugin-artch/image-20210611171346786.png" alt=""></p>
+<img src="/2021/06/15/web-plugin-artch/image-20210611171346786.png">
+<p><img src="2021-06-15-web-plugin-artch/image-20210611171419422.png" alt=""></p>
+
+<h2><span id="总结">总结</span></h2><p>插件系统在设计时要考虑的基本内容，如何开放数据接口，如何加载插件，何时何地启动插件，插件如何与主程序通信问题，如何保证插件安全性？前端插件化使用iframe sandbox是一个通用可行的办法，但依然会有很多问题。</p>
+<h2><span id="参考文档">参考文档</span></h2><p><a href="https://www.figma.com/plugin-docs/how-plugins-run/" target="_blank" rel="noopener">How Plugins Run · Figma Developers</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/127358379" target="_blank" rel="noopener">Figma 插件开发 101</a></p>
+<p><a href="https://developer.aliyun.com/article/782744" target="_blank" rel="noopener">大型 Web 应用插件化架构探索</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank" rel="noopener">iframe参考</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage" target="_blank" rel="noopener">window.postMessage</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">插件化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/15/web-plugin-artch/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-newidea" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1108,109 +1254,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-elk-start-master-3" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/elk-start-master-3/">ELK从入门到精通（三）——Logstash传输到Elasticsearch</a>
-    </h1>
-  
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/08/07/elk-start-master-3/" class="pageViews">0</span>
-  </a>
-
-
-
-        
-        <a href="/2020/08/07/elk-start-master-3/" class="archive-article-date">
-  	<time datetime="2020-08-07T05:54:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Logstash作为Elastic stack的重要组成部分，其最常用的功能是将数据导入到Elasticssearch中。将Logstash中的数据导入到Elasticsearch中操作也非常的方便，只需要在pipeline配置文件中增加Elasticsearch的output即可。</p>
-<blockquote>
-<p>docker pull kibana:7.4.1 </p>
-</blockquote>
-<h2 id="安装Elasticsearch"><a href="#安装Elasticsearch" class="headerlink" title="安装Elasticsearch"></a>安装Elasticsearch</h2><p><code>docker pull elasticsearch:7.4.1</code></p>
-<blockquote>
-<p>第一节已创建内部网络：<code>docker network create elknetwork</code></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/08/07/elk-start-master-3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ELK</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/07/elk-start-master-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1385,22 +1428,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -1409,11 +1436,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1425,11 +1464,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Knowage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">superset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1449,15 +1500,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
+                <a href="javascript:void(0)" class="js-tag color5">培训总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
+                <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1465,11 +1512,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">培训总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1489,15 +1532,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据湖</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据仓库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,11 +1552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,6 +1565,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统思考</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">插件化</a>
               </li>
              
               <li class="article-tag-list-item">
