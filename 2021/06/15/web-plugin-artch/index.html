@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://ranying666.github.io/2021/06/15/web-plugin-artch/2021-06-15-web-plugin-artch/image-20210611171346786.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/06/15/web-plugin-artch/image-20210611171346786.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/06/15/web-plugin-artch/2021-06-15-web-plugin-artch/image-20210611171419422.png">
-<meta property="og:updated_time" content="2021-06-15T02:20:44.813Z">
+<meta property="og:updated_time" content="2021-06-15T02:33:38.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Jenkins、Figma插件实现原理探究web系统插件化架构">
 <meta name="twitter:description" content="背景：对于大型web应用而言，功能极其丰富复杂，为了具备扩展性，部分项目选择插件化架构方式，开放一部分系统Hook给具备开发能力的用户，不但提升用户的体验感，还同时丰富平台功能，一举两得。如何构建具备插件化能力的平台？本文尝试通过分析jenkins jar包插件实现方式及Figma前端插件实现方式探究插件化架构方案。  我们常见的支持插件化的应用是一些桌面端编辑器，如VSCode，Eclipse">
@@ -223,6 +223,7 @@ var _hmt = _hmt || [];
 <p><img src="2021-06-15-web-plugin-artch/插件系统通用方案.png" alt=""></p>
 <img src="/2021/06/15/web-plugin-artch/插件系统通用方案.png">
 <p>我们当前主要研究的是web系统的插件化构架方案，本地插件化软件先不讨论。主要以jenkins和figma的两种实现方式进行探讨。</p>
+<a id="more"></a>
 <h2><span id="jenkins插件化系统">Jenkins插件化系统</span></h2><p><img src="https://upload-images.jianshu.io/upload_images/12359666-2f908ccf0592962b.png?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp" alt="img"></p>
 <p>Jenkins可以支持git, svn, maven等很多功能，这些都是Jenkins的插件，Jenkins通过扩展点及前端视图模板来提供插件扩展能力，以jar包的方式上传到指定目录，创建类加载器 class-loader，使用插件策略PluginStrategy加载可以激活的插件。</p>
 <h5><span id="一扩展点">（一）扩展点</span></h5><p>Jenkins有很多的<strong>扩展点</strong>（<strong>ExtensitonPoint</strong>），它是Jenkins系统的某个方面的接口或抽象类。这些接口定义了需要实现的方法，而Jenkins插件需要实现这些方法，也可以叫做在此扩展点之上进行扩展Jenkins。有关扩展点的详细信息，请参阅<a href="https://link.jianshu.com?t=https://wiki.jenkins-ci.org/display/JENKINS/Extension+points" target="_blank" rel="noopener">Jenkins 官方ExtentionPoints文档</a>。通过这些扩展点我们可以写插件来实现自己的需求。<br> 下面是一些常用的扩展点：</p>
@@ -393,6 +394,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/06/15/thymeleaf/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          一文理清Thymeleaf前世今生
+        
+      </div>
+    </a>
   
   
     <a href="/2021/05/31/newidea/" id="article-nav-older" class="article-nav-link-wrap">
@@ -641,15 +651,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,15 +691,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bigdata</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,11 +715,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">培训总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
+                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,7 +723,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
+                <a href="javascript:void(0)" class="js-tag color5">培训总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,6 +747,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据湖</a>
               </li>
              
@@ -745,15 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">规则引擎</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">大数据</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">规则引擎</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,6 +780,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统思考</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模板引擎</a>
               </li>
              
               <li class="article-tag-list-item">

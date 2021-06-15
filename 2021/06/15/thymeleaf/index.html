@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ranying666.github.io">
-  <title>Tag: 培训总结 | Thinking insights</title>
+  <title>一文理清Thymeleaf前世今生 | Thinking insights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Thinking insights">
-<meta property="og:url" content="https://ranying666.github.io/tags/培训总结/index.html">
+  <meta name="description" content="什么是Thymeleaf  Thymeleaf 官网是这么解释的：Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 译过来就是：Thymeleaf是适用于Web和独立环境的现代服务器端Java模板引擎  常见的其它模板引擎非前后端分离模板引擎： Thyme">
+<meta name="keywords" content="模板引擎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文理清Thymeleaf前世今生">
+<meta property="og:url" content="https://ranying666.github.io/2021/06/15/thymeleaf/index.html">
 <meta property="og:site_name" content="Thinking insights">
+<meta property="og:description" content="什么是Thymeleaf  Thymeleaf 官网是这么解释的：Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 译过来就是：Thymeleaf是适用于Web和独立环境的现代服务器端Java模板引擎  常见的其它模板引擎非前后端分离模板引擎： Thyme">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200628213900701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNjkzMTcx,size_1,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200710110514492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNjkzMTcx,size_1,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2021-06-15T03:41:54.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking insights">
+<meta name="twitter:title" content="一文理清Thymeleaf前世今生">
+<meta name="twitter:description" content="什么是Thymeleaf  Thymeleaf 官网是这么解释的：Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 译过来就是：Thymeleaf是适用于Web和独立环境的现代服务器端Java模板引擎  常见的其它模板引擎非前后端分离模板引擎： Thyme">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200628213900701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNjkzMTcx,size_1,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Thinking insights" type="application/atom+xml">
   
@@ -168,31 +176,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-thymeleaf" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/covid-19-economic/" class="archive-article-date">
-  	<time datetime="2020-04-24T07:35:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/covid-19-economic/">《从新冠肺炎疫情冲击看全球与中国经济发前景》学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      一文理清Thymeleaf前世今生
     </h1>
   
 
@@ -200,41 +191,288 @@ var _hmt = _hmt || [];
 
 
   <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/04/24/covid-19-economic/" class="pageViews">0</span>
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2021/06/15/thymeleaf/" class="pageViews">0</span>
   </a>
 
 
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/06/15/thymeleaf/" class="archive-article-date">
+  	<time datetime="2021-06-15T02:27:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2><span id="什么是thymeleaf">什么是Thymeleaf</span></h2><p><img src="https://img-blog.csdnimg.cn/20200628213900701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNjkzMTcx,size_1,color_FFFFFF,t_70" alt=""></p>
+<ul>
+<li>Thymeleaf 官网是这么解释的：Thymeleaf is a modern server-side Java template engine for both web and standalone environments.</li>
+<li>译过来就是：Thymeleaf是适用于Web和独立环境的现代服务器端<code>Java模板引擎</code></li>
+</ul>
+<h2><span id="常见的其它模板引擎">常见的其它模板引擎</span></h2><p>非前后端分离模板引擎： Thymeleaf 、Velocity、Freemarker</p>
+<p>前后端分离基本上是vue、react的天下。</p>
+<a id="more"></a>
+<h2><span id="thymeleaf有什么特点">Thymeleaf有什么特点</span></h2><ul>
+<li><strong>动静分离：</strong> Thymeleaf选用html作为模板页，这是任何一款其他模板引擎做不到的！Thymeleaf使用html通过一些特定标签语法代表其含义，但并未破坏html结构，即使无网络、不通过后端渲染也能在浏览器成功打开，大大方便界面的测试和修改。</li>
+<li><strong>开箱即用：</strong> Thymeleaf提供标准和Spring标准两种方言，可以直接套用模板实现JSTL、 OGNL表达式效果，避免每天套模板、改JSTL、改标签的困扰。同时开发人员也可以扩展和创建自定义的方言。</li>
+<li><strong>Springboot官方推荐</strong>: Springboot官方做了很多默认配置，开发者只需编写对应html即可，大大减轻了上手难度和配置复杂度。</li>
+<li><strong>性能提升</strong>： 此外，Thymelaf3.0在方言、独立于Java Servlet API、重构核心API、片段表达等方面有着巨大提升和改善，具体可以参看<a href="https://www.thymeleaf.org/doc/articles/thymeleaf3migration.html" target="_blank" rel="noopener">Thymeleaf3十分钟参考指南</a>。</li>
+</ul>
+<h2><span id="什么是动静分离">什么是动静分离</span></h2><p>看一个图就明白了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200710110514492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNjkzMTcx,size_1,color_FFFFFF,t_70" alt=""></p>
+<h2><span id="表达式语法">表达式语法</span></h2><p>它还带有一些称为标准方言(称为<em>Standard</em>和<em>SpringStandard</em>)的东西，它们定义了一组功能，这些功能应该足以满足大多数情况。可以识别这些标准方言在模板中的使用，因为它将包含以<code>th</code>前缀开头的属性，如<code>&lt;span th:text=&quot;...&quot;&gt;</code>。</p>
+<p>请注意，<em>Standard</em>和<em>SpringStandard</em>方言几乎完全相同，只是<em>SpringStandard</em>包含了集成到Spring MVC应用程序中的特定功能(例如，使用Spring表达式语言进行表达式评估而不是OGNL)。</p>
+<p>大多数Thymeleaf属性允许将它们的值设置为或包含表达式，由于它们使用的方言，我们将其称为标准表达式。这些表达式可以有五种类型:</p>
+<ul>
+<li><code>${...}</code> : 变量表达式。</li>
+<li><code>*{...}</code> : 选择表达式。</li>
+<li><code>#{...}</code> : 消息 (i18n) 表达式。</li>
+<li><code>@{...}</code> : 链接 (URL) 表达式。</li>
+<li><code>~{...}</code> : 片段表达式。</li>
+</ul>
+<p>更多语法参考：<a href="https://www.yiibai.com/thymeleaf/standard-dialects.html" target="_blank" rel="noopener">Thymeleaf标准方言 - Thymeleaf教程™ (yiibai.com)</a></p>
+<h2><span id="thymeleaf-模板原理">Thymeleaf 模板原理</span></h2><p>模板的诞生是为了将显示与数据分离，模板技术多种多样，但其本质是将模板文件和数据通过模板引擎生成最终的 HTML 代码。Thymeleaf 亦是如此。</p>
+<ol>
+<li>没有模板</li>
+</ol>
+<p>  没有模板前，我们可以直接用后端语言输出HTML前端，并让浏览器渲染。</p>
+<ol>
+<li>有了模板</li>
+</ol>
+<p>  在有了模板后，后端语言只要输出数据（例如 XML 格式、JSON 格式），把数据交给模板引擎，模板引擎根据模板文件和数据进行渲染成HTML文档。</p>
+<p>所谓模板引擎，需要把模板文件、数据解析到前端HTML文档流展示给用户看。</p>
+<p>  目前 Thymeleaf 是面向 Web 和独立环境的现代服务器端 Java 模板引擎，能够处理 HTML，XML，JavaScript，CSS 设置纯文本。</p>
+<h3><span id="thymeleaf-工作流程">Thymeleaf 工作流程</span></h3><p>我们需要提出几个问题</p>
+<ol>
+<li><strong>当在控制层输出对象，这些对象是怎么被引擎识别</strong></li>
+</ol>
+<p>  在 Controller 层我们输出了对象 user 和 users 两个对象。这两个对象则被模板引擎托管。</p>
+<ol start="2">
+<li><strong>引擎加载模版文件的时候，如何识别需要替换的值</strong></li>
+</ol>
+<p>  模板引擎根据 Controller 中的模板路径 /demo/simple 找到相应的模板文件，模板文件中使用正则表达式查找模板标签语言，Thymeleaf 模板引擎采用 th: 开头。例如 th:value, th:text 。</p>
+<ol start="3">
+<li><strong>最后引擎是如何吧控制层对象转化成 html 等前段语言输出的</strong></li>
+</ol>
+<p>  模板引擎找到了模板文件中的模板表达式，模板引擎根据模板表达式中的内容来执行模板处理器，算法把 Controller 输出的对象匹配到模板表达式中。</p>
+<p>​      <a href="https://blog.csdn.net/whatlookingfor/article/details/78437783" target="_blank" rel="noopener">thymeleaf方言和处理器简介</a></p>
+<h2><span id="知识对比追踪">知识对比追踪</span></h2><ul>
+<li><p>JSTL——JSP Standard Tag Library</p>
+<p>JSP标准标签库，是一个不断完善的开放源代码的JSP标签库，是由apache的jakarta小组来维护的。JSTL1.0 由四个定制标记库(core、format、xml 和 sql)和一对通用标记库验证器组成。出现在Struts、SpringMVC的框架中比较多，现在由于去JSP化、前后端分离架构基本已经被淘汰了。</p>
+</li>
+<li><p>EL——Expressiong Language</p>
+<p>与JSP的容器上下文结合，获取相应容器范围内的变量内容，EL表达式的格式：用美元符号（$）定界,内容包括在花括号（{}）中;<br>例如: ${loginInfoBean.suser}</p>
+</li>
+<li><p>OGNL——Object Graph Notation Language</p>
+<p>对象图导航语言。是一种可以方便地操作对象属性的开源表达式语言。Struts2中默认支持OGNL。OGNL有如下特点：</p>
+<ul>
+<li>1、支持对象方法调用，形式如：objName.methodName()；   </li>
+<li>2、支持类静态的方法调用和值访问，表达式的格式为@[类全名（包括包路）]@[方法名 |  值名]，例如：   @java.lang.String@format(‘foo %s’, ‘bar’)或@tutorial.MyConstant@APP_NAME；   </li>
+<li>3、支持赋值操作和表达式串联，例如：   price=100, discount=0.8, calculatePrice()，这个表达式会返回80；   </li>
+<li>4、访问OGNL上下文（OGNL context）和ActionContext；   </li>
+<li>5、操作集合对象。  </li>
+</ul>
+</li>
+<li><p>标准方言</p>
+<p>Thymeleaf称为Standard和SpringStandard的东西，它们定义了一组功能，这些功能应该足以满足大多数情况。可以识别这些标准方言在模板中的使用，因为它将包含以 th前缀开头的属性，如 。Standard和SpringStandard方言几乎完全相同，只是SpringStandard包含了集成到Spring MVC应用程序中的特定功能。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>赠人玫瑰手留余香<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">培训总结</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">金融经济</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模板引擎</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!--<img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2021/06/15/thymeleaf/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/06/15/web-plugin-artch/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于Jenkins、Figma插件实现原理探究web系统插件化架构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">什么是Thymeleaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">常见的其它模板引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Thymeleaf有什么特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">什么是动静分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">表达式语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Thymeleaf 模板原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.1.</span> <span class="toc-text">Thymeleaf 工作流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">知识对比追踪</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--  <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css"> -->
+<!-- <script src="https://billts.site/js/gitment.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+
+<script>
+var gitment = new Gitment({
+  id: "Tue Jun 15 2021 10:27:44 GMT+0800",
+  owner: 'ranying666',
+  repo: 'ranying666.github.io',
+  oauth: {
+    client_id: '7a9fb30922910af299a8',
+    client_secret: 'b50b74b1d89f3628ec586690e7a2048260233354',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+
+  
 
 
           </div>
@@ -260,9 +498,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
