@@ -19,11 +19,12 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/5/8/171f3c48e142a180?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/2021-07-21-microapp-qiankun/image-20210721182215280.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/image-20210721182215280.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-6103d45fca21ccf964d1b90878d64eea_1440w.jpg">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/2021-07-21-microapp-qiankun/image-20210721182803786.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/image-20210721182803786.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/2021-07-21-microapp-qiankun/image-20210721181739102.png">
 <meta property="og:image" content="https://ranying666.github.io/2021/07/21/microapp-qiankun/image-20210721181739102.png">
-<meta property="og:updated_time" content="2021-07-21T10:40:43.017Z">
+<meta property="og:updated_time" content="2021-07-22T01:36:14.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qiankun微前端应用关键技术实践">
 <meta name="twitter:description" content="微前端是什么  什么是微前端   Techniques, strategies and recipes for building a modern web app with multiple teams that can ship features independently. – Micro Frontends 微前端是一种多个团队通过独立发布功能的方式来共同构建现代化 web 应用的技术手段及">
@@ -291,6 +292,13 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>由于子应用加载后是以DIV的形式存在的，所以会有样式冲突的问题，但我们的现实需求肯定是希望相互独立互不影响的。其中的 <code>class=qiankun</code>现在就会被后面的覆盖。</p>
 <p>在qiankun2.0中实现了shadow DOM样式隔离，添加设置：<code>sandbox: { strictStyleIsolation?: boolean }</code>。在开启 <code>strictStyleIsolation</code> 时，我们会将微应用插入到 qiankun 创建好的 Shadow Tree 中，微应用的样式（包括动态插入的样式）都会被挂载到这个 Shadow Host 节点下，因此微应用的样式只会作用在 Shadow Tree 内部，这样就做到了样式隔离。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-6103d45fca21ccf964d1b90878d64eea_1440w.jpg" alt=""></p>
+<blockquote>
+<p>但是开启 Shadow DOM 也会引发一些别的问题：</p>
+<p>一个典型的问题是，一些组件可能会越过 Shadow Boundary 到外部 Document Tree 插入节点，而这部分节点的样式就会丢失；比如 antd 的 <code>Modal</code> 就会渲染节点至 <code>ducument.body</code> ，引发样式丢失；针对刚才的 antd 场景你可以通过他们提供的 <code>ConfigProvider.getPopupContainer</code> API 来指定在 Shadow Tree 内部的节点为挂载节点，但另外一些其他的组件库，或者你的一些代码也会遇到同样的问题，需要你额外留心。</p>
+<p>此外 Shadow DOM 场景下还会有一些额外的事件处理、边界处理等问题，后续我们会逐步更新官方文档指导用户更顺利的开启 Shadow DOM。</p>
+<p>所以请根据实际情况来选择是否开启基于 shadow DOM 的样式隔离，并做好相应的检查和处理。</p>
+</blockquote>
 <p>修改main.js</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 开启服务</span><br><span class="line">start(&#123;</span><br><span class="line">    sandbox: &#123; //开启 Shadow DOM 沙箱，做到真正隔离</span><br><span class="line">        strictStyleIsolation: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p><img src="./2021-07-21-microapp-qiankun/image-20210721182803786.png" alt=""></p>
@@ -313,8 +321,8 @@ var _hmt = _hmt || [];
 <p>实现了主应用与子应用相互发送消息的效果，无论是主应用还是子应用改变state值都会同步到监听的所有组件中。</p>
 <p><img src="./2021-07-21-microapp-qiankun/image-20210721181739102.png" alt=""></p>
 <img src="/2021/07/21/microapp-qiankun/image-20210721181739102.png">
-<h2><span id="参考">参考</span></h2><p>源代码下载：<a href="https://github.com/ranying666/microapps-qiankun" target="_blank" rel="noopener">https://github.com/ranying666/microapps-qiankun</a></p>
-<p><a href="https://qiankun.umijs.org/zh" target="_blank" rel="noopener">https://qiankun.umijs.org/zh</a></p>
+<h2><span id="参考">参考</span></h2><p>本文源代码下载：<a href="https://github.com/ranying666/microapps-qiankun" target="_blank" rel="noopener">https://github.com/ranying666/microapps-qiankun</a></p>
+<p>官网API：<a href="https://qiankun.umijs.org/zh" target="_blank" rel="noopener">https://qiankun.umijs.org/zh</a></p>
 
       
 
@@ -671,7 +679,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,11 +695,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,7 +703,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knowage</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,7 +715,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">knowage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,11 +731,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">data-analysis</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,11 +747,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,15 +779,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DDD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
+                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,7 +795,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">规则引擎</a>
+                <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,7 +803,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+                <a href="javascript:void(0)" class="js-tag color5">规则引擎</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,11 +811,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创新创业</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统思考</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">创新创业</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,11 +831,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">教练技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">教练技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
