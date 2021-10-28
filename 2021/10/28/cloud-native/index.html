@@ -6,25 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ranying666.github.io">
-  <title>基于RabbitMQ实现异步消息通知处理 | Thinking insights</title>
+  <title>云原生构架关键技术解构 | Thinking insights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="业务场景一个简单的业务场景如：某web页面存在多个相互关联的异步获取数据展示的区域，如何优雅的实现一个区域的数据更新时异步通知其它区域进行数据刷新？ 图1 业务场景   当列表数据操作状态变更时，让上面统计区域自动更新。常见实现方式是，在“操作”方法中调用“刷新统计数据”的方法，但这种方式不可取，原因是当业务逻辑复杂时这将变得难以维护（十有八九会出Bug)。 解决的思路当“操作”状态变更后发送一个">
-<meta name="keywords" content="RabbitMQ">
+  <meta name="description" content="云原生（Cloud Native）起源与发展 云原生的概念最早开始于 2010 年，在当时 Paul Fremantle 的一篇博客中被提及，他一直想用一个词表达一种架构，这种架构能描述应用程序和中间件在云环境中的良好运行状态。  2013 年 Matt Stine 在推特上迅速推广云原生概念，并在 2015 年《迁移到云原生架构》一书中定义了符合云原生架构的特征：12 因素、微服务、自服务、基于">
+<meta name="keywords" content="云原生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于RabbitMQ实现异步消息通知处理">
-<meta property="og:url" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/index.html">
+<meta property="og:title" content="云原生构架关键技术解构">
+<meta property="og:url" content="https://ranying666.github.io/2021/10/28/cloud-native/index.html">
 <meta property="og:site_name" content="Thinking insights">
-<meta property="og:description" content="业务场景一个简单的业务场景如：某web页面存在多个相互关联的异步获取数据展示的区域，如何优雅的实现一个区域的数据更新时异步通知其它区域进行数据刷新？ 图1 业务场景   当列表数据操作状态变更时，让上面统计区域自动更新。常见实现方式是，在“操作”方法中调用“刷新统计数据”的方法，但这种方式不可取，原因是当业务逻辑复杂时这将变得难以维护（十有八九会出Bug)。 解决的思路当“操作”状态变更后发送一个">
+<meta property="og:description" content="云原生（Cloud Native）起源与发展 云原生的概念最早开始于 2010 年，在当时 Paul Fremantle 的一篇博客中被提及，他一直想用一个词表达一种架构，这种架构能描述应用程序和中间件在云环境中的良好运行状态。  2013 年 Matt Stine 在推特上迅速推广云原生概念，并在 2015 年《迁移到云原生架构》一书中定义了符合云原生架构的特征：12 因素、微服务、自服务、基于">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/1597a9669d46c083796399bfc9fbe7f0.png">
-<meta property="og:image" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/56d91fb49e6f99a33a7a147e22529cd2.png">
-<meta property="og:image" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/2b12ae59027ede44e63a8ceabd9e08d7.png">
-<meta property="og:image" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/b9e0510549a7554f829c98f8f90ba07f.gif">
-<meta property="og:updated_time" content="2021-02-19T09:28:38.236Z">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/a11907b4e102431181367a756d629782.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/1072498d19a84d87b59214fa54da2557.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/d96d01526836464c8b2d24c0a78ab8fb.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/fbf168ce2369450fba01c33d9553aa29.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/76dc1c1c74d34b50bdef159fec0ca337.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/891f0a70427f41318c278714160c8074.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/12767c8510ab4d50a465a7a6b9837d35.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/8928e11e89b04406939c874c2deb26d5.png">
+<meta property="og:image" content="https://ucc.alicdn.com/pic/developer-ecology/b0fb8436826142b8ade285b42d9a884d.png">
+<meta property="og:updated_time" content="2021-10-28T03:36:31.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于RabbitMQ实现异步消息通知处理">
-<meta name="twitter:description" content="业务场景一个简单的业务场景如：某web页面存在多个相互关联的异步获取数据展示的区域，如何优雅的实现一个区域的数据更新时异步通知其它区域进行数据刷新？ 图1 业务场景   当列表数据操作状态变更时，让上面统计区域自动更新。常见实现方式是，在“操作”方法中调用“刷新统计数据”的方法，但这种方式不可取，原因是当业务逻辑复杂时这将变得难以维护（十有八九会出Bug)。 解决的思路当“操作”状态变更后发送一个">
-<meta name="twitter:image" content="https://ranying666.github.io/2017/12/12/rabbitmq-stomp/1597a9669d46c083796399bfc9fbe7f0.png">
+<meta name="twitter:title" content="云原生构架关键技术解构">
+<meta name="twitter:description" content="云原生（Cloud Native）起源与发展 云原生的概念最早开始于 2010 年，在当时 Paul Fremantle 的一篇博客中被提及，他一直想用一个词表达一种架构，这种架构能描述应用程序和中间件在云环境中的良好运行状态。  2013 年 Matt Stine 在推特上迅速推广云原生概念，并在 2015 年《迁移到云原生架构》一书中定义了符合云原生架构的特征：12 因素、微服务、自服务、基于">
+<meta name="twitter:image" content="https://ucc.alicdn.com/pic/developer-ecology/a11907b4e102431181367a756d629782.png">
   
     <link rel="alternative" href="/atom.xml" title="Thinking insights" type="application/atom+xml">
   
@@ -190,14 +195,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-rabbitmq-stomp" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-cloud-native" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基于RabbitMQ实现异步消息通知处理
+      云原生构架关键技术解构
     </h1>
   
 
@@ -205,50 +210,323 @@ var _hmt = _hmt || [];
 
 
   <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/12/12/rabbitmq-stomp/" class="pageViews">0</span>
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2021/10/28/cloud-native/" class="pageViews">0</span>
   </a>
 
 
 
         
-        <a href="/2017/12/12/rabbitmq-stomp/" class="archive-article-date">
-  	<time datetime="2017-12-12T05:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
+        <a href="/2021/10/28/cloud-native/" class="archive-article-date">
+  	<time datetime="2021-10-28T02:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1><span id="业务场景">业务场景</span></h1><p>一个简单的业务场景如：某web页面存在多个相互关联的异步获取数据展示的区域，如何优雅的实现一个区域的数据更新时异步通知其它区域进行数据刷新？<br><img src="/2017/12/12/rabbitmq-stomp/1597a9669d46c083796399bfc9fbe7f0.png"></p>
-<p>图1 业务场景  </p>
-<p>当列表数据操作状态变更时，让上面统计区域自动更新。<br>常见实现方式是，在“操作”方法中调用“刷新统计数据”的方法，但这种方式不可取，原因是当业务逻辑复杂时这将变得难以维护（十有八九会出Bug)。</p>
-<h1><span id="解决的思路">解决的思路</span></h1><p>当“操作”状态变更后发送一个通知（生产者），由关心这个操作的业务（消息者）订阅消息并处理。实现业务解藕，适合分布式部署。</p>
+        <h2><span id="云原生cloud-native起源与发展">云原生（Cloud Native）起源与发展</span></h2><ul>
+<li><p>云原生的概念最早开始于 2010 年，<a href="http://pzf.fremantle.org/2010/05/cloud-native.html" target="_blank" rel="noopener">在当时 Paul Fremantle 的一篇博客中被提及</a>，他一直想用一个词表达一种架构，这种架构能描述应用程序和中间件在云环境中的良好运行状态。</p>
+</li>
+<li><p><a href="https://dzone.com/articles/cloud-native-devops-your-world-to-new-possibilitie" target="_blank" rel="noopener">2013 年 Matt Stine 在推特上迅速推广云原生概念</a>，并<a href="https://www.oreilly.com/library/view/migrating-to-cloud-native/9781492047605/" target="_blank" rel="noopener">在 2015 年《迁移到云原生架构》</a>一书中定义了符合云原生架构的特征：<strong>12 因素、微服务、自服务、基于 API 协作、扛脆弱性</strong>。</p>
+</li>
+<li><p>2015 年由 Linux 基金会发起了一个 <a href="https://www.cncf.io/" target="_blank" rel="noopener">The Cloud Native Computing Foundation（CNCF） 基金组织</a>，CNCF基金会的成立标志着云原生正式进入高速发展轨道</p>
+</li>
+<li><p>到了 2017 年, 云原生应用提出者之一的 <a href="https://pivotal.io/cloud-native" target="_blank" rel="noopener">Pivotal 在其官网</a>上将云原生的定义概括为 DevOps、持续交付、微服务、容器四大特征，这也成了很多人对 Cloud Native 的基础印象。</p>
+</li>
+<li><p>而到 2018 年，随着 Service Mesh 的加入。</p>
+</li>
+</ul>
+<p><strong>解读：概念随着新的技术发展而演化</strong></p>
+<ul>
+<li>第一阶段：容器化封装+自动化管理+面向微服务</li>
+<li>第二阶段：DevOps、持续交付、微服务、容器</li>
+<li>第三阶段：DevOps、持续交付、容器、服务网格、微服务、声明式API  </li>
+</ul>
 <a id="more"></a>
-<h1><span id="异步消息通知方式">异步消息通知方式</span></h1><ol>
-<li>Ajax 短轮询<br>Ajax 轮询主要通过页面端的JS定时异步刷新任务来实现数据的加载，但这种方式实时效果较差，而且对服务端的压力也较大。</li>
-<li>长轮询<br>长轮询主要也是通过 Ajax机制，但区别于传统的Ajax应用，长轮询的服务器端会在没有数据时阻塞请求直到有新的数据产生或者请求超时才返回，之后客户端再重新建立连接获取数据。这种会长时间地占用资源，如果消息频繁发送的话会给服务端带来较大的压力。3. WebSocket 双向通信</li>
-<li>WebSocket 是 HTML5 中一种新的通信协议，能够实现浏览器与服务器之间全双工通信。如果浏览器和服务端都支持WebSocket协议的话，该方式实现的消息推送无疑是最高效、简洁的。并且最新版本的 IE、Firefox、Chrome等浏览器都已经支持 WebSocket 协议，Apache Tomcat 7.0.27 以后的版本也开始支持 WebSocket。</li>
-</ol>
-<h1><span id="stomp">STOMP</span></h1><p> 即Simple (or Streaming) Text Orientated Messaging Protocol，简单(流)文本定向消息协议，它提供了一个可互操作的连接格式，允许STOMP客户端与任意STOMP消息代理（Broker）进行交互。STOMP协议由于设计简单，易于开发客户端，因此在多种语言和多种平台上得到广泛地应用。许多公司都提供了基于STOMP的服务器与客户端，如RabbitMQ服务端，基于浏览器的stomp.js客户端等。</p>
-<h1><span id="rabbitmq">RabbitMQ</span></h1><p>AMQP，即 Advanced Message Queuing Protocol，高级消息队列协议是应用层协议的一个开放标准，为面向消息的中间件设计。消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。AMQP的主要特征是面向消息、队列和路由，可靠且安全。RabbitMQ 是一个开源的 AMQP实现，服务器端用Erlang语言编写，支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP 等，支持 Ajax。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。<br> <img src="/2017/12/12/rabbitmq-stomp/56d91fb49e6f99a33a7a147e22529cd2.png"></p>
-<h1><span id="rabbitmq-web-stomp">RabbitMQ Web STOMP</span></h1><p>该插件可以理解为 HTML5 WebSocket 与 STOMP 协议间的桥接，目的也是为了让浏览器能够使用 RabbitMQ。当 RabbitMQ 消息服务器开启了 STOMP 和 Web STOMP 插件后，浏览器端就可以轻松地使用 WebSocket 或者 SockerJS 客户端实现与 RabbitMQ 服务器进行通信。<br>RabbitMQ Web STOMP 是对 STOMP 协议的桥接，因此其语法也完全遵循 STOMP 协议。STOMP 是基于 frame 的协议，与 HTTP 的 frame 相似。一个 Frame 包含一个 command，一系列可选的 headers 和一个 body。STOMP client 的用户代理可以充当两个角色，当然也可能同时充当：作为生产者，通过 SEND frame 发送消息到服务器；作为消费者，发送 SUBCRIBE frame 到目的地并且通过 MESSAGE frame 从服务器获取消息。<br>在Web页面中利用WebSocket使用STOMP协议只需要下载stomp.js即可，考虑到老版本的浏览器不支持 WebSocket，SockJS 则提供了 WebSocket 的模拟支持。<br>    <img src="/2017/12/12/rabbitmq-stomp/2b12ae59027ede44e63a8ceabd9e08d7.png"></p>
-<h1><span id="rabbitmq安装">RabbitMQ安装</span></h1><blockquote>
-<p>见：RabbitMQ在CentOS7安装</p>
-</blockquote>
-<h1><span id="解决问题">解决问题</span></h1><h2><span id="引入js插件">引入js插件</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"jquery/jquery-1.9.1.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"rabbitmq/sockjs-0.3.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"rabbitmq/stomp.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"bootstrap/css/bootstrap.min.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"bootstrap/js/bootstrap.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2><span id="测试页面html">测试页面html</span></h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding: 50px 100px"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line">			待出票 <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"badge"</span> <span class="attr">id</span>=<span class="string">"notout"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-warning"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line">			已出票<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"badge"</span> <span class="attr">id</span>=<span class="string">"out"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line">			已退票 <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"badge"</span> <span class="attr">id</span>=<span class="string">"break"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line">			已取消 <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"badge"</span> <span class="attr">id</span>=<span class="string">"cancel"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">th</span>&gt;</span>产品<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">th</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">th</span>&gt;</span>状态<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>PEK-CKG<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>23/11/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>待出票<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>出票<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>CAN-CKG<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>20/10/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>待出票<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>出票<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>CAN-CKG<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>20/10/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>待出票<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>出票<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>CUT-PEK<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>10/11/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>已出票<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-warning exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>退票<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>PEK-CKG<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>23/11/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>待支付<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>PEK-CKG<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>23/11/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>待支付<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary exStatus"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>SHA-PEK<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span>20/10/2017<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"status"</span>&gt;</span>已退票<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">			<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2><span id="页面事件绑定和数据初始化">页面事件绑定和数据初始化</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		<span class="keyword">var</span> countNotout=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">			<span class="comment">//真实业务可能是ajax向后台请求数据</span></span><br><span class="line">			$(<span class="string">'#notout'</span>).html($(<span class="string">"td:contains('待出票')"</span>).length);</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> countOut=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">			<span class="comment">//真实业务可能是ajax向后台请求数据</span></span><br><span class="line">			$(<span class="string">'#out'</span>).html($(<span class="string">"td:contains('已出票')"</span>).length);</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> countBreak=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">			<span class="comment">//真实业务可能是ajax向后台请求数据</span></span><br><span class="line">			$(<span class="string">'#break'</span>).html($(<span class="string">"td:contains('已退票')"</span>).length);</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> countCancel = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">			<span class="comment">//真实业务可能是ajax向后台请求数据</span></span><br><span class="line">			$(<span class="string">'#cancel'</span>).html($(<span class="string">"td:contains('已取消')"</span>).length);</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			countNotout();</span><br><span class="line">			countOut();</span><br><span class="line">			countBreak();</span><br><span class="line">			countCancel();</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//事件绑定</span></span><br><span class="line">		$(<span class="string">".exStatus"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">'出票'</span> === $(<span class="keyword">this</span>).html()) &#123;</span><br><span class="line">				$(<span class="keyword">this</span>).removeClass().addClass(<span class="string">'btn btn-warning exStatus'</span>);</span><br><span class="line">				$(<span class="keyword">this</span>).parents(<span class="string">'tr'</span>).find(<span class="string">".status"</span>).html(<span class="string">'已出票'</span>);</span><br><span class="line">				$(<span class="keyword">this</span>).html(<span class="string">'退票'</span>);</span><br><span class="line">				<span class="comment">//发送通知</span></span><br><span class="line">				sendMQ(<span class="string">"doOut"</span>);</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="string">'退票'</span> === $(<span class="keyword">this</span>).html()) &#123;</span><br><span class="line">				$(<span class="keyword">this</span>).parents(<span class="string">'tr'</span>).find(<span class="string">".status"</span>).html(<span class="string">'已退票'</span>);</span><br><span class="line">				$(<span class="keyword">this</span>).remove();</span><br><span class="line">				<span class="comment">//发送通知</span></span><br><span class="line">				sendMQ(<span class="string">"doBreak"</span>);</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="string">'取消'</span> === $(<span class="keyword">this</span>).html()) &#123;</span><br><span class="line">				$(<span class="keyword">this</span>).parents(<span class="string">'tr'</span>).find(<span class="string">".status"</span>).html(<span class="string">'已取消'</span>);</span><br><span class="line">				$(<span class="keyword">this</span>).remove();</span><br><span class="line">				<span class="comment">//发送通知</span></span><br><span class="line">				sendKeyMQ(<span class="string">"doCancel"</span>);</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">	&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h2><span id="连接到rabbitmq服务器订阅消息通知">连接到RabbitMQ服务器，订阅消息通知</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="comment">//connection rabbitmq</span></span><br><span class="line">	<span class="keyword">var</span> username = <span class="string">'kaven'</span>;</span><br><span class="line">	<span class="keyword">var</span> password = <span class="string">'kaven123'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Stomp.js boilerplate</span></span><br><span class="line">	<span class="keyword">if</span> (location.search == <span class="string">'?ws'</span>) &#123;</span><br><span class="line">		<span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://master:15674/ws'</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'Using WebSocket...'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> ws = <span class="keyword">new</span> SockJS(<span class="string">'http://master:15674/stomp'</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'Using SockJS...'</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Init Client</span></span><br><span class="line">	<span class="keyword">var</span> client = Stomp.over(ws);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// SockJS does not support heart-beat: disable heart-beats</span></span><br><span class="line">	client.heartbeat.outgoing = <span class="number">0</span>;</span><br><span class="line">	client.heartbeat.incoming = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Declare on_connect</span></span><br><span class="line">	<span class="keyword">var</span> on_connect = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//订阅模式</span></span><br><span class="line">		client.subscribe(<span class="string">"/exchange/amq.fanout/rabbitmq_routingkey"</span>,</span><br><span class="line">				<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">					countOut(d.body);</span><br><span class="line">				&#125;);</span><br><span class="line">		<span class="comment">//订阅模式</span></span><br><span class="line">		client.subscribe(<span class="string">"/exchange/amq.fanout/rabbitmq_routingkey"</span>,</span><br><span class="line">				<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">					countBreak(d.body);</span><br><span class="line">				&#125;);</span><br><span class="line">		<span class="comment">//订阅模式</span></span><br><span class="line">		client.subscribe(<span class="string">"/exchange/amq.fanout/rabbitmq_routingkey"</span>,</span><br><span class="line">				<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">					countNotout(d.body);</span><br><span class="line">				&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//Direct模式</span></span><br><span class="line">		client.subscribe(<span class="string">"/exchange/amq.direct/rabbitmq_orderCancel"</span>,</span><br><span class="line">				<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">					countCancel(d.body);</span><br><span class="line">				&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 定义连接失败回调函数</span></span><br><span class="line">	<span class="keyword">var</span> on_error = <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(error.headers.message);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Conect to RabbitMQ</span></span><br><span class="line">	client.connect(username, password, on_connect, on_error, <span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> sendMQ = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">		client.send(<span class="string">'/exchange/amq.fanout/rabbitmq_routingkey'</span>, &#123;<span class="string">"content-type"</span> : <span class="string">"text/plain"</span>&#125;, data);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> sendKeyMQ = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">		client.send(<span class="string">'/exchange/amq.direct/rabbitmq_orderCancel'</span>, &#123;<span class="string">"content-type"</span> : <span class="string">"text/plain"</span>&#125;, data);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<img src="/2017/12/12/rabbitmq-stomp/b9e0510549a7554f829c98f8f90ba07f.gif">  
-<h1><span id="适用范围">适用范围</span></h1><p>此框架模型至少可以适用以下情况：</p>
-<ol>
-<li>不同业务模块之间</li>
-<li>不同开发语言之间</li>
-<li>不同应用服务器之间</li>
-<li>不同应用设备之间</li>
-</ol>
-<h1><span id="参考文档">参考文档</span></h1><blockquote>
-<p><a href="https://segmentfault.com/a/1190000006617344" target="_blank" rel="noopener">Stomp Over Websocket文档</a></p>
+<p>Cloud Native，从词面上拆解其实就是 Cloud 和 Native，也就是云计算和土著的意思——云计算上的原生居民，即天生具备云计算的亲和力。</p>
+<p>首先从 Cloud 来理解，云可以看作是一种提供稳定计算存储资源的对象。为了实现这一点，云提供了像<strong>虚拟化、弹性扩展、高可用、高容错性、自恢复</strong>等基本属性，这是云原生作为一种云计算所具备的第一层含义。第二层要从 Native 来看，云原生和在云上跑的传统应用不同。一些基于公有云搭建的应用是基于传统的 SOA 架构来搭建的，然后再移植到云上去运行，那么这些应用和云的整合非常低。</p>
+<p>为什么低呢？云作为一种<strong>分布式架构</strong>，其“土著居民”也应该是基于分布式架构设计出来的，而微服务或 Serverless 这种将服务或函数拆分成一个个模块的松耦合系统，天然具备分布式设计的属性。这是 Native 的第一种表现。</p>
+<p>其次云作为一种 PaaS 服务，这位“土著居民”从出生(设计)到成长(开发)，再到生活(部署)都应该是基于云的理念来实现的，那么就需要一套自动化的开发流程 CI/CD 来实现。这是 Native 的第二种表现。</p>
+<p>而最后“土著居民”的特点希望做到能够适应所有云端，都能做到无缝的运行和连接。</p>
+<h1><span id="关键点技术">关键点技术</span></h1><p>下面介绍云原生架构的一些关键技术点。涉及内容由微服务、分布式常见架构设计(性能、数据一致性、可扩展性、高可用)、研发流程、DevOps、组织文化等，可以根据目录选择性的看看，基本上都是一些介绍，详细的设计可以查看相关文档进一步了解。</p>
+<h2><span id="1-微服务">1. 微服务</span></h2><p>Martin Fowler 与 James Lewis 共同提出了微服务的概念，定义了微服务架构是以开发一组小型服务的方式来开发一个独立的应用系统，每个服务都以一个独立进程的方式运行，每个服务与其他服务使用轻量级（通常是 HTTP API）通信机制。这些服务是围绕业务功能构建的，可以通过全自动部署机制独立部署，同时服务会使用最小规模的集中管理（例如 Docker）能力，也可以采用不同的编程语言和数据库。</p>
+<h3><span id="1优势">1）优势</span></h3><ul>
+<li>敏捷开发帮助我们减少浪费、快速反馈，以用户体验为目标。</li>
+<li>持续交付促使我们更快、更可靠、更频繁地改进软件；基础设施即代码（Infrastructure As Code）帮助我们简化环境的管理。</li>
+</ul>
+<h3><span id="2什么时候开始微服务架构">2）什么时候开始微服务架构</span></h3><ul>
+<li>几乎所有成功的微服务架构都是从一个巨大的单体架构开始的，并且都是由于单体架构太大而被拆分为微服务架构。</li>
+<li>在所一开始就构建微服务架构的故事中，往往都有人遇到了巨大的麻烦。</li>
+</ul>
+<h3><span id="3如何决定微服务架构的拆分粒度">3）如何决定微服务架构的拆分粒度</span></h3><p>微服务架构中的“微”字，并不代表足够小，应该解释为合适。</p>
+<h3><span id="4单体架构-vs-微服务架构对比">4）单体架构 VS 微服务架构对比</span></h3><p><img src="https://ucc.alicdn.com/pic/developer-ecology/a11907b4e102431181367a756d629782.png" alt="3.png"></p>
+<p>流行的微服务框架：spring-cloud/dubbo。</p>
+<h2><span id="2-敏捷基础设施及公共基础服务">2. 敏捷基础设施及公共基础服务</span></h2><p>敏捷基础设施及公共基础服务是微服务架构成败的关键因素之一，能够简化业务开发。</p>
+<h3><span id="1敏捷基础设施的目标">1）敏捷基础设施的目标</span></h3><ul>
+<li>标准化：所有的基础设施最好都是标准的。</li>
+<li>可替换：任意节点都能够被轻易地创建、销毁、替换。</li>
+<li>自动化：所有的操作都通过工具自动化完成，无须人工干预。</li>
+<li>可视化：当前环境要做到可控，就需要对当前的环境状况可视。</li>
+<li>可追溯：所有的配置统一作为代码进行版本化管理，所有的操作都可以追溯。</li>
+<li>快速：资源申请及释放要求秒级完成，以适应弹性伸缩和故障切换的要求。</li>
+</ul>
+<h3><span id="2基于公共基础服务的平台化">2）基于公共基础服务的平台化</span></h3><ul>
+<li><strong>平台化</strong>是指利用公共基础服务提升整体架构能力。</li>
+<li><strong>公共基础服务</strong>是指与业务无关的、通用的服务，包括监控服务、缓存服务、消息服务、数据库服务、负载均衡、分布式协调、分布式任务调度等。</li>
+</ul>
+<h3><span id="3常见的平台服务">3）常见的平台服务</span></h3><ul>
+<li>监控告警服务</li>
+<li>分布式消息中间件服务</li>
+<li>分布式缓存服务</li>
+<li>分布式任务调度服务</li>
+</ul>
+<h2><span id="3-分布式架构-可用性设计">3. 分布式架构 – 可用性设计</span></h2><p>可用性（Availability）是关于系统可以被使用的时间的描述，以丢失的时间为驱动（Be Driven by Lost Time）。</p>
+<p>可用性公式：A=Uptime /（Uptime+Downtime）。其中，Uptime 是可用时间，Downtime 是不可用时间。</p>
+<h3><span id="1什么降低了可用性">1）什么降低了可用性</span></h3><ul>
+<li>发布</li>
+<li>故障</li>
+<li>压力</li>
+<li>外部依赖</li>
+</ul>
+<h3><span id="2设计阶段考虑如下几个比较重要的方法">2）设计阶段考虑如下几个比较重要的方法</span></h3><ul>
+<li>20/10/5，设计系统的时候，以实际流量的 20 倍来设计；开发系统的时候，以实际流量的 10 倍来开发系统；发布系统的时候，以实际流量的 5 倍来部署。这只是一个通用的原则，可以根据实际情况来确定，不需要严格按照倍数来执行。</li>
+<li>Design for failure，预测可能发生的问题，做好预案。</li>
+</ul>
+<h3><span id="3容错设计">3）容错设计</span></h3><p>如果说错误是不可避免或者难以避免的，那么我们应该换一个思路，保证错误发生时，我们可以从容应对。</p>
+<ul>
+<li>消除单点</li>
+<li>特性开关</li>
+<li>服务分级</li>
+<li>降级设计</li>
+<li>超时重试</li>
+</ul>
+<h3><span id="4隔离策略">4）隔离策略</span></h3><p>隔离是为了在系统发生故障时，限制传播范围和影响范围，特别要注意非核心系统的故障对核心系统的影响。</p>
+<ul>
+<li>线程池隔离</li>
+<li>进程隔离</li>
+<li>集群隔离</li>
+<li>用户隔离</li>
+<li>租户隔离</li>
+<li>逻辑隔离</li>
+<li>物理隔离</li>
+<li>混合隔离</li>
+</ul>
+<h3><span id="5熔断器">5）熔断器</span></h3><p>熔断器模式（Circuit Breaker Patten）的原理类似于家里的电路熔断器的原理。当发生短路或者超负荷时，熔断器能够主动熔断电路，以避免灾难发生。</p>
+<p>Spring Cloud Hystrix 提供了熔断器、线程隔离等一系列服务保护的能力，使用起来非常简单，引入依赖的 JAR 包，通过简单的注解即可实现。</p>
+<h3><span id="6流控设计">6）流控设计</span></h3><ul>
+<li>限流算法。限流也就是调节数据流的平均速率，通过限制速率保护自己，常见的算法有：<ul>
+<li>固定窗口算法（fixed window）。</li>
+<li>漏桶算法（Leaky Bucket）：漏桶算法主要目的是控制数据注入网络的速率，平滑网络上的突发流量。</li>
+<li>令牌桶算法（token bucket）：令牌桶控制的是一个时间窗口内通过的数据量，通常我们会以 QPS、TPS 来衡量。</li>
+</ul>
+</li>
+<li>流控策略<ul>
+<li>请求入口处。</li>
+<li>业务服务入口处。</li>
+<li>公共基础服务处。</li>
+<li>基于 Guava 限流：Guava 是 Google 提供的 Java 扩展类库，其中的限流工具类 RateLimiter 采用的就是令牌桶算法，使用起来非常简单。</li>
+<li>基于 Nginx 限流。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="7容量预估">7）容量预估</span></h3><p>互联网公司普遍采用全链路压测的方式，来进一步预估容量。</p>
+<h3><span id="8故障演练">8）故障演练</span></h3><ul>
+<li>随机关闭生产环境中的实例。</li>
+<li>让某台机器的请求或返回变慢，观察系统的表现，可以用来测试上游服务是否有服务降级能力，当然如果响应时间特别长，也就相当于服务不可用。</li>
+<li>模拟 AZ 故障，中断一个机房，验证是否跨可用区部署，业务容灾和恢复的能力。</li>
+<li>查找不符合最佳实践的实例，并将其关闭。</li>
+</ul>
+<h3><span id="9数据迁移">9）数据迁移</span></h3><ul>
+<li>逻辑分离，物理不分离。</li>
+<li>物理分离 。</li>
+</ul>
+<h2><span id="4-分布式架构-可扩展设计">4. 分布式架构 – 可扩展设计</span></h2><ul>
+<li>水平扩展，指用更多的节点支撑更大量的请求。</li>
+<li>横向扩展通常是为了提升吞吐量，响应时间一般要求不受吞吐量影响即可。</li>
+</ul>
+<h3><span id="1akf-扩展立方体">1）AKF 扩展立方体</span></h3><p><img src="https://ucc.alicdn.com/pic/developer-ecology/1072498d19a84d87b59214fa54da2557.png" alt="4.png"></p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/d96d01526836464c8b2d24c0a78ab8fb.png" alt="5.png"></p>
+<h3><span id="2如何扩展数据库">2）如何扩展数据库</span></h3><ul>
+<li>X 轴扩展——主从复制集群</li>
+<li>Y 轴扩展——分库、垂直分表</li>
+<li>Z 轴扩展——分片（sharding）</li>
+</ul>
+<h2><span id="5-分布式架构-性能设计">5. 分布式架构 – 性能设计</span></h2><h3><span id="1性能指标">1）性能指标</span></h3><ul>
+<li>响应时间（Latency），就是发送请求和返回结果的耗时。</li>
+<li>吞吐量（Throughput），就是单位时间内的响应次数。</li>
+<li>负载敏感度，是指响应时间随时间变化的程度。例如，当用户增加时，系统响应时间的衰减速度。</li>
+<li>可伸缩性，是指向系统增加资源对性能的影响。例如，要使吞吐量增加一倍，需要增加多少服务器。</li>
+</ul>
+<h3><span id="2如何树立目标">2）如何树立目标</span></h3><p><img src="https://ucc.alicdn.com/pic/developer-ecology/fbf168ce2369450fba01c33d9553aa29.png" alt="6.png"></p>
+<ul>
+<li>通过缓存提升读性能。</li>
+<li>通过消息中间件提升写性能。</li>
+</ul>
+<h2><span id="6-分布式架构-一致性设计">6. 分布式架构 – 一致性设计</span></h2><h3><span id="1事务的四大特征">1）事务的四大特征</span></h3><ul>
+<li>原子性（Atomicity）。</li>
+<li>一致性（Consistency）是指通过事务保证数据从一种状态变化到另一种状态。</li>
+<li>隔离性（Isolation）是指事务内的操作不受其他操作影响，当多个事务同时处理同一个数据的时候，多个事务之间是互不影响的。</li>
+<li>持久性（Durability）是指事务被提交后，应该持久化，永久保存下来。</li>
+</ul>
+<h3><span id="2cpa-定理">2）CPA 定理</span></h3><p>该定理认为对于一个分布式计算系统来说，不可能同时满足以下三点：</p>
+<ul>
+<li>一致性（Consistence）</li>
+<li>可用性（Availability）</li>
+<li>分区容错性（Partition tolerance）</li>
+</ul>
+<p>分布式意味着必须满足分区容错性，也就是 P，因此一般只能是 AP 或 CP。</p>
+<h3><span id="3base-理论">3）BASE 理论</span></h3><p>BASE 理论的核心思想是：如果无法做到强一致性，或者做到强一致性要付出很大的代价，那么应用可以根据自身业务特点，采用适当方式来使系统达到最终一致性，只要对最终用户没有影响，或者影响是可接受的即可。</p>
+<ul>
+<li>BA:Basically Available，基本可用。</li>
+<li>S:Soft state，软状态。</li>
+<li>E:Eventually consistent，最终一致。</li>
+</ul>
+<h3><span id="4quorum-机制nwr-模型">4）Quorum 机制（NWR 模型）</span></h3><p>如果多个服务分别向三个节点写数据，为了保证强一致，就必须要求三个节点全部写成功才返回；同步写三个节点的性能较低，如果换一个思路，一致性并不一定要在写数据的时候完成，可以在读的阶段再决策，只要每次能读到最新版本即可。</p>
+<p>Quorum 机制就是要满足公式 W+R&gt;N，式中 N 代表备份个数，W 代表要写入至少 W 份才认为成功，R 表示至少读取 R 个备份。</p>
+<h3><span id="5租约机制lease">5）租约机制（Lease）</span></h3><p>如果现在我们有三个节点，为了实现一致性，要确保有且只有一个是 Leader，另外两个为 Follower，只有 Leader 是可写的，Follower 只能读。管理节点 M 通过心跳判断各个节点的状态，用 M 去指定 Leader，一旦 Leader 死掉，就可以重新指定一个 Leader。</p>
+<h3><span id="6脑裂问题">6）脑裂问题</span></h3><ul>
+<li>一种是采用投票机制（Paxos 算法）。</li>
+<li>一种是采用租约机制——Lease，租约机制的核心就是在一定时间内将权力下放。</li>
+</ul>
+<h3><span id="7分布式系统的一致性分类">7）分布式系统的一致性分类</span></h3><ul>
+<li>建立多个副本。可以把副本放到不同的物理机、机架、机房、地域，当一个副本失效时，可以让请求转到其他副本。</li>
+<li>对数据进行分区。复制多个副本解决了读的性能问题，但是无法解决写的性能问题。</li>
+</ul>
+<h3><span id="8以数据为中心的一致性模型">8）以数据为中心的一致性模型</span></h3><p>从数据存储的角度出发的，包括数据库、文件等。</p>
+<ul>
+<li>严格一致性（Strict Consistency）</li>
+<li>顺序一致性（Sequential Consistency）</li>
+<li>因果一致性（Causal Consistency）</li>
+</ul>
+<h3><span id="9以用户为中心的一致性模型">9）以用户为中心的一致性模型</span></h3><p>以下一致性模型适应的场景为不会同时发生更新操作，或者同时发生更新操作时能够比较容易地化解。因为这里的数据更新默认有一个与之关联的所有者，此所有者拥有唯一被允许修改数据的权限，可以按照用户 ID 进行路由。</p>
+<ul>
+<li>单调读一致性（Monotonic-read Consistency）</li>
+<li>单调写一致性（Monotonic-write Consistency）</li>
+<li>写后读一致性（Read-your-writes Consistency）</li>
+<li>读后写一致性（Writes-follow-reads Consistency）</li>
+</ul>
+<h3><span id="10业界常用的一致性模型">10）业界常用的一致性模型</span></h3><ul>
+<li>弱一致性：写入一个数据 a 成功后，在数据副本上可能读出来，也可能读不出来。不能保证每个副本的数据一定是一致的。</li>
+<li>最终一致性（Eventual Consistency）：写入一个数据 a 成功后，在其他副本有可能读不到 a 的最新值，但在某个时间窗口之后保证最终能读到。</li>
+<li>强一致性（Strong Consistency）：数据 a 一旦写入成功，在任意副本任意时刻都能读到 a 的最新值。</li>
+</ul>
+<h3><span id="11如何实现强一致性">11）如何实现强一致性</span></h3><ul>
+<li>两阶段提交</li>
+<li>三阶段提交（3PC）</li>
+</ul>
+<h3><span id="12如何实现最终一致性">12）如何实现最终一致性</span></h3><ul>
+<li>重试机制：超时时间，重试的次数，重试的间隔时间，重试间隔时间的衰减度。</li>
+<li>本地记录日志。</li>
+<li>可靠事件模式。</li>
+<li>Saga 事务模型：又叫 Long-running-transaction，核心思想是把一个长事务拆分为多个本地事务来实现，由一个 Process manager 统一协调。</li>
+<li>TCC 事务模型：两阶段提交是依赖于数据库提供的事务机制，再配合外部的资源协调器来实现分布式事务。TCC（Try Confirm Cancel）事务模型的思想和两阶段提交虽然类似，但是却把相关的操作从数据库提到业务中，以此降低数据库的压力，并且不需要加锁，性能也得到了提升。</li>
+</ul>
+<h2><span id="7-十二因素">7. 十二因素</span></h2><p>12 因素应用是一系列云原生应用架构的模式集合。这些模式可以用来说明什么样的应用才是云原生应用，关注速度、安全、通过声明式配置扩展、可横向扩展的无状态/无共享进程以及部署环境的整体松耦合。</p>
+<p>在 12 因素的背景下，应用指的是独立可部署单元。组织中经常把一些互相协作的可部署单元称作一个应用。</p>
+<ul>
+<li>基准代码，一份基准代码，多份部署，使用 GIT 或者 SVN 管理代码，并且有明确的版本信息。</li>
+<li>依赖，显示声明依赖。</li>
+<li>配置：环境中存储配置。</li>
+<li>后端服务：把后端服务当作附加资源。后端服务是指程序运行所需要的通过网络调用的各种服务，如数据库（MySQL、CouchDB）、消息/队列系统（RabbitMQ、Beanstalkd）、SMTP 邮件发送服务（Postfix），以及缓存系统（Memcached）。</li>
+<li>构建、发布、运行：严格分离构建和运行。</li>
+<li>进程，以一个或多个无状态进程运行应用，如果存在状态，应该将状态外置到后端服务中，例如数据库、缓存等。</li>
+<li>端口绑定，通过端口绑定提供服务，应用通过端口绑定来提供服务，并监听发送至该端口的请求。</li>
+<li>并发，通过进程模型进行扩展，扩展方式有进程和线程两种。进程的方式使扩展性更好，架构更简单，隔离性更好。线程扩展使编程更复杂，但是更节省资源。</li>
+<li>易处理，快速启动和优雅终止可最大化健壮性，只有满足快速启动和优雅终止，才能使服务更健壮。</li>
+<li>开发环境与线上环境等价，尽可能保持开发、预发布、线上环境相同。</li>
+<li>日志，把日志当作事件流，微服务架构中服务数量的爆发需要具备调用链分析能力，快速定位故障。</li>
+<li>管理进程，把后台管理任务当作一次性进程运行，一些工具类在生产环境上的操作可能是一次性的，因此最好把它们放在生产环境中执行，而不是本地。</li>
+</ul>
+<h2><span id="8-研发流程">8. 研发流程</span></h2><h3><span id="1为什么选择-devops">1）为什么选择 DevOps</span></h3><p>能提高交付速度、更新频率，这两点是衡量一个公司能力的重要指标。</p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/76dc1c1c74d34b50bdef159fec0ca337.png" alt="7.png"></p>
+<h3><span id="2gartner-提出的-devops-模型">2）Gartner 提出的 DevOps 模型</span></h3><p>文化、技术、过程和人，其中团队文化才是最难改变的，技术方面包括基础设施即代码、全局监控、持续监控。</p>
+<h3><span id="3自动化测试">3）自动化测试</span></h3><ul>
+<li>自动化测试可以代替人工测试。</li>
+<li>测试成了全栈工程师的工作，因为不沟通才是最有效率的沟通。</li>
+</ul>
+<h3><span id="4code-review">4）Code Review</span></h3><ul>
+<li>提升代码易读性。</li>
+<li>统一规范、标准。</li>
+<li>技术交流，提升能力。</li>
+<li>Code Review 原则：以发现问题为目标，团队开放、透明，整个 Code Review 的过程对事不对人，不设置惩罚。</li>
+<li>线上线下接合的方式，长期线上，定期线下。</li>
+</ul>
+<h3><span id="5流水线">5）流水线</span></h3><p>持续交付：降低交付周期，通过自动化工具实现设计、开发、测试、发布、运维各个阶段的重复性工作，通过工具实现标准化、规范化，降低出错概率。</p>
+<h3><span id="6开发人员自服务">6）开发人员自服务</span></h3><p>对于开发过程来说，少交流、少沟通、少开会就是最高效的。</p>
+<ul>
+<li>高覆盖率的自动化测试</li>
+<li>全面的监控</li>
+<li>持续交付流水线</li>
+<li>敏捷基础设施</li>
+<li>自动化/智能化运维</li>
+<li>好的架构</li>
+<li>全栈工程师</li>
+<li>服务型管理</li>
+<li>工程师文化</li>
+<li>信任文化</li>
+<li>分享文化</li>
+</ul>
+<h3><span id="7代码即设计">7）代码即设计</span></h3><ul>
+<li>模糊敏捷研发流程阶段性：业务需求太多和技术变化速度太快。</li>
+<li>整个进化设计需要简单的架构+持续集成+重构+整个研发流程设计。</li>
+</ul>
+<h2><span id="9-团队文化">9. 团队文化</span></h2><p>团队文化就好比土壤，要培养什么样的员工，就要有适合他的土壤。</p>
+<h3><span id="1团队规模导致的问题">1）团队规模导致的问题</span></h3><ul>
+<li>缺乏信任。由于人数众多，难于管理，只能通过制度、流程、规范、绩效约束。</li>
+<li>没有责任感。高层管理者忙着开各种决策会议。</li>
+<li>部门墙。跨部门协调还不如与第三方合作。</li>
+<li>不尊重专业人士。当所有的生杀大权都掌握在少数人手中的时候。</li>
+<li>管理层级太深。管理层级太深导致的问题很多。</li>
+</ul>
+<h3><span id="2组织结构-康威定律">2）组织结构 – 康威定律</span></h3><p>设计系统的组织，其产生的设计和架构等价于组织间的沟通结构。通俗来讲，就是什么样的团队结构，就会设计出什么样的系统架构。如果将团队拆分为前端、后端、平台、数据库，那么系统也会按照前端、后端、平台、数据库结构隔离。</p>
+<ul>
+<li><strong>第一定律</strong>：Communication dictates design，即组织沟通方式会通过系统设计呈现。</li>
+<li><strong>第二定律</strong>：There is never enough time to do something right,but there is always enough time to do it over，即时间再多，一件事情也不可能做得完美，但总有时间做完一件事情。</li>
+<li><strong>第三定律</strong>：There is a homomorphism from the linear graph of a system to the linear graph of its design organization，即线型系统和线型组织架构间有潜在的异质同态特性。</li>
+<li><strong>第四定律</strong>：The structures of large systems tend to disintegrate during development,qualitatively more so than with small systems，即大的系统组织总是比小系统更倾向于分解。</li>
+</ul>
+<h3><span id="3沟通漏斗是指工作中团队沟通效率下降的一种现象">3）“沟通漏斗”是指工作中团队沟通效率下降的一种现象</span></h3><p>如果一个人心里想表述事项目标的 100%，当你在众人面前、在开会的场合用语言表达时，你说出来的只剩下 80%。而进入别人的耳朵时，由于文化水平、知识背景等关系，只留存了 60%。实际上，真正被别人理解了大概只有 40%。等到这些人遵照领悟的 40% 具体行动时，只具备了当初事项目标的 20% 了。三个月后信息只剩下 5% 了。</p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/891f0a70427f41318c278714160c8074.png" alt="8.png"></p>
+<h3><span id="4环境氛围">4）环境氛围</span></h3><ul>
+<li>公开透明的工作环境.</li>
+<li>学习型组织：让团队拥有共同愿景、目标，并持续学习。</li>
+<li>减少无效的正式汇报。</li>
+<li>高效的会议：缩小会议范围，常规会议不应该超过 45 分钟；限制“意见领袖”的发言时长；会议中不允许开小差；会议中的分歧不应该延伸到会议之外。</li>
+</ul>
+<h2><span id="10-serverless">10. Serverless</span></h2><p>随着以 Kubernetes 为代表的云原生技术成为云计算的容器界面，Kubernetes 成为云计算的新一代操作系统。面向特定领域的后端云服务 (BaaS) 则是这个操作系统上的服务 API，存储、数据库、中间件、大数据、 AI 等领域的大量产品与技术都开始提供全托管的云形态服务，如今越来越多用户已习惯使用云服务，而不是自己搭建存储系统、部署数据库软件。</p>
+<p>当这些 BaaS 云服务日趋完善时，Serverless 因为屏蔽了底层设施的运维复杂度，让开发人员可以将更多精力用于业务逻辑设计与实现，而逐渐成为云原生主流技术之一。Serverless 计算包含以下特征：</p>
+<ul>
+<li>全托管的计算服务，客户只需要编写代码构建应用，无需关注同质化的、负担繁重的基础设施开发、运维、安全、高可用等工作。</li>
+<li>通用性，结合云 BaaS API 的能力，能够支撑云上所有重要类型的应用。</li>
+<li>自动的弹性伸缩，让用户无需为资源使用提前进行容量规划。</li>
+<li>按量计费，让企业使用成本得有效降低，无需为闲置资源付费。</li>
+</ul>
+<p>函数计算 (Function as a Service) 是 Serverless 中最具代表性的产品形态。通过把应用逻辑拆分多个函数，每个函数都通过事件驱动方式触发执行，例如当对象存储 (OSS) 中产生的上传 / 删除对象等事件， 能够自动、可靠地触发 FaaS 函数处理且每个环节都是弹性和高可用的，客户能够快速实现大规模数据的实时并行处理。同样的，通过消息中间件和函数计算的集成，客户可以快速实现大规模消息的实时处理。</p>
+<p><strong>Serverless 不足的地方</strong>：</p>
+<ul>
+<li>成功案例太少</li>
+<li>很难满足个性化</li>
+<li>缺乏行业标准</li>
+<li>初次访问性能差</li>
+<li>缺乏开发调试工具</li>
+</ul>
+<h2><span id="11-service-mesh-技术">11. Service Mesh 技术</span></h2><p>Service Mesh 是分布式应用在微服务软件架构之上发展起来的新技术，旨在将那些微服务间的连接、安全、流量控制和可观测等通用功能下沉为平台基础设施，实现应用与平台基础设施的解耦。这个解耦意味着开发者无需关注 微服务相关治理问题而聚焦于业务逻辑本身，提升应用开发效率并加速业务探索和创新。换句话说，因为大量非功能性从业务进程剥离到另外进程中，Service Mesh 以无侵入的方式实现了应用轻量化，下图展示了 Service Mesh 的 典型架构：</p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/12767c8510ab4d50a465a7a6b9837d35.png" alt="9.png"></p>
+<p>在这张架构图中，Service A 调用 Service B 的所有请求，都被其下的 Proxy(在 Envoy 中是 Sidecar) 截获， 代理 Service A 完成到 Service B 的服务发现、熔断、限流等策略，而这些策略的总控是在 Control Plane 上配置。</p>
+<p>服务网格的技术发展上数据平面与控制平面间的协议标准化是必然趋势。控制平面可以认为是注册中心及管理配置面板；数据平面可以认为是由服务化框架依赖的组件独立而成的一个进程，数据平面代理业务服务的注册发现、负载均衡、容错等能力。 为什么需要 Service Mesh：</p>
+<ul>
+<li>在微服务架构中，让开发人员感觉不到微服务之间的通信。</li>
+<li>当服务数量越来越多，升级微服务框架变得越来越复杂的时候，微服务框架不可能一直不变且没有 bug。</li>
+<li>Service Mesh 则从业务进程集成客户端的方式演进为独立进程的方式，客户端变成了一个独立进程。</li>
+<li>对这个独立进程升级、运维要比绑在一起强得多。</li>
+<li>微服务架构更强调去中心化、独立自治、跨语言。Service Mesh 通过独立进程的方式进行隔离，低成本实现跨语言。</li>
+<li>每个服务独立占用一个容器，将服务、依赖包、操作系统、监控运维所需的代理打包成一个镜像。这种模式促成了 Service Mesh 的发展，让 Service Mesh 实现起来更容易。</li>
+</ul>
+<h2><span id="12-云原生架构成熟度模型">12. 云原生架构成熟度模型</span></h2><p>由于云原生架构包含了 6 个关键架构维度(简写为 SESORA，Service + Elasticity + Serverless + Observability + Resilience + Automation)，因此我们先定义关键维度的成熟度级别：</p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/8928e11e89b04406939c874c2deb26d5.png" alt="10.png"></p>
+<p><img src="https://ucc.alicdn.com/pic/developer-ecology/b0fb8436826142b8ade285b42d9a884d.png" alt="11.png"></p>
+<blockquote>
+<p>参考自 <a href="https://www.kubernetes.org.cn/8875.html" target="_blank" rel="noopener">快速了解云原生架构</a></p>
 </blockquote>
 
       
@@ -294,7 +572,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云原生</a>
         		</li>
       		
 		</ul>
@@ -361,7 +639,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <!--<img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2017/12/12/rabbitmq-stomp/" alt="微信分享二维码"> -->
+      <!--<img src="//pan.baidu.com/share/qrcode?url=https://ranying666.github.io/2021/10/28/cloud-native/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -375,18 +653,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/04/20/micoservice-auth/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          微服务架构下的安全认证与鉴权
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/11/rabbitmq-install/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RabbitMQ在CentOS7安装</div>
+    <a href="/2021/10/22/spanner/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spanner——Google新一代分布式数据库</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -413,8 +682,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">业务场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">解决的思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">异步消息通知方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">STOMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">RabbitMQ</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">RabbitMQ Web STOMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">RabbitMQ安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.1.</span> <span class="toc-text">引入js插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.2.</span> <span class="toc-text">测试页面html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.3.</span> <span class="toc-text">页面事件绑定和数据初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.4.</span> <span class="toc-text">连接到RabbitMQ服务器，订阅消息通知</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">适用范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">参考文档</span></a></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">云原生（Cloud Native）起源与发展</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">关键点技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">1. 微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">1）优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">2）什么时候开始微服务架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">3）如何决定微服务架构的拆分粒度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.4.</span> <span class="toc-text">4）单体架构 VS 微服务架构对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">2. 敏捷基础设施及公共基础服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">1）敏捷基础设施的目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">2）基于公共基础服务的平台化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">3）常见的平台服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">3. 分布式架构 – 可用性设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">1）什么降低了可用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">2）设计阶段考虑如下几个比较重要的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">3）容错设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">4）隔离策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">5）熔断器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.6.</span> <span class="toc-text">6）流控设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.7.</span> <span class="toc-text">7）容量预估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.8.</span> <span class="toc-text">8）故障演练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.9.</span> <span class="toc-text">9）数据迁移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">4. 分布式架构 – 可扩展设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text">1）AKF 扩展立方体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.2.</span> <span class="toc-text">2）如何扩展数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">5. 分布式架构 – 性能设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.1.</span> <span class="toc-text">1）性能指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.2.</span> <span class="toc-text">2）如何树立目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">6. 分布式架构 – 一致性设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.1.</span> <span class="toc-text">1）事务的四大特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.2.</span> <span class="toc-text">2）CPA 定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.3.</span> <span class="toc-text">3）BASE 理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.4.</span> <span class="toc-text">4）Quorum 机制（NWR 模型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.5.</span> <span class="toc-text">5）租约机制（Lease）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.6.</span> <span class="toc-text">6）脑裂问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.7.</span> <span class="toc-text">7）分布式系统的一致性分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.8.</span> <span class="toc-text">8）以数据为中心的一致性模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.9.</span> <span class="toc-text">9）以用户为中心的一致性模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.10.</span> <span class="toc-text">10）业界常用的一致性模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.11.</span> <span class="toc-text">11）如何实现强一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.12.</span> <span class="toc-text">12）如何实现最终一致性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">7. 十二因素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">8. 研发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.1.</span> <span class="toc-text">1）为什么选择 DevOps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.2.</span> <span class="toc-text">2）Gartner 提出的 DevOps 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.3.</span> <span class="toc-text">3）自动化测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.4.</span> <span class="toc-text">4）Code Review</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.5.</span> <span class="toc-text">5）流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.6.</span> <span class="toc-text">6）开发人员自服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.7.</span> <span class="toc-text">7）代码即设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">9. 团队文化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.1.</span> <span class="toc-text">1）团队规模导致的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.2.</span> <span class="toc-text">2）组织结构 – 康威定律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.3.</span> <span class="toc-text">3）“沟通漏斗”是指工作中团队沟通效率下降的一种现象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.4.</span> <span class="toc-text">4）环境氛围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">10. Serverless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">11. Service Mesh 技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">12.</span> <span class="toc-text">12. 云原生架构成熟度模型</span></a></li></ol>
+                    </li></div>
                 </span>
             </div>
         </div>
@@ -442,7 +711,7 @@ var _hmt = _hmt || [];
 
 <script>
 var gitment = new Gitment({
-  id: "Tue Dec 12 2017 13:54:11 GMT+0800",
+  id: "Thu Oct 28 2021 10:54:42 GMT+0800",
   owner: 'ranying666',
   repo: 'ranying666.github.io',
   oauth: {
