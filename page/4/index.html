@@ -170,6 +170,131 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-keycloak-authorization" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/11/keycloak-authorization/">Keycloak授权服务指南Authorization_services</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2020/05/11/keycloak-authorization/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2020/05/11/keycloak-authorization/" class="archive-article-date">
+  	<time datetime="2020-05-11T02:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>版本<strong>10.0.0</strong> </p>
+<blockquote>
+<p>本文来自官方文档 <em><a href="https://www.keycloak.org/docs/latest/authorization_services/" target="_blank" rel="noopener">https://www.keycloak.org/docs/latest/authorization_services/</a></em> ，苦于国内根本打不开，并且英文不好理解，故提供一个不完全翻译版本作为参考。不准确之处，请自行查阅资料。</p>
+</blockquote>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>Keycloak支持细粒度的授权策略，并且能够组合不同的访问控制机制，例如：</p>
+<ul>
+<li><strong>基于属性的访问控制（ABAC）</strong></li>
+<li><strong>基于角色的访问控制（RBAC）</strong></li>
+<li><strong>基于用户的访问控制（UBAC）</strong></li>
+<li><strong>基于上下文的访问控制（CBAC）</strong></li>
+<li><strong>基于规则的访问控制</strong><ul>
+<li>使用JavaScript</li>
+</ul>
+</li>
+<li><strong>基于时间的访问控制</strong></li>
+<li><strong>通过策略提供者服务提供者接口（SPI）支持自定义访问控制机制（ACM）</strong></li>
+</ul>
+<p>Keycloak基于一组管理UI和RESTful API，并提供了必要的方法来为受保护的资源和范围创建权限，将这些权限与授权策略相关联，并在应用程序和服务中实施授权决策。</p>
+<p>资源服务器（服务于受保护资源的应用程序或服务）通常依赖某种信息来决定是否应授予对受保护资源的访问权限。对于基于RESTful的资源服务器，该信息通常是从安全令牌中获得的，通常是在每次向服务器请求时作为承载令牌发送的。对于依赖会话来认证用户的Web应用程序，该信息通常存储在用户会话中，并针对每个请求从该会话中检索。</p>
+<p>通常，资源服务器仅基于基于角色的访问控制（RBAC）执行授权决策，在此过程中，将对照映射到这些相同资源的角色来检查授予用户尝试访问受保护资源的角色。尽管角色非常有用并被应用程序使用，但它们也有一些限制：</p>
+<ul>
+<li>资源和角色紧密耦合，对角色的更改（例如添加，删除或更改访问上下文）可能会影响多个资源</li>
+<li>对安全性要求的更改可能意味着对应用程序代码进行了深刻的更改以反映这些更改</li>
+<li>根据您的应用程序大小，角色管理可能会变得困难且容易出错</li>
+<li>它不是最灵活的访问控制机制。角色不代表您是谁，并且缺少上下文信息。如果已被授予角色，则您至少具有某些访问权限。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/05/11/keycloak-authorization/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">认证与授权</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">keycloak</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/11/keycloak-authorization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-covid-19-economic" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1101,111 +1226,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-knowage-zh-patch" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/18/knowage-zh-patch/">Knowage汉化补丁Knowage中文一键汉化</a>
-    </h1>
-  
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2019/08/18/knowage-zh-patch/" class="pageViews">0</span>
-  </a>
-
-
-
-        
-        <a href="/2019/08/18/knowage-zh-patch/" class="archive-article-date">
-  	<time datetime="2019-08-18T01:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://ranying666.github.io/2019/01/25/knowage-zh-cn/134722.png" alt=""><br>Knowage官方中文迟迟不发布，之前提供的中文汉化包，很多人安装不顺畅，所以本社区开发了一个更加简单的一键汉化补丁。支持6.3及以上版本。</p>
-<h1 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h1><ol>
-<li>下载官方安装程序</li>
-<li>下载汉化补丁</li>
-<li>将汉化补丁解压到安装程序所在根目录</li>
-<li>执行knowage_zh.exe<blockquote>
-<p>支持汉化、回滚操作。</p>
-</blockquote>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2019/08/18/knowage-zh-patch/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knowage</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据治理//" class="article-tag-list-link color5">数据治理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/18/knowage-zh-patch/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1392,7 +1412,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,11 +1420,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,15 +1436,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">认证与授权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,19 +1468,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IPD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,11 +1520,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,10 +1540,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">行为决策</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">插件化</a>
               </li>
              
@@ -1532,15 +1548,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">行为决策</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">一分钟系列</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">企业架构</a>
+                <a href="javascript:void(0)" class="js-tag color4">云原生</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云原生</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">企业架构</a>
               </li>
              
               <li class="article-tag-list-item">
