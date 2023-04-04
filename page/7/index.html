@@ -170,6 +170,178 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-postgres-datatype" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/postgres-datatype/">PostgreSQL9.6数据类型梳理</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/07/06/postgres-datatype/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2017/07/06/postgres-datatype/" class="archive-article-date">
+  	<time datetime="2017-07-06T06:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><p>数据类型指定要在表字段中存储哪种类型的数据。 在创建表时，对于每列必须使用数据类型。<br>PotgreSQL中主要有三种类型的数据类型。 此外，用户还可以使用<code>CREATE TYPE</code> SQL命令创建自己的自定义数据类型。</p><p></p>
+<p></p><p>以下是PostgreSQL中主要有三种类型的数据类型：</p><p></p>
+<ul><br><li>数值数据类型</li><li>字符串数据类型</li><li>日期/时间数据类型</li></ul>
+
+<h2 id="数值数据类型"><a href="#数值数据类型" class="headerlink" title="数值数据类型"></a>数值数据类型</h2><p>数字数据类型用于指定表中的数字数据。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">存储大小</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">smallint</td>
+<td style="text-align:left">存储整数，小范围</td>
+<td style="text-align:left">2字节</td>
+<td style="text-align:left">-32768 至 +32767</td>
+</tr>
+<tr>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">存储整数。使用这个类型可存储典型的整数</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">-2147483648 至 +2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigint</td>
+<td style="text-align:left">存储整数，大范围。</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">-9223372036854775808 至 9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:left">decimal</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">变量</td>
+<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
+</tr>
+<tr>
+<td style="text-align:left">numeric</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">变量</td>
+<td style="text-align:left">小数点前最多为131072个数字; 小数点后最多为16383个数字</td>
+</tr>
+<tr>
+<td style="text-align:left">real</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">6位数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">15位数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">smallserial</td>
+<td style="text-align:left">自动递增整数</td>
+<td style="text-align:left">2字节</td>
+<td style="text-align:left">1 至 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">serial</td>
+<td style="text-align:left">自动递增整数</td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">1 至 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigserial</td>
+<td style="text-align:left">大的自动递增整数</td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">1 至 9223372036854775807</td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2017/07/06/postgres-datatype/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/06/postgres-datatype/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-github-hexo" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -372,104 +544,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Rules-Compliance-Index" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/Rules-Compliance-Index/">Sonar RCI指标</a>
-    </h1>
-  
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/06/28/Rules-Compliance-Index/" class="pageViews">0</span>
-  </a>
-
-
-
-        
-        <a href="/2017/06/28/Rules-Compliance-Index/" class="archive-article-date">
-  	<time datetime="2017-06-28T03:17:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Rules-Compliance-Index-RCI-Plugin-for-SonarQube"><a href="#Rules-Compliance-Index-RCI-Plugin-for-SonarQube" class="headerlink" title="Rules Compliance Index (RCI) Plugin for SonarQube"></a>Rules Compliance Index (RCI) Plugin for SonarQube</h1><p><em>Requires SonarQube 5.6+ (tested against 5.6, 5.6.3 (LTS), 6.0, 6.1, 6.2, 6.3)</em></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The <strong>Rules Compliance Index (RCI)</strong> Metric was deprecated in SonarQube 5.6 and is no longer available to be displayed in a dashboard. See SONAR-4755 for more details.  </p>
-<p>This plugin calculates a metric based on the weighted value of issues and the number of lines of code (default settings are given in parentheses and can be configured on a global and per project level; other values are taken from the core metrics):</p>
-        
-          <a class="article-more-a" href="/2017/06/28/Rules-Compliance-Index/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Sonar</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/28/Rules-Compliance-Index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-shell-3op" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -543,6 +617,104 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/28/shell-3op/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Rules-Compliance-Index" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/28/Rules-Compliance-Index/">Sonar RCI指标</a>
+    </h1>
+  
+
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+        <i class="icon-smile icon"></i> 阅读量：<span id="/2017/06/28/Rules-Compliance-Index/" class="pageViews">0</span>
+  </a>
+
+
+
+        
+        <a href="/2017/06/28/Rules-Compliance-Index/" class="archive-article-date">
+  	<time datetime="2017-06-28T03:17:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Rules-Compliance-Index-RCI-Plugin-for-SonarQube"><a href="#Rules-Compliance-Index-RCI-Plugin-for-SonarQube" class="headerlink" title="Rules Compliance Index (RCI) Plugin for SonarQube"></a>Rules Compliance Index (RCI) Plugin for SonarQube</h1><p><em>Requires SonarQube 5.6+ (tested against 5.6, 5.6.3 (LTS), 6.0, 6.1, 6.2, 6.3)</em></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The <strong>Rules Compliance Index (RCI)</strong> Metric was deprecated in SonarQube 5.6 and is no longer available to be displayed in a dashboard. See SONAR-4755 for more details.  </p>
+<p>This plugin calculates a metric based on the weighted value of issues and the number of lines of code (default settings are given in parentheses and can be configured on a global and per project level; other values are taken from the core metrics):</p>
+        
+          <a class="article-more-a" href="/2017/06/28/Rules-Compliance-Index/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Sonar</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术架构//" class="article-tag-list-link color5">技术架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/28/Rules-Compliance-Index/">展开全文 >></a>
         </p>
       
 
@@ -1030,11 +1202,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1046,11 +1218,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color1">Sonar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1062,11 +1230,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">研发工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1106,10 +1278,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
@@ -1119,6 +1287,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">金融经济</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1134,15 +1306,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">团队管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,7 +1318,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创新创业</a>
+                <a href="javascript:void(0)" class="js-tag color4">DDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,7 +1342,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">行为决策</a>
+                <a href="javascript:void(0)" class="js-tag color5">创新创业</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,7 +1350,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">插件化</a>
+                <a href="javascript:void(0)" class="js-tag color5">模板引擎</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1190,7 +1358,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模板引擎</a>
+                <a href="javascript:void(0)" class="js-tag color4">插件化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">行为决策</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1198,11 +1370,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">企业架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">数字化</a>
               </li>
              
               <li class="article-tag-list-item">
