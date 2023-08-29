@@ -231,7 +231,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/h1.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -398,7 +398,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="一-初识数据">一、初识数据</span></h2><p>查看数据集的结构和内容</p>
+                <p>使用scikit-learn数据集iris来进行鸢尾花分类，构建一个机器学习模型 ，可以从这些已知品种的鸢尾花测试数据中进行学习，从而能够预测新鸢尾花的品种。</p>
+<p>本教程基于scikit-learn数据集iris来进行鸢尾花分类，构建一个机器学习模型 ，可以从这些已知品种的鸢尾花测试数据中进行学习，从而能够预测新鸢尾花的品种。</p>
+<p>学习目标：了解进行机器学习的基本流程，了解数据集准备、模型选择、分类算法、模型精度评估,为后续具体算法学习做好准备。</p>
+<h2><span id="一-初识数据">一、初识数据</span></h2><p>查看数据集的结构和内容</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris_dataset = load_iris()</span><br><span class="line"><span class="comment"># 展示数据字典</span></span><br><span class="line">print(iris_dataset.keys())</span><br><span class="line"><span class="comment"># target_names对应预测花的品牌名称</span></span><br><span class="line">print(<span class="string">"target_names : \n&#123;&#125;"</span>.format(iris_dataset[<span class="string">'target_names'</span>]))</span><br><span class="line"><span class="comment"># feature_names 对应每一个特征的说明:萼片长度、萼片宽度、花瓣长度、花瓣宽度</span></span><br><span class="line">print(<span class="string">"feature_names: \n&#123;&#125; "</span>.format(iris_dataset[<span class="string">'feature_names'</span>]))</span><br><span class="line"><span class="comment"># 展示数据结构</span></span><br><span class="line">print(<span class="string">"shape : &#123;&#125;"</span>,iris_dataset[<span class="string">'data'</span>].shape)</span><br><span class="line"><span class="comment"># 查看5个数据样本</span></span><br><span class="line">print(iris_dataset[<span class="string">'data'</span>][:<span class="number">5</span>])</span><br><span class="line"><span class="comment"># target 是每朵花对应的一个品种名称用数字表示</span></span><br><span class="line">print(iris_dataset[<span class="string">'target'</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dict_keys([&apos;data&apos;, &apos;target&apos;, &apos;frame&apos;, &apos;target_names&apos;, &apos;DESCR&apos;, &apos;feature_names&apos;, &apos;filename&apos;, &apos;data_module&apos;])</span><br><span class="line">target_names : </span><br><span class="line">[&apos;setosa&apos; &apos;versicolor&apos; &apos;virginica&apos;]</span><br><span class="line">feature_names: </span><br><span class="line">[&apos;sepal length (cm)&apos;, &apos;sepal width (cm)&apos;, &apos;petal length (cm)&apos;, &apos;petal width (cm)&apos;] </span><br><span class="line">shape : &#123;&#125; (150, 4)</span><br><span class="line">[[5.1 3.5 1.4 0.2]</span><br><span class="line"> [4.9 3.  1.4 0.2]</span><br><span class="line"> [4.7 3.2 1.3 0.2]</span><br><span class="line"> [4.6 3.1 1.5 0.2]</span><br><span class="line"> [5.  3.6 1.4 0.2]]</span><br><span class="line">[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line"> 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span><br><span class="line"> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2]</span><br></pre></td></tr></table></figure>
 <h2><span id="二-准备训练数据和测试数据">二、准备训练数据和测试数据</span></h2><p>我们要用新的数据来评估模型的性能。新数据是指模型之前没有见过的数据，而我们有这些数据的标签。通常的做法是将收集好的带标签的数据分成两部分。一部分数据用于构建机器学习模型，叫作训练数据（training data）或训练集（training set)。其余的数据用来评估模型性能，叫作测试数据（test data)、测试集（test set）或留出集（hold-out set)。<br>一般选择数据集的75%的行数据及对应标签作为训练集，剩下25%的数据及标签作为测试集。</p>
@@ -662,8 +665,7 @@
                 <a href="/2023/08/29/dassert/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="数据作为资产负债表的变化和挑战">
+                        <img src="/images/h0.jpg" class="responsive-img" alt="数据作为资产负债表的变化和挑战">
                         
                         <span class="card-title">数据作为资产负债表的变化和挑战</span>
                     </div>
