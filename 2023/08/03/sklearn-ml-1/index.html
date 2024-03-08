@@ -398,8 +398,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用scikit-learn数据集iris来进行鸢尾花分类，构建一个机器学习模型 ，可以从这些已知品种的鸢尾花测试数据中进行学习，从而能够预测新鸢尾花的品种。</p>
-<p>本教程基于scikit-learn数据集iris来进行鸢尾花分类，构建一个机器学习模型 ，可以从这些已知品种的鸢尾花测试数据中进行学习，从而能够预测新鸢尾花的品种。</p>
+                <p>本教程基于scikit-learn数据集iris来进行鸢尾花分类，构建一个机器学习模型 ，可以从这些已知品种的鸢尾花测试数据中进行学习，从而能够预测新鸢尾花的品种。</p>
 <p>学习目标：了解进行机器学习的基本流程，了解数据集准备、模型选择、分类算法、模型精度评估,为后续具体算法学习做好准备。</p>
 <h2><span id="一-初识数据">一、初识数据</span></h2><p>查看数据集的结构和内容</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris_dataset = load_iris()</span><br><span class="line"><span class="comment"># 展示数据字典</span></span><br><span class="line">print(iris_dataset.keys())</span><br><span class="line"><span class="comment"># target_names对应预测花的品牌名称</span></span><br><span class="line">print(<span class="string">"target_names : \n&#123;&#125;"</span>.format(iris_dataset[<span class="string">'target_names'</span>]))</span><br><span class="line"><span class="comment"># feature_names 对应每一个特征的说明:萼片长度、萼片宽度、花瓣长度、花瓣宽度</span></span><br><span class="line">print(<span class="string">"feature_names: \n&#123;&#125; "</span>.format(iris_dataset[<span class="string">'feature_names'</span>]))</span><br><span class="line"><span class="comment"># 展示数据结构</span></span><br><span class="line">print(<span class="string">"shape : &#123;&#125;"</span>,iris_dataset[<span class="string">'data'</span>].shape)</span><br><span class="line"><span class="comment"># 查看5个数据样本</span></span><br><span class="line">print(iris_dataset[<span class="string">'data'</span>][:<span class="number">5</span>])</span><br><span class="line"><span class="comment"># target 是每朵花对应的一个品种名称用数字表示</span></span><br><span class="line">print(iris_dataset[<span class="string">'target'</span>])</span><br></pre></td></tr></table></figure>
@@ -888,7 +887,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2023</span>
+                <span id="year">2015-2024</span>
             
             <span id="year">2015</span>
             <a href="/about" target="_blank">KavenRan</a>
